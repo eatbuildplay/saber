@@ -1,0 +1,34 @@
+.question {
+  background: #000;
+  color: #FFF;
+}
+.question ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.question li {
+  list-style: none;
+  padding: 8px 25px;
+  margin: 0;
+}
+
+.question ul.selectable li {
+  cursor: pointer;
+}
+.question ul.selectable li:hover {
+  background: #333;
+}
+.question li.selected {
+  background: #666;
+}
+
+.question.focus {
+  background: #222;
+}
+.question li.selected.correct {
+  background: green;
+}
+.question li.selected.incorrect {
+  background: red;
+}

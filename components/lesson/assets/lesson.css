@@ -1,0 +1,253 @@
+body {
+  font-family: "Montserrat", Sans-serif;
+  font-size: 16px;
+  margin: 0;
+}
+h1 {
+  font-size: 44px;
+}
+button {
+  font-size: 20px;
+  background: #F36D21;
+  padding: 15px 10px;
+  min-width: 120px;
+  border: solid 2px #FFF;
+  cursor: pointer;
+  margin: 10px 15px;
+  color: #FFFFFF;
+}
+
+/* Lesson Single Tabs */
+.lesson-single-tabs {
+  width: 100%;
+  padding: 15px 30px 30px 30px;
+  margin: 0;
+  background: #14699A;
+}
+.lesson-single-tabs h2 {
+  font-size: 22px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  color: #00000055;
+}
+.lesson-single-tabs ul {
+  padding: 0;
+  margin: 0;
+}
+.lesson-single-tabs li {
+  display: inline-block;
+  padding: 20px 40px;
+  margin: 0;
+  cursor: pointer;
+  border-top: solid 2px #FFFFFF55;
+  border-right: solid 2px #FFFFFF55;
+  border-bottom: solid 2px #FFFFFF55;
+  color: #FFFFFFD5;
+  font-size: 22px;
+  background: #FFFFFF1A;
+}
+.lesson-single-tabs li:first-child {
+  border-left: solid 2px #FFFFFF55;
+}
+.lesson-single-tabs li.active {
+  background: #148642;
+  color: #FFFFFF;
+}
+.lesson-single-tabs li:hover {
+  background: #F36D21;
+  color: #FFFFFF;
+}
+
+/* Lesson Exercise Body */
+.lesson-section-body {
+  padding: 35px;
+}
+
+/* Control Buttons */
+.s10-start-exercise-btn {
+  background: #272E39;
+  border: solid 2px #272E39F1;
+  color: #FFFFFF;
+  font-size: 32px;
+  font-weight: bold;
+  width: 100%;
+  margin: 0;
+}
+
+/* Lesson Sections */
+.lesson-section {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: #272E39;
+  background: #DE2026;
+}
+.lesson-section-header {
+  margin: 0 0 30px 0;
+  padding: 50px 50px 50px 50px;
+  border-bottom: solid 6px #0000001A;
+  background: #FFFFFF22;
+  color: #272E39;
+  font-size: 20px;
+  line-height: 1.7;
+}
+.lesson-section-title {
+  font-size: 32px;
+  font-weight: normal;
+  margin: 0 0 25px 0;
+  color: #272E39;
+}
+.lesson-section-intro {}
+
+/* WordScan */
+.wordscan-word {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 320px;
+  padding: 15px;
+}
+.lesson-section-body .wordscan-word img {
+  max-width: 340px;
+  min-width: 180px;
+  float: right;
+  border: solid 2px #FFFFFF80;
+}
+.wordscan-word-display {
+  font-size: 48px;
+  color: #FFFFFF;
+  margin: 0 0 10px 0;
+}
+.wordscan-word-pronunciation {
+  font-size: 28px;
+  font-style: italic;
+  color: #FFFFFFF8;
+  margin: 0 0 30px 0;
+}
+.wordscan-controls {
+  margin: 60px 0 30px 0;
+}
+.wordscan-controls button {
+  background: #0000001A;
+  color: #272E39;
+  font-size: 26px;
+  border: none;
+  padding: 30px 50px;
+  border-right: solid 1px #272E39;
+  margin: 0 0 0 0;
+}
+.wordscan-controls button:last-child {
+  border-right: none;
+}
+.wordscan-controls button:hover {
+  background: #0000001F;
+}
+.wordscan-controls button i {
+  margin-bottom: 12px;
+}
+
+/* FlashCards */
+.lesson-section-flashcards {
+  display: none;
+}
+.flashcard {
+  overflow: hidden;
+  background: #272E39;
+  box-sizing: border-box;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #FFFFFF;
+  max-width: 700px;
+}
+.flashcard:hover {
+  background: #272E39;
+}
+.flashcard h2 {
+  font-size: 32px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+.flashcard-reset {
+  float: right;
+}
+
+.flashcard-up, .flashcard-down {
+  display:none;
+}
+.flashcard-active {
+  display: block;
+}
+
+/*
+ * Word Selection Exercise
+ */
+.lesson-section-word-selection {
+  display: none;
+}
+
+/*
+ * Lesson Single Footer
+ */
+.lesson-single-footer {
+  margin: 120px 0 35px 0;
+  background: #4E8C3F;
+  color: #FFFFFF;
+  padding: 40px 25px;
+  font-size: 20px;
+  text-align: center;
+}
+.lesson-single-footer button {
+  color: #272E39;
+  background: #FFFFFF1A;
+  border: none;
+  padding: 35px 50px;
+}
+.lesson-single-footer button:hover {
+  background: #FFFFFF2A;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+  .wordscan-word {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px;
+    margin: 0;
+    background: #209FBF;
+  }
+
+}
+
+.lesson-section-flashcards {
+  overflow: hidden;
+}
+.flashcard-controls {
+
+  min-height: 150px;
+  white-space: nowrap;
+}
+
+/*
+ * Word selection
+ */
+.word-selection ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.word-selection li {
+  margin: 0;
+  padding: 25px 40px;
+  background: #F3F3F3;
+  font-size: 20px;
+}
+.word-selection li.selectable:hover {
+  background: #D3D3D3;
+  cursor: pointer;
+}
+.word-selection li.selected {
+  background: #C3C3C3;
+}
