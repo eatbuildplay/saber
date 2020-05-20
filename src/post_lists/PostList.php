@@ -1,11 +1,11 @@
 <?php
 
-namespace Frame;
+namespace Saber;
 
 class PostList {
 
-  public $frameLoaderKey = 'frame_post_list_load';
-  public $loadHook = 'frame_post_list_load';
+  public $saberLoaderKey = 'saber_post_list_load';
+  public $loadHook = 'saber_post_list_load';
 
   public function __construct() {
 
@@ -20,7 +20,7 @@ class PostList {
 
   public function initWidgets() {
 
-    require_once( FRAME_PATH . 'src/post_lists/elementor/PostListWidget.php' );
+    require_once( Saber_PATH . 'src/post_lists/elementor/PostListWidget.php' );
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new PostListWidget() );
 
 
@@ -31,8 +31,8 @@ class PostList {
   }
 
   public function initShortcode() {
-    require_once( FRAME_PATH . 'src/post_lists/PostListShortcode.php' );
-    new PostListShortcode( $this->frameLoaderKey, $this->getShortcodeTag() );
+    require_once( Saber_PATH . 'src/post_lists/PostListShortcode.php' );
+    new PostListShortcode( $this->saberLoaderKey, $this->getShortcodeTag() );
   }
 
   // enable override shortcode tag
@@ -84,16 +84,16 @@ class PostList {
   public function addScripts() {
 
     wp_enqueue_style(
-      'frame-post-list-css',
-      FRAME_URL . 'src/post_lists/assets/post_list.css',
+      'saber-post-list-css',
+      Saber_URL . 'src/post_lists/assets/post_list.css',
       array(),
       '1.0.0',
       'all'
     );
 
     wp_enqueue_script(
-      'frame-post-list-js',
-      FRAME_URL . 'src/post_lists/assets/post_list.js',
+      'saber-post-list-js',
+      Saber_URL . 'src/post_lists/assets/post_list.js',
       array( 'jquery' ),
       '1.0.0',
       true
@@ -104,8 +104,8 @@ class PostList {
      */
     global $post;
     wp_localize_script(
-      'frame-post-list-js',
-      $this->frameLoaderKey,
+      'saber-post-list-js',
+      $this->saberLoaderKey,
       [
         'ajaxurl' => admin_url( 'admin-ajax.php' ),
         'postListLoadHook' => $this->loadHook,

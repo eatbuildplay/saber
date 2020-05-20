@@ -1,16 +1,16 @@
 <?php
 
-namespace Frame;
+namespace Saber;
 
 class PostListShortcode {
 
-  public $tag = 'frame-post-list';
+  public $tag = 'saber-post-list';
 
-  public function __construct( $frameLoaderKey, $tag = false ) {
+  public function __construct( $saberLoaderKey, $tag = false ) {
     if( $tag ) {
       $this->tag = $tag;
     }
-    $this->frameLoaderKey = $frameLoaderKey;
+    $this->saberLoaderKey = $saberLoaderKey;
     add_action('init', array( $this, 'init'));
   }
 
@@ -25,7 +25,7 @@ class PostListShortcode {
     $template->path = 'src/post_lists/templates/';
     $template->name = 'post-list-canvas';
     $template->data = array(
-      'frameLoaderKey' => $this->frameLoaderKey
+      'saberLoaderKey' => $this->saberLoaderKey
     );
     return $template->get();
 

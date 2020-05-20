@@ -1,11 +1,11 @@
 <?php
 
-namespace Frame\Course;
+namespace Saber\Course;
 
-class CoursePostList extends \Frame\PostList {
+class CoursePostList extends \Saber\PostList {
 
-  public $frameLoaderKey = 'coursePostList';
-  public $loadHook = 'frame_post_list_load';
+  public $saberLoaderKey = 'coursePostList';
+  public $loadHook = 'saber_post_list_load';
 
   public function __construct() {
     parent::__construct();

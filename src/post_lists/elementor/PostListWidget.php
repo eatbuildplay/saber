@@ -1,15 +1,15 @@
 <?php
 
-namespace Frame;
+namespace Saber;
 
 class PostListWidget extends \Elementor\Widget_Base {
 
 	public function get_name() {
-		return 'frame_post_list';
+		return 'saber_post_list';
 	}
 
 	public function get_title() {
-		return __( 'Post List', 'frame' );
+		return __( 'Post List', 'saber' );
 	}
 
 	public function get_icon() {
@@ -27,7 +27,7 @@ class PostListWidget extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'content_section',
 			[
-				'label' => __( 'Content', 'frame' ),
+				'label' => __( 'Content', 'saber' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -47,7 +47,7 @@ class PostListWidget extends \Elementor\Widget_Base {
     $this->add_control(
 			'item_template',
 			[
-				'label' => __( 'Item Template', 'frame' ),
+				'label' => __( 'Item Template', 'saber' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'input_type' => 'select',
         'options' => $options
@@ -57,7 +57,7 @@ class PostListWidget extends \Elementor\Widget_Base {
     $this->add_control(
 			'post_type',
 			[
-				'label' => __( 'Post Type', 'frame' ),
+				'label' => __( 'Post Type', 'saber' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'input_type' => 'text'
 			]

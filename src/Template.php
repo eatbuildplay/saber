@@ -1,6 +1,6 @@
 <?php
 
-namespace Frame;
+namespace Saber;
 
 class Template {
 
@@ -17,7 +17,7 @@ class Template {
       extract( $this->data );
     }
     ob_start();
-    require( FRAME_PATH . $this->path . $this->name . '.php' );
+    require( Saber_PATH . $this->path . $this->name . '.php' );
     $content = ob_get_contents();
     ob_end_clean();
     return $content;

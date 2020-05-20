@@ -1,8 +1,8 @@
 <?php
 
-namespace Frame\Exam;
+namespace Saber\Exam;
 
-class QuestionBankPostType extends \Frame\PostType {
+class QuestionBankPostType extends \Saber\PostType {
 
   public $showInMenu = false;
 

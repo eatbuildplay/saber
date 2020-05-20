@@ -1,6 +1,6 @@
 <?php
 
-namespace Frame\Exam;
+namespace Saber\Exam;
 
 class ExamSingleShortcode {
 
@@ -10,10 +10,10 @@ class ExamSingleShortcode {
 
     add_action('init', array( $this, 'init'));
 
-    add_action( 'wp_ajax_frame_exam_record_answer', array( $this, 'jxRecordAnswer'));
-    add_action( 'wp_ajax_frame_exam_question_load', array( $this, 'jxQuestionLoad'));
-    add_action( 'wp_ajax_frame_exam_exam_load', array( $this, 'jxExamLoad'));
-    add_action( 'wp_ajax_frame_exam_create_exam_score', array( $this, 'jxExamScoreCreate'));
+    add_action( 'wp_ajax_saber_exam_record_answer', array( $this, 'jxRecordAnswer'));
+    add_action( 'wp_ajax_saber_exam_question_load', array( $this, 'jxQuestionLoad'));
+    add_action( 'wp_ajax_saber_exam_exam_load', array( $this, 'jxExamLoad'));
+    add_action( 'wp_ajax_saber_exam_create_exam_score', array( $this, 'jxExamScoreCreate'));
 
   }
 
@@ -63,7 +63,7 @@ class ExamSingleShortcode {
     $examId = $_POST['examId'];
 
     // create exam score
-    $examScore = new \Frame\Exam\Model\ExamScore;
+    $examScore = new \Saber\Exam\Model\ExamScore;
     $examScore->exam = $examId;
     $examScore->save();
 
@@ -115,7 +115,7 @@ class ExamSingleShortcode {
 
     $exam = Model\Exam::load( $post );
 
-    $template = new \Frame\Template();
+    $template = new \Saber\Template();
     $template->path = 'components/exam/templates/';
 
     $content = '';

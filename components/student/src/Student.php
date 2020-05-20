@@ -1,6 +1,6 @@
 <?php
 
-namespace Frame\Student;
+namespace Saber\Student;
 
 class Student {
 

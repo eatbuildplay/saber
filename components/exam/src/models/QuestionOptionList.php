@@ -1,6 +1,6 @@
 <?php
 
-namespace Frame\Exam\Model;
+namespace Saber\Exam\Model;
 
 class QuestionOptionList {
 

@@ -124,7 +124,7 @@ try {
 * [AWS Service Provider for Silex][mod-silex]
 * [AWS SDK Bundle for Symfony][mod-symfony]
 * [Amazon SNS Message Validator for PHP][sns-validator] - SNS validator without requiring SDK
-* [Guzzle Version 6][guzzle-docs] – PHP HTTP client and framework
+* [Guzzle Version 6][guzzle-docs] – PHP HTTP client and saberwork
 * For Version 2 of the SDK:
   * [User Guide][docs-guide-v2]
   * [API Docs][docs-api-v2]

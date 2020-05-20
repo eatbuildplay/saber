@@ -1,6 +1,6 @@
 <?php
 
-namespace Frame\Lesson;
+namespace Saber\Lesson;
 
 class ElementorPostWidget extends \Elementor\Widget_Base {
 
@@ -63,7 +63,7 @@ class ElementorPostWidget extends \Elementor\Widget_Base {
       ]
     );
 
-    $template = new \Frame\Template();
+    $template = new \Saber\Template();
     $template->path = 'components/lesson/templates/';
     $template->name = 'lesson-filters';
     print $template->get();

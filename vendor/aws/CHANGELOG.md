@@ -141,7 +141,7 @@
 * `Aws\Glue` - This release adds support for querying GetUserDefinedFunctions API without databaseName.
 * `Aws\IoTEvents` - API update that allows users to customize event action payloads, and adds support for Amazon DynamoDB actions.
 * `Aws\Lambda` - Sample code for AWS Lambda operations
-* `Aws\MediaConvert` - AWS Elemental MediaConvert now allows you to specify your input captions frame rate for SCC captions sources.
+* `Aws\MediaConvert` - AWS Elemental MediaConvert now allows you to specify your input captions saber rate for SCC captions sources.
 * `Aws\MediaTailor` - AWS Elemental MediaTailor SDK now allows configuration of Avail Suppression.
 * `Aws\MigrationHub` - Adding ThrottlingException
 * `Aws\RDS` - This release adds support for Amazon RDS Proxy with PostgreSQL compatibility.
@@ -633,7 +633,7 @@
 * `Aws\ECS` - Documentation updates for Amazon ECS.
 * `Aws\IoT` - Added a new Over-the-Air (OTA) Update feature that allows you to use different, or multiple, protocols to transfer an image from the AWS cloud to IoT devices.
 * `Aws\KinesisAnalyticsV2` - Kinesis Data Analytics service now supports running Java applications using Flink 1.8.
-* `Aws\MediaLive` - AWS Elemental MediaLive now supports HLS ID3 segment tagging, HLS redundant manifests for CDNs that support different publishing/viewing endpoints, fragmented MP4 (fMP4), and frame capture intervals specified in milliseconds.
+* `Aws\MediaLive` - AWS Elemental MediaLive now supports HLS ID3 segment tagging, HLS redundant manifests for CDNs that support different publishing/viewing endpoints, fragmented MP4 (fMP4), and saber capture intervals specified in milliseconds.
 * `Aws\SSM` - Added support for Cloud Watch Output and Document Version to the Run Command tasks in Maintenance Windows.
 
 ## 3.129.1 - 2019-12-16
@@ -1011,7 +1011,7 @@
 
 * `Aws\ElastiCache` - Amazon ElastiCache now allows you to apply available service updates on demand to your Memcached and Redis Cache Clusters. Features included: (1) Access to the list of applicable service updates and their priorities. (2) Service update monitoring and regular status updates. (3) Recommended apply-by-dates for scheduling the service updates. (4) Ability to stop and later re-apply updates. For more information, see https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/Self-Service-Updates.html and https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Self-Service-Updates.html
 * `Aws\Kafka` - Updated documentation for Amazon Managed Streaming for Kafka service.
-* `Aws\MediaConvert` - AWS Elemental MediaConvert SDK has added support for Dolby Atmos encoding, up to 36 outputs, accelerated transcoding with frame capture and preferred acceleration feature.
+* `Aws\MediaConvert` - AWS Elemental MediaConvert SDK has added support for Dolby Atmos encoding, up to 36 outputs, accelerated transcoding with saber capture and preferred acceleration feature.
 
 ## 3.112.17 - 2019-10-08
 
@@ -1120,7 +1120,7 @@
 
 * `Aws\EC2` - Fix for FleetActivityStatus and FleetStateCode enum
 * `Aws\ElasticLoadBalancingv2` - Documentation updates for elasticloadbalancingv2: This release adds support for TLS SNI on Network Load Balancers 
-* `Aws\MediaLive` - AWS Elemental MediaLive now supports High Efficiency Video Coding (HEVC) for standard-definition (SD), high-definition (HD), and ultra-high-definition (UHD) encoding with HDR support.Encoding with HEVC offers a number of advantages. While UHD video requires an advanced codec beyond H.264 (AVC), high frame rate (HFR) or High Dynamic Range (HDR) content in HD also benefit from HEVC's advancements. In addition, benefits can be achieved with HD and SD content even if HDR and HFR are not needed.
+* `Aws\MediaLive` - AWS Elemental MediaLive now supports High Efficiency Video Coding (HEVC) for standard-definition (SD), high-definition (HD), and ultra-high-definition (UHD) encoding with HDR support.Encoding with HEVC offers a number of advantages. While UHD video requires an advanced codec beyond H.264 (AVC), high saber rate (HFR) or High Dynamic Range (HDR) content in HD also benefit from HEVC's advancements. In addition, benefits can be achieved with HD and SD content even if HDR and HFR are not needed.
 * `Aws\WorkMailMessageFlow` - This release allows customers to access email messages as they flow to and from Amazon WorkMail.
 
 ## 3.111.2 - 2019-09-11
@@ -1328,7 +1328,7 @@
 
 * `Aws\EC2` - This release introduces support for split tunnel with AWS Client VPN, and also adds support for opt-in Regions in DescribeRegions API. In addition, customers can now also tag Launch Templates on creation.
 * `Aws\Glue` - This release provides GlueVersion option for Job APIs and WorkerType option for DevEndpoint APIs. Job APIs enable users to pick specific GlueVersion for a specific job and pin the job to a specific runtime environment. DevEndpoint APIs enable users to pick different WorkerType for memory intensive workload.
-* `Aws\Pinpoint` - This release adds support for programmatic access to many of the same campaign metrics that are displayed on the Amazon Pinpoint console. You can now use the Amazon Pinpoint API to monitor and assess performance data for campaigns, and integrate metrics data with other reporting tools. We update the metrics data continuously, resulting in a data latency timeframe that is limited to approximately two hours.
+* `Aws\Pinpoint` - This release adds support for programmatic access to many of the same campaign metrics that are displayed on the Amazon Pinpoint console. You can now use the Amazon Pinpoint API to monitor and assess performance data for campaigns, and integrate metrics data with other reporting tools. We update the metrics data continuously, resulting in a data latency timesaber that is limited to approximately two hours.
 * `Aws\STS` - New STS GetAccessKeyInfo API operation that returns the account identifier for the specified access key ID.
 
 ## 3.107.6 - 2019-07-23
@@ -1718,7 +1718,7 @@
 
 * `Aws\CodePipeline` - This release contains an update to the PipelineContext object that includes the Pipeline ARN, and the Pipeline Execution Id. The ActionContext object is also updated to include the Action Execution Id.
 * `Aws\DirectConnect` - This release adds support for AWS Direct Connect customers to use AWS Transit Gateway with AWS Direct Connect gateway to route traffic between on-premise networks and their VPCs.
-* `Aws\ManagedBlockchain` - (New Service) Amazon Managed Blockchain is a fully managed service that makes it easy to create and manage scalable blockchain networks using popular open source frameworks.
+* `Aws\ManagedBlockchain` - (New Service) Amazon Managed Blockchain is a fully managed service that makes it easy to create and manage scalable blockchain networks using popular open source saberworks.
 * `Aws\Neptune` - Adds a feature to allow customers to specify a custom parameter group when restoring a database cluster.
 * `Aws\S3Control` - Add support for Amazon S3 Batch Operations.
 * `Aws\ServiceCatalog` - Admin users can now associate/disassociate aws budgets with a portfolio or product in Service Catalog. End users can see the association by listing it or as part of the describe portfolio/product output. A new optional boolean parameter, "DisableTemplateValidation", is added to ProvisioningArtifactProperties data type. The purpose of the parameter is to enable or disable the CloudFormation template validtion when creating a product or a provisioning artifact.
@@ -2091,7 +2091,7 @@
 * `Aws\CodeCommit` - The PutFile API will now throw new exception FilePathConflictsWithSubmodulePathException when a submodule exists at the input file path; PutFile API will also throw FolderContentSizeLimitExceededException when the total size of any folder on the path exceeds the limit as a result of the operation.
 * `Aws\DeviceFarm` - Introduces a new rule in Device Pools - "Availability". Customers can now ensure they pick devices that are available (i.e., not being used by other customers).
 * `Aws\MediaConnect` - This release adds support for tagging, untagging, and listing tags for existing AWS Elemental MediaConnect resources.
-* `Aws\MediaLive` - This release adds support for Frame Capture output groups and for I-frame only manifests (playlists) in HLS output groups.
+* `Aws\MediaLive` - This release adds support for Saber Capture output groups and for I-saber only manifests (playlists) in HLS output groups.
 
 ## 3.87.1 - 2019-01-24
 
@@ -2538,7 +2538,7 @@
 * `Aws\Api/Serializer` - Fix to correctly format 'structure' options into JSON, when they have no valid values.
 * `Aws\Athena` - 1. GetQueryExecution API changes to return statementType of a submitted Athena query. 2. GetQueryResults API changes to return the number of rows added to a table when a CTAS query is executed.
 * `Aws\ClientSideMonitoring` - Updates to client-side monitoring event entry and config settings to match updated specification.
-* `Aws\DirectConnect` - This release adds support for Jumbo Frames over AWS Direct Connect. You can now set MTU value when creating new virtual interfaces. This release also includes a new API to modify MTU value of existing virtual interfaces.
+* `Aws\DirectConnect` - This release adds support for Jumbo Sabers over AWS Direct Connect. You can now set MTU value when creating new virtual interfaces. This release also includes a new API to modify MTU value of existing virtual interfaces.
 * `Aws\EC2` - You can now launch the smaller-sized G3 instance called g3s.xlarge. G3s.xlarge provides 4 vCPU, 30.5 GB RAM and a NVIDIA Tesla M60 GPU. It is ideal for remote workstations, engineering and architectural applications, and 3D visualizations and rendering for visual effects.
 * `Aws\MediaConvert` - Added Paginators for all the MediaConvert list operations
 * `Aws\TranscribeService` - With this release, Amazon Transcribe now supports transcriptions from audio sources in British English (en-UK), Australian English (en-AU), and Canadian French (fr-CA).
@@ -2548,7 +2548,7 @@
 * `Aws\Build/Docs` - Fixes API docs issue with required members in shapes.
 * `Aws\ClientSideMonitoring` - Avoids issue with late static bindings in closures in earlier versions of PHP 5.5.x.
 * `Aws\Comprehend` - This release adds French, Italian, German and Portuguese language support for all existing synchronous and asynchronous APIs
-* `Aws\ElasticsearchService` - Amazon Elasticsearch Service now supports customer-scheduled service software updates. When new service software becomes available, you can request an update to your domain and benefit from new features more quickly. If you take no action, we update the service software automatically after a certain time frame.
+* `Aws\ElasticsearchService` - Amazon Elasticsearch Service now supports customer-scheduled service software updates. When new service software becomes available, you can request an update to your domain and benefit from new features more quickly. If you take no action, we update the service software automatically after a certain time saber.
 * `Aws\TranscribeService` - With this update Amazon Transcribe now supports deleting completed transcription jobs. 
 
 ## 3.69.3 - 2018-10-09
@@ -3075,7 +3075,7 @@
 ## 3.59.0 - 2018-05-31
 
 * `Aws\ElasticLoadBalancingv2` - This release of Elastic Load Balancing introduces user authentication on Application Load Balancer.
-* `Aws\Neptune` - Amazon Neptune is a fast, reliable graph database service that makes it easy to build and run applications that work with highly connected datasets. Neptune supports popular graph models Property Graph and W3C's Resource Description Frame (RDF), and their respective query languages Apache TinkerPop Gremlin 3.3.2 and SPARQL 1.1. 
+* `Aws\Neptune` - Amazon Neptune is a fast, reliable graph database service that makes it easy to build and run applications that work with highly connected datasets. Neptune supports popular graph models Property Graph and W3C's Resource Description Saber (RDF), and their respective query languages Apache TinkerPop Gremlin 3.3.2 and SPARQL 1.1. 
 
 ## 3.58.0 - 2018-05-29
 
@@ -3650,7 +3650,7 @@
 * `Aws\IoT` - Add error action API for RulesEngine. 
 * `Aws\ServiceCatalog` - ServiceCatalog has two distinct personas for its use, an "admin" persona (who creates sets of products with different versions and prescribes who has access to them) and an "end-user" persona (who can launch cloud resources based on the configuration data their admins have given them access to). This API update will allow admin users to deactivate/activate product versions, end-user will only be able to access and launch active product versions. 
 * `Aws\ServiceDiscovery` - Amazon Route 53 Auto Naming lets you configure public or private namespaces that your microservice applications run in. When instances of the service become available, you can call the Auto Naming API to register the instance, and Amazon Route 53 automatically creates up to five DNS records and an optional health check. Clients that submit DNS queries for the service receive an answer that contains up to eight healthy records.
-* `Aws\Test` - Use PHPUnit\Framework\TestCase instead of PHPUnit_Framework_TestCase
+* `Aws\Test` - Use PHPUnit\Saberwork\TestCase instead of PHPUnit_Saberwork_TestCase
 * `Aws\Test` - Refactored some tests with PHPUnit assert methods.
 
 ## 3.44.2 - 2017-12-04
@@ -6480,7 +6480,7 @@ for details about any changes you may need to make to your code for this upgrade
 
 ## 2.4.1 - 2013-06-08
 
-* Added support for setting watermarks and max framerates to the Amazon Elastic Transcoder client
+* Added support for setting watermarks and max saberrates to the Amazon Elastic Transcoder client
 * Added the `Aws\DynamoDb\Iterator\ItemIterator` class to make it easier to get items from the results of DynamoDB
   operations in a simpler form
 * Added support for the `cr1.8xlarge` EC2 instance type. Use `Aws\Ec2\Enum\InstanceType::CR1_8XLARGE`

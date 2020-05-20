@@ -1,5 +1,5 @@
-<div class="frame-property-filters">
-  <div class="frame-property-filter">
+<div class="saber-property-filters">
+  <div class="saber-property-filter">
     <label>Filter by Course</label>
     <select id="filter_course">
       <option value='6'>Course 1</option>
@@ -17,7 +17,7 @@
 
     // do ajax call to get new filtered posts
     data = {
-      action: 'frame_property_list_load'
+      action: 'saber_property_list_load'
     }
     $.post( ElementorProFrontendConfig.ajaxurl, data, function( response ) {
       if ( response.status == 'success' ) {

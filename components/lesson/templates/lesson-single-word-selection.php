@@ -40,7 +40,7 @@ function fetchSelectionOptions( $allTranslations, $correctTranslation ) {
 
   <?php
 
-    $template = new \Frame\Template();
+    $template = new \Saber\Template();
     $template->path = 'components/lesson/templates/';
     $template->name = 'lesson-section-header';
     $template->data = array(

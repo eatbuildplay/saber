@@ -1,10 +1,10 @@
 <?php
 
-namespace Frame;
+namespace Saber;
 
 class Shortcode {
 
-  public $tag = 'frame-shortcode';
+  public $tag = 'saber-shortcode';
   public $templatePath = 'templates/';
   public $templateName = 'shortcode';
   public $templateData = [];

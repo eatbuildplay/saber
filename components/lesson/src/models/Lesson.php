@@ -1,6 +1,6 @@
 <?php
 
-namespace Frame\Lesson\Model\;
+namespace Saber\Lesson\Model\;
 
 class Lesson {
 

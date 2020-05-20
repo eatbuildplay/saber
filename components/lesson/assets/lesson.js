@@ -359,7 +359,7 @@
 
   // next lesson button
   $('.s10-next-lesson').on('click', function() {
-    window.location.href = frameLesson.nextLesson.url;
+    window.location.href = saberLesson.nextLesson.url;
   })
 
 })( jQuery );

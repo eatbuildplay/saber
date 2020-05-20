@@ -1,22 +1,22 @@
 <?php
 
-namespace Frame\Register;
+namespace Saber\Register;
 
 class Register {
 
   public function __construct() {
 
     // shortcode
-    // [frame-register]
-    $shortcode = new \Frame\Shortcode();
-    $shortcode->tag = 'frame-register';
+    // [saber-register]
+    $shortcode = new \Saber\Shortcode();
+    $shortcode->tag = 'saber-register';
     $shortcode->templatePath = 'components/register/templates/';
     $shortcode->templateName = 'shortcode';
     $shortcode->templateData = [];
 
     // ajax hook
-    add_action( 'wp_ajax_frame_register', array( $this, 'processRegistration'));
-    add_action( 'wp_ajax_nopriv_frame_register', array( $this, 'processRegistration'));
+    add_action( 'wp_ajax_saber_register', array( $this, 'processRegistration'));
+    add_action( 'wp_ajax_nopriv_saber_register', array( $this, 'processRegistration'));
 
   }
 

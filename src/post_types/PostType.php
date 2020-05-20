@@ -1,6 +1,6 @@
 <?php
 
-namespace Frame;
+namespace Saber;
 
 class PostType {
 
@@ -9,7 +9,7 @@ class PostType {
   public $menuPosition = 10;
 
   public function getKey() {
-    return 'frame';
+    return 'saber';
   }
 
   public function getNameSingular() {
@@ -49,8 +49,8 @@ class PostType {
     $nameSingular = $this->getNameSingular();
 
     return [
-  		'label'                 => __( $nameSingular, 'frame' ),
-  		'description'           => __( 'Custom post type registered with Frame.', 'frame' ),
+  		'label'                 => __( $nameSingular, 'saber' ),
+  		'description'           => __( 'Custom post type registered with Saber.', 'saber' ),
   		'supports'              => array( 'title' ),
   		'taxonomies'            => [],
   		'hierarchical'          => false,
@@ -73,33 +73,33 @@ class PostType {
   public function getLabels() {
 
     return [
-  		'name'                  => _x( $this->getNamePlural(), 'Post Type General Name', 'frame' ),
-  		'singular_name'         => _x( $this->getNameSingular(), 'Post Type Singular Name', 'frame' ),
-  		'menu_name'             => __( $this->getNamePlural(), 'frame' ),
-  		'name_admin_bar'        => __( $this->getNamePlural(), 'frame' ),
-  		'archives'              => __( 'Item Archives', 'frame' ),
-  		'attributes'            => __( 'Item Attributes', 'frame' ),
-  		'parent_item_colon'     => __( 'Parent Item:', 'frame' ),
-  		'all_items'             => __( 'All Items', 'frame' ),
-  		'add_new_item'          => __( 'Add New Item', 'frame' ),
-  		'add_new'               => __( 'Add New', 'frame' ),
-  		'new_item'              => __( 'New Item', 'frame' ),
-  		'edit_item'             => __( 'Edit Item', 'frame' ),
-  		'update_item'           => __( 'Update Item', 'frame' ),
-  		'view_item'             => __( 'View Item', 'frame' ),
-  		'view_items'            => __( 'View Items', 'frame' ),
-  		'search_items'          => __( 'Search Item', 'frame' ),
-  		'not_found'             => __( 'Not found', 'frame' ),
-  		'not_found_in_trash'    => __( 'Not found in Trash', 'frame' ),
-  		'featured_image'        => __( 'Featured Image', 'frame' ),
-  		'set_featured_image'    => __( 'Set featured image', 'frame' ),
-  		'remove_featured_image' => __( 'Remove featured image', 'frame' ),
-  		'use_featured_image'    => __( 'Use as featured image', 'frame' ),
-  		'insert_into_item'      => __( 'Insert into item', 'frame' ),
-  		'uploaded_to_this_item' => __( 'Uploaded to this item', 'frame' ),
-  		'items_list'            => __( 'Items list', 'frame' ),
-  		'items_list_navigation' => __( 'Items list navigation', 'frame' ),
-  		'filter_items_list'     => __( 'Filter items list', 'frame' ),
+  		'name'                  => _x( $this->getNamePlural(), 'Post Type General Name', 'saber' ),
+  		'singular_name'         => _x( $this->getNameSingular(), 'Post Type Singular Name', 'saber' ),
+  		'menu_name'             => __( $this->getNamePlural(), 'saber' ),
+  		'name_admin_bar'        => __( $this->getNamePlural(), 'saber' ),
+  		'archives'              => __( 'Item Archives', 'saber' ),
+  		'attributes'            => __( 'Item Attributes', 'saber' ),
+  		'parent_item_colon'     => __( 'Parent Item:', 'saber' ),
+  		'all_items'             => __( 'All Items', 'saber' ),
+  		'add_new_item'          => __( 'Add New Item', 'saber' ),
+  		'add_new'               => __( 'Add New', 'saber' ),
+  		'new_item'              => __( 'New Item', 'saber' ),
+  		'edit_item'             => __( 'Edit Item', 'saber' ),
+  		'update_item'           => __( 'Update Item', 'saber' ),
+  		'view_item'             => __( 'View Item', 'saber' ),
+  		'view_items'            => __( 'View Items', 'saber' ),
+  		'search_items'          => __( 'Search Item', 'saber' ),
+  		'not_found'             => __( 'Not found', 'saber' ),
+  		'not_found_in_trash'    => __( 'Not found in Trash', 'saber' ),
+  		'featured_image'        => __( 'Featured Image', 'saber' ),
+  		'set_featured_image'    => __( 'Set featured image', 'saber' ),
+  		'remove_featured_image' => __( 'Remove featured image', 'saber' ),
+  		'use_featured_image'    => __( 'Use as featured image', 'saber' ),
+  		'insert_into_item'      => __( 'Insert into item', 'saber' ),
+  		'uploaded_to_this_item' => __( 'Uploaded to this item', 'saber' ),
+  		'items_list'            => __( 'Items list', 'saber' ),
+  		'items_list_navigation' => __( 'Items list navigation', 'saber' ),
+  		'filter_items_list'     => __( 'Filter items list', 'saber' ),
   	];
 
   }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Frame;
+namespace Saber;
 
 class PostListFilter {
 

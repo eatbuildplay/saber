@@ -1,15 +1,15 @@
 
 
-<form id="frame-register-form" class="frame-form" method="POST">
+<form id="saber-register-form" class="saber-form" method="POST">
 
   <input class="register-name" type="hidden" />
 
-  <div class="frame-form-group">
+  <div class="saber-form-group">
     <label>Email</label>
     <input class="form-control register-email" name="register-email" type="text" />
   </div>
 
-  <div class="frame-form-group">
+  <div class="saber-form-group">
     <label>Username</label>
     <input class="form-control register-username" name="register-username" type="text" />
   </div>
@@ -21,19 +21,19 @@
 
 <style>
 
-.frame-form {
+.saber-form {
   margin: 1rem 0;
 }
-.frame-form-group {
+.saber-form-group {
   margin-bottom: 1rem;
 }
 
-.frame-form-group label {
+.saber-form-group label {
   display: inline-block;
   margin-bottom: .5rem;
 }
 
-.frame-form-group .form-control {
+.saber-form-group .form-control {
   display: block;
   width: 100%;
   max-width: 450px;
@@ -48,7 +48,7 @@
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.frame-form button {
+.saber-form button {
   color: #fff;
   background-color: #1A7283;
   border-color: #1A7283;
@@ -56,7 +56,7 @@
   max-width: 450px;
   margin: 0.5rem 0;
 }
-.frame-form button:hover {
+.saber-form button:hover {
   background-color: #1A7283E6;
 }
 
@@ -79,7 +79,7 @@
 
     init: function() {
 
-      $('#frame-register-form').submit( function(e) {
+      $('#saber-register-form').submit( function(e) {
 
         e.preventDefault();
 
@@ -101,10 +101,10 @@
     process: function( fieldData ) {
 
       data = {
-        action: 'frame_register',
+        action: 'saber_register',
         fieldData: fieldData
       }
-      $.post( frame_post_list_load.ajaxurl, data, function( response ) {
+      $.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
         response = JSON.parse( response );
 

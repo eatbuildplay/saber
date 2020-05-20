@@ -1,8 +1,8 @@
 <?php
 
-namespace Frame\Course;
+namespace Saber\Course;
 
-class CourseLessonPostList extends \Frame\PostList {
+class CourseLessonPostList extends \Saber\PostList {
 
   public $loadHook = 'course_lesson_post_list_load';
 

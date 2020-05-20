@@ -82,10 +82,10 @@ var Exam = {
   createExamScore: function() {
 
     data = {
-      action: 'frame_exam_create_exam_score',
+      action: 'saber_exam_create_exam_score',
       examId: Exam.id
     }
-    $.post( frame_post_list_load.ajaxurl, data, function( response ) {
+    $.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
       response = JSON.parse(response);
       console.log( response );
@@ -146,10 +146,10 @@ var Exam = {
   examLoad: function() {
 
     data = {
-      action: 'frame_exam_exam_load',
+      action: 'saber_exam_exam_load',
       examId: Exam.id
     }
-    $.post( frame_post_list_load.ajaxurl, data, function( response ) {
+    $.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
       response = JSON.parse(response);
       Exam.exam = response.exam;
@@ -230,12 +230,12 @@ var Exam = {
   recordAnswer: function( $questionId, $questionOptionId ) {
 
     data = {
-      action: 'frame_exam_record_answer',
+      action: 'saber_exam_record_answer',
       examScoreId: Exam.score.id,
       questionId: $questionId,
       questionOptionId: $questionOptionId
     }
-    $.post( frame_post_list_load.ajaxurl, data, function( response ) {
+    $.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
        response = JSON.parse(response);
        console.log( response );

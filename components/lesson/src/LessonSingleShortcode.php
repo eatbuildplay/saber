@@ -1,6 +1,6 @@
 <?php
 
-namespace Frame\Lesson;
+namespace Saber\Lesson;
 
 class LessonSingleShortcode {
 
@@ -48,8 +48,8 @@ class LessonSingleShortcode {
 
     // localize lesson data
     wp_localize_script(
-      'frame-lesson-js',
-      'frameLesson',
+      'saber-lesson-js',
+      'saberLesson',
       [
         'fields'      => $lessonFields,
         'post'        => $lesson,
@@ -57,7 +57,7 @@ class LessonSingleShortcode {
       ]
     );
 
-    $template = new \Frame\Template();
+    $template = new \Saber\Template();
     $template->path = 'components/lesson/templates/';
 
     $content = '';
