@@ -7,6 +7,7 @@ class Exam {
   public function __construct() {
 
     add_action('init', [$this, 'registerPostTypes']);
+    add_action('init', [$this, 'registerFields']);
 
     require_once( Saber_PATH . 'components/exam/src/shortcodes/ExamSingleShortcode.php' );
     new ExamSingleShortcode();
@@ -47,6 +48,10 @@ class Exam {
       true
     );
 
+  }
+
+  public function registerFields() {
+    require_once( Saber_PATH . 'components/exam/assets/fields.php' );
   }
 
   public function registerPostTypes() {

@@ -43,20 +43,17 @@ class Plugin {
     require_once( Saber_PATH . 'components/exam/src/Exam.php' );
     new \Saber\Exam\Exam();
 
-
-
-
     add_action('admin_menu', [$this, 'menu']);
-
 
   }
 
   public function menu() {
 
     acf_add_options_page(array(
-      'page_title' 	=> 'Saber',
-      'menu_title'	=> 'Saber',
+      'page_title' 	=> 'Saber LMS',
+      'menu_title'	=> 'Saber LMS',
       'menu_slug' 	=> 'saber-dashboard',
+      'icon_url'    => 'dashicons-welcome-learn-more',
       'capability'	=> 'edit_posts',
       'redirect'		=> false
     ));
@@ -68,12 +65,76 @@ class Plugin {
     ));
 
     \add_submenu_page(
-      'saber-dashboard',            // parent slug
-      'Exams',             // page title
-      'Exams',             // sub-menu title
-      'edit_posts',                 // capability
-      'edit.php?post_type=exam' // your menu menu slug
-  );
+      'saber-dashboard',
+      'Exams',
+      'Exams',
+      'edit_posts',
+      'edit.php?post_type=exam'
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
+      'Exam Section',
+      'Exam Section',
+      'edit_posts',
+      'edit.php?post_type=exam_section'
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
+      'Questions',
+      'Questions',
+      'edit_posts',
+      'edit.php?post_type=question'
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
+      'Question Options',
+      'Question Options',
+      'edit_posts',
+      'edit.php?post_type=question_option'
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
+      'Question Banks',
+      'Question Banks',
+      'edit_posts',
+      'edit.php?post_type=question_bank'
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
+      'Question Answers',
+      'Question Answers',
+      'edit_posts',
+      'edit.php?post_type=question_answer'
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
+      'Exam Scores',
+      'Exam Scores',
+      'edit_posts',
+      'edit.php?post_type=exam_score'
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
+      'Exam Score Questions',
+      'Exam Score Questions',
+      'edit_posts',
+      'edit.php?post_type=exam_score_question'
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
+      'Question Types',
+      'Question Types',
+      'edit_posts',
+      'edit.php?post_type=question_type'
+    );
 
   }
 
