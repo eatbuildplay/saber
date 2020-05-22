@@ -31,7 +31,7 @@ class ExamSingleShortcode {
     $scoreQuestion = new Model\ExamScoreQuestion();
     $scoreQuestion->title = "ESQ-".time();
     $scoreQuestion->examScore = $examScoreId;
-
+    $scoreQuestion->questionAnswer = $questionAnswer;
 
     // do marking
     $isCorrect = false;
@@ -40,8 +40,9 @@ class ExamSingleShortcode {
     if( $questionAnswer->questionOption == $question->correct->id ) {
       $isCorrect = true;
     }
-
     $scoreQuestion->correct = $isCorrect;
+
+    // award point(s)
     if( $isCorrect ) {
       $scoreQuestion->points = 1;
     }

@@ -29,9 +29,9 @@ class ExamScoreQuestion {
     update_post_meta( $this->id, 'exam_score', $this->examScore );
 
     if( is_object( $this->questionAnswer )) {
-      update_post_meta( $this->id, 'question_answer', $this->question->id );
+      update_post_meta( $this->id, 'question_answer', $this->questionAnswer->id );
     } else {
-      update_post_meta( $this->id, 'question_answer', $this->question );
+      update_post_meta( $this->id, 'question_answer', $this->questionAnswer );
     }
 
     update_post_meta( $this->id, 'correct', $this->correct );

@@ -55,6 +55,7 @@ class Plugin {
       'menu_slug' 	=> 'saber-dashboard',
       'icon_url'    => 'dashicons-welcome-learn-more',
       'capability'	=> 'edit_posts',
+      'position'    => 2,
       'redirect'		=> false
     ));
 

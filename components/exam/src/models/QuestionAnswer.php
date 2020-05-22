@@ -12,6 +12,9 @@ class QuestionAnswer {
 
   public function save() {
 
+    $uid = get_current_user_id();
+    $this->user = $uid;
+
     if( $this->id > 0 ) {
       $this->update();
     } else {
@@ -21,7 +24,6 @@ class QuestionAnswer {
       }
     }
 
-    $uid = get_current_user_id();
     update_post_meta( $this->id, 'user', $uid );
 
     if( is_object( $this->question )) {
@@ -39,6 +41,8 @@ class QuestionAnswer {
   }
 
   public function create() {
+
+    $this->title = 'Question ' . $this->question . ', User ' . $this->user;
 
     $params = [
       'post_type'   => 'question_answer',

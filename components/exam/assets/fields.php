@@ -135,11 +135,29 @@ acf_add_local_field_group(array(
 ));
 
 acf_add_local_field_group(array(
-	'key' => 'group_5eb3a6558d596',
-	'title' => 'Question Answer Fields',
+	'key' => 'group_5ec8329a97612',
+	'title' => 'Exam Score Question Fields',
 	'fields' => array(
 		array(
-			'key' => 'field_5eb66beece9fc',
+			'key' => 'field_5ec833d2ebfcb',
+			'label' => 'User',
+			'name' => 'user',
+			'type' => 'user',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'role' => '',
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'array',
+		),
+		array(
+			'key' => 'field_5ec833e3a4d29',
 			'label' => 'Exam Score',
 			'name' => 'exam_score',
 			'type' => 'post_object',
@@ -160,6 +178,95 @@ acf_add_local_field_group(array(
 			'return_format' => 'object',
 			'ui' => 1,
 		),
+		array(
+			'key' => 'field_5ec8341921d54',
+			'label' => 'Question Answer',
+			'name' => 'question_answer',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array(
+				0 => 'question_answer',
+			),
+			'taxonomy' => '',
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
+		),
+		array(
+			'key' => 'field_5ec8344bc002e',
+			'label' => 'Correct',
+			'name' => 'correct',
+			'type' => 'button_group',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'choices' => array(
+				0 => 'No',
+				1 => 'Yes',
+			),
+			'allow_null' => 0,
+			'default_value' => '',
+			'layout' => 'horizontal',
+			'return_format' => 'value',
+		),
+		array(
+			'key' => 'field_5ec834746ed6c',
+			'label' => 'Points',
+			'name' => 'points',
+			'type' => 'number',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => 0,
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'min' => '',
+			'max' => '',
+			'step' => '',
+		),
+	),
+	'location' => array(
+		array(
+			array(
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'exam_score_question',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => true,
+	'description' => '',
+));
+
+acf_add_local_field_group(array(
+	'key' => 'group_5eb3a6558d596',
+	'title' => 'Question Answer Fields',
+	'fields' => array(
 		array(
 			'key' => 'field_5eb3a6973ea2c',
 			'label' => 'User',
