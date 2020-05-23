@@ -17,7 +17,7 @@ class Template {
       extract( $this->data );
     }
     ob_start();
-    require( Saber_PATH . $this->path . $this->name . '.php' );
+    require( SABER_PATH . $this->path . $this->name . '.php' );
     $content = ob_get_contents();
     ob_end_clean();
     return $content;

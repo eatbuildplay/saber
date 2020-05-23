@@ -20,7 +20,7 @@ class PostList {
 
   public function initWidgets() {
 
-    require_once( Saber_PATH . 'src/post_lists/elementor/PostListWidget.php' );
+    require_once( SABER_PATH . 'src/post_lists/elementor/PostListWidget.php' );
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new PostListWidget() );
 
 
@@ -31,7 +31,7 @@ class PostList {
   }
 
   public function initShortcode() {
-    require_once( Saber_PATH . 'src/post_lists/PostListShortcode.php' );
+    require_once( SABER_PATH . 'src/post_lists/PostListShortcode.php' );
     new PostListShortcode( $this->saberLoaderKey, $this->getShortcodeTag() );
   }
 
@@ -85,7 +85,7 @@ class PostList {
 
     wp_enqueue_style(
       'saber-post-list-css',
-      Saber_URL . 'src/post_lists/assets/post_list.css',
+      SABER_URL . 'src/post_lists/assets/post_list.css',
       array(),
       '1.0.0',
       'all'
@@ -93,7 +93,7 @@ class PostList {
 
     wp_enqueue_script(
       'saber-post-list-js',
-      Saber_URL . 'src/post_lists/assets/post_list.js',
+      SABER_URL . 'src/post_lists/assets/post_list.js',
       array( 'jquery' ),
       '1.0.0',
       true

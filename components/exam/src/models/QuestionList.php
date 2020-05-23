@@ -13,7 +13,7 @@ class QuestionList {
       $objs[] = Question::load( $post );
     }
     return $objs;
-    
+
   }
 
 }

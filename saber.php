@@ -15,32 +15,32 @@
 
 namespace Saber;
 
-define( 'Saber_PATH', plugin_dir_path( __FILE__ ) );
-define( 'Saber_URL', plugin_dir_url( __FILE__ ) );
-define( 'Saber_VERSION', '1.0.0' );
+define( 'SABER_PATH', plugin_dir_path( __FILE__ ) );
+define( 'SABER_URL', plugin_dir_url( __FILE__ ) );
+define( 'SABER_VERSION', '1.0.0' );
 
 class Plugin {
 
   public function __construct() {
 
-    require_once( Saber_PATH . 'src/Template.php' );
-    require_once( Saber_PATH . 'src/Shortcode.php' );
-    require_once( Saber_PATH . 'src/post_lists/PostList.php' );
-    require_once( Saber_PATH . 'src/post_types/PostType.php' );
+    require_once( SABER_PATH . 'src/Template.php' );
+    require_once( SABER_PATH . 'src/Shortcode.php' );
+    require_once( SABER_PATH . 'src/post_lists/PostList.php' );
+    require_once( SABER_PATH . 'src/post_types/PostType.php' );
 
-    require_once( Saber_PATH . 'components/course/src/Course.php' );
+    require_once( SABER_PATH . 'components/course/src/Course.php' );
     new \Saber\Course\Course();
 
-    require_once( Saber_PATH . 'components/lesson/src/Lesson.php' );
+    require_once( SABER_PATH . 'components/lesson/src/Lesson.php' );
     new \Saber\Lesson\Lesson();
 
-    require_once( Saber_PATH . 'components/student/src/Student.php' );
+    require_once( SABER_PATH . 'components/student/src/Student.php' );
     new \Saber\Student\Student();
 
-    require_once( Saber_PATH . 'components/register/src/Register.php' );
+    require_once( SABER_PATH . 'components/register/src/Register.php' );
     new \Saber\Register\Register();
 
-    require_once( Saber_PATH . 'components/exam/src/Exam.php' );
+    require_once( SABER_PATH . 'components/exam/src/Exam.php' );
     new \Saber\Exam\Exam();
 
     add_action('admin_menu', [$this, 'menu']);

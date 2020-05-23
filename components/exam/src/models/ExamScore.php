@@ -9,6 +9,7 @@ class ExamScore {
   public $exam;
   public $user;
   public $start;
+  public $questions = [];
 
   public function save() {
 
@@ -55,11 +56,13 @@ class ExamScore {
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
 
-    $fields = get_fields($post);
+    $fields = get_fields($post->ID);
 
     $obj->user = $fields['user'];
     $obj->exam = $fields['exam'];
     $obj->start = $fields['start'];
+
+    $obj->questions = ExamScoreQuestionList::fetch( $obj->id );
 
     return $obj;
 
