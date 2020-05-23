@@ -24,9 +24,9 @@ class ExamScore {
       }
     }
 
-    update_post_meta( $this->id, 'user', $this->user );
-    update_post_meta( $this->id, 'exam', $this->exam );
-    update_post_meta( $this->id, 'start', date('Y-m-d H:i:s') );
+    update_field( 'user', $this->user, $this->id );
+    update_field( 'exam', $this->exam, $this->id );
+    update_field( 'start', date('Y-m-d H:i:s'), $this->id );
 
   }
 

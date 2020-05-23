@@ -24,18 +24,18 @@ class ExamScoreQuestion {
     }
 
     $uid = get_current_user_id();
-    update_post_meta( $this->id, 'user', $uid );
+    update_field( 'user', $uid, $this->id );
 
-    update_post_meta( $this->id, 'exam_score', $this->examScore );
+    update_field( 'exam_score', $this->examScore, $this->id );
 
     if( is_object( $this->questionAnswer )) {
-      update_post_meta( $this->id, 'question_answer', $this->questionAnswer->id );
+      update_field( 'question_answer', $this->questionAnswer->id, $this->id );
     } else {
-      update_post_meta( $this->id, 'question_answer', $this->questionAnswer );
+      update_field( 'question_answer', $this->questionAnswer, $this->id );
     }
 
-    update_post_meta( $this->id, 'correct', $this->correct );
-    update_post_meta( $this->id, 'points', $this->points );
+    update_field( 'correct', $this->correct, $this->id );
+    update_field( 'points', $this->points, $this->id );
 
   }
 

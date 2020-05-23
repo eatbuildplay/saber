@@ -12,8 +12,7 @@ class QuestionAnswer {
 
   public function save() {
 
-    $uid = get_current_user_id();
-    $this->user = $uid;
+    $this->user = get_current_user_id();
 
     if( $this->id > 0 ) {
       $this->update();
@@ -24,18 +23,18 @@ class QuestionAnswer {
       }
     }
 
-    update_post_meta( $this->id, 'user', $uid );
+    update_field( 'user', $this->user, $this->id );
 
     if( is_object( $this->question )) {
-      update_post_meta( $this->id, 'question', $this->question->id );
+      update_field( 'question', $this->question->id, $this->id );
     } else {
-      update_post_meta( $this->id, 'question', $this->question );
+      update_field( 'question', $this->question, $this->id );
     }
 
     if( is_object( $this->question )) {
-      update_post_meta( $this->id, 'question_option', $this->questionOption->id );
+      update_field( 'question_option', $this->questionOption->id, $this->id );
     } else {
-      update_post_meta( $this->id, 'question_option', $this->questionOption );
+      update_field( 'question_option', $this->questionOption, $this->id );
     }
 
   }

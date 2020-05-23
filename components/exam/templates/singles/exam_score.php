@@ -27,7 +27,7 @@
 
 <?php
 
-// var_dump( $examScore );
+var_dump( $examScore );
 
 ?>
 
