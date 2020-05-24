@@ -32,3 +32,16 @@
 .question li.selected.incorrect {
   background: red;
 }
+
+/* Exam Score Single */
+.exam-score-single-wrap {
+  background: #D7D7D7;
+}
+.exam-score-single {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.exam-score-single header {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}

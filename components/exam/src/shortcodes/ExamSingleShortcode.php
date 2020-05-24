@@ -34,11 +34,11 @@ class ExamSingleShortcode {
     $scoreQuestion->questionAnswer = $questionAnswer;
 
     // do marking
-    $isCorrect = false;
+    $isCorrect = 0;
     $questionPost = get_post( $questionAnswer->question );
     $question = Model\Question::load( $questionPost );
     if( $questionAnswer->questionOption == $question->correct->id ) {
-      $isCorrect = true;
+      $isCorrect = 1;
     }
     $scoreQuestion->correct = $isCorrect;
 

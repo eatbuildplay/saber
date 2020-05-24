@@ -1,33 +1,54 @@
-<?php get_header(); ?>
+<?php
 
-<div>
+$correct = 0;
+$points = 0;
+foreach( $examScore->questions as $qs ) {
+  $correct += $qs->correct;
+  $points += $qs->points;
+}
+$questionCount = count($examScore->questions);
+$scorePercent = round(($points / $questionCount) * 100);
 
-  <h5><?php print $examScore->id; ?></h5>
-  <h5><?php print $examScore->title; ?></h5>
+get_header();
 
-  <h5>
-    Exam ID: <?php print $examScore->exam->id; ?>
-    <br /><?php print $examScore->exam->title; ?>
-  </h5>
+?>
 
-  <h5>User <?php print $examScore->user['display_name']; ?></h5>
+<div class="exam-score-single-wrap">
+  <div class="exam-score-single">
 
-  <h5>Started Exam At: <?php print $examScore->start; ?></h5>
+    <h2>Exam Result - <?php print $examScore->exam->title; ?></h2>
 
-  <?php foreach( $examScore->questions as $qa ): ?>
+    <header>
 
-    <h3><?php print $qa->title; ?></h3>
-    <h5>Points Awarded: <?php print $qa->points; ?></h5>
-    <h5>Correct: <?php print $qa->correct; ?></h5>
+      <div class="header-col-1">
+        <h2><?php print $scorePercent; ?>%</h2>
+        <h6>Total Score</h6>
+      </div>
+      <div class="header-col-2">
+        <h4>Taken At <?php print $examScore->start; ?></h4>
+        <h4>Exam ID: <?php print $examScore->exam->id; ?></h4>
+        <h4>User <?php print $examScore->user['display_name']; ?></h4>
+      </div>
+    </header>
 
+    <h3>Question Summary</h3>
 
-  <?php endforeach; ?>
+    <?php foreach( $examScore->questions as $qa ): ?>
 
+      <h3><?php print $qa->title; ?></h3>
+      <h5>Points Awarded: <?php print $qa->points; ?></h5>
+      <h5>Correct: <?php print $qa->correct; ?></h5>
+
+    <?php endforeach; ?>
+
+  </div>
 </div>
 
 <?php
 
+print '<pre>';
 var_dump( $examScore );
+print '</pre>';
 
 ?>
 
