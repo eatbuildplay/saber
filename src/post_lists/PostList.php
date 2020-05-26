@@ -155,19 +155,31 @@ class PostList {
     // get list item template
     $template = $this->listItemTemplate();
 
-    // try to autoload the post model
-    // $post->post_type;
+    // test if we can autoload the post model
+    $modelBaseName = ucfirst( $this->getPostType() );
+    $modelClassPath = '\Saber\Course\Model\\' . $modelBaseName;
+    $classExists = class_exists( $modelClassPath );
 
     // load list template
     $content = '';
     if( !empty( $posts )) :
       foreach( $posts as $index => $post ) :
+
+        // autoload model
+        if( $classExists ) {
+          $model = \Saber\Course\Model\Course::load( $post );
+        } else {
+          $model = false;
+        }
+
         $template->data = array(
-          'post' => $post,
+          'model' => $model,
+          'post'  => $post,
           'order' => $index+1
         );
         $content .= $template->get();
       endforeach;
+
     endif;
 
     // send response and exit

@@ -12,6 +12,8 @@ class Course {
     require_once( SABER_PATH . 'components/course/src/CourseLessonPostList.php' );
     new CourseLessonPostList();
 
+    require_once( SABER_PATH . 'components/course/models/Course.php' );
+
   }
 
 }
