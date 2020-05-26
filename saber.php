@@ -59,6 +59,14 @@ class Plugin {
       'redirect'		=> false
     ));
 
+    \add_submenu_page(
+      'saber-dashboard',
+      'Lessons',
+      'Lessons',
+      'edit_posts',
+      'edit.php?post_type=lesson'
+    );
+
     acf_add_options_sub_page(array(
       'page_title' 	=> 'Components',
       'menu_title'	=> 'Components',

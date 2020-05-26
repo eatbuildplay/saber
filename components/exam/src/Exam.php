@@ -37,7 +37,7 @@ class Exam {
 
     global $post;
 
-    if ( $post->post_type == 'exam_score' ) {
+    if ( is_object($post) && $post->post_type == 'exam_score' ) {
       $GLOBALS['examScore'] = Model\ExamScore::load( $post );
     }
 
