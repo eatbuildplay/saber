@@ -15,6 +15,15 @@ class CoursePostList extends \Saber\PostList {
     return 'course-post-list';
   }
 
+  public function listItemTemplate() {
+
+    $template = new \Saber\Template();
+    $template->path = 'components/course/templates/';
+    $template->name = 'course-list-item';
+    return $template;
+
+  }
+
   public function order() {
     return [
       'orderby' => 'meta_value_num',
