@@ -115,6 +115,20 @@ class PostList {
 
   }
 
+  /*
+   * Setup the list item template
+   * Returns the prepared Template object
+   * Override to use custom list item template
+   */
+  public function listItemTemplate() {
+
+    $template = new Template();
+    $template->path = 'src/post_lists/templates/';
+    $template->name = 'post-list-item';
+    return $template;
+
+  }
+
   public function metaQuery( $postId ) {
     return [];
   }
@@ -138,17 +152,16 @@ class PostList {
     // fetch posts
     $posts = $this->fetchPosts( $metaquery, $taxquery );
 
-    // setup template
-    $template = new Template();
-    $template->path = 'src/post_lists/templates/';
-    $template->name = 'post-list-item';
+    // get list item template
+    $template = $this->listItemTemplate();
 
     // load list template
     $content = '';
     if( !empty( $posts )) :
-      foreach( $posts as $post ) :
+      foreach( $posts as $index => $post ) :
         $template->data = array(
           'post' => $post,
+          'order' => $index+1
         );
         $content .= $template->get();
       endforeach;

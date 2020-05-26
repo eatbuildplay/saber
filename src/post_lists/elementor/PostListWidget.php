@@ -102,17 +102,6 @@ class PostListWidget extends \Elementor\Widget_Base {
 
 		endif;
 
-    /*
-    $template = new Template();
-    $template->path = 'src/post_lists/templates/';
-    $template->name = 'post-list-item';
-    $template->data = [
-      'post' => $post
-    ];
-
-    $template->render();
-    */
-
 	}
 
 }

@@ -18,6 +18,15 @@ class CourseLessonPostList extends \Saber\PostList {
     return 'course-lesson-post-list';
   }
 
+  public function listItemTemplate() {
+
+    $template = new \Saber\Template();
+    $template->path = 'components/course/templates/';
+    $template->name = 'course-lesson-list-item';
+    return $template;
+
+  }
+
   public function metaQuery( $postId ) {
 
     $metaquery = [
