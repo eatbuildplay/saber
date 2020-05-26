@@ -61,6 +61,14 @@ class Plugin {
 
     \add_submenu_page(
       'saber-dashboard',
+      'Courses',
+      'Courses',
+      'edit_posts',
+      'edit.php?post_type=course'
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
       'Lessons',
       'Lessons',
       'edit_posts',

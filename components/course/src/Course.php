@@ -14,6 +14,21 @@ class Course {
 
     require_once( SABER_PATH . 'components/course/models/Course.php' );
 
+    add_action('init', [$this, 'registerPostTypes']);
+    add_action('init', [$this, 'registerFields']);
+
+  }
+
+  public function registerPostTypes() {
+
+    require_once( SABER_PATH . 'components/course/src/cpt/CoursePostType.php' );
+    $pt = new CoursePostType();
+    $pt->register();
+
+  }
+
+  public function registerFields() {
+    require_once( SABER_PATH . 'components/course/assets/fields.php' );
   }
 
 }
