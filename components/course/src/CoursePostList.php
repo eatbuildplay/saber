@@ -11,6 +11,10 @@ class CoursePostList extends \Saber\PostList {
     parent::__construct();
   }
 
+  public function getPostType() {
+    return 'course';
+  }
+
   public function getShortcodeTag() {
     return 'course-post-list';
   }

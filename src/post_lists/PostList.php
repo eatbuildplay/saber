@@ -27,7 +27,7 @@ class PostList {
   }
 
   public function getPostType() {
-    return 'course';
+    return 'post';
   }
 
   public function initShortcode() {
@@ -154,6 +154,9 @@ class PostList {
 
     // get list item template
     $template = $this->listItemTemplate();
+
+    // try to autoload the post model
+    // $post->post_type;
 
     // load list template
     $content = '';
