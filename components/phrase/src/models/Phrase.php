@@ -1,8 +1,8 @@
 <?php
 
-namespace Saber\Word\Model;
+namespace Saber\Phrase\Model;
 
-class Word {
+class Phrase {
 
   public $id;
   public $title;
@@ -14,7 +14,7 @@ class Word {
       $post = get_post( $post );
     }
 
-    $obj = new Word;
+    $obj = new Phrase;
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
 

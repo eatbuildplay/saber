@@ -43,6 +43,9 @@ class Plugin {
     require_once( SABER_PATH . 'components/exam/src/Exam.php' );
     new \Saber\Exam\Exam();
 
+    require_once( SABER_PATH . 'components/phrase/src/Phrase.php' );
+    new \Saber\Phrase\Phrase();
+
     require_once( SABER_PATH . 'components/word/src/Word.php' );
     new \Saber\Word\Word();
 
@@ -76,6 +79,14 @@ class Plugin {
       'Lessons',
       'edit_posts',
       'edit.php?post_type=lesson'
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
+      'Phrases',
+      'Phrases',
+      'edit_posts',
+      'edit.php?post_type=phrase'
     );
 
     \add_submenu_page(
