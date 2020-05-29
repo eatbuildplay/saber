@@ -55,6 +55,38 @@ class Plugin {
     /* admin menu separators */
     add_filter( 'parent_file', [$this, 'menuSeparators'] );
 
+    /* highlight saber menu */
+    add_filter('parent_file', [$this, 'setParentMenu'], 10, 2 );
+
+  }
+
+  public function setParentMenu( $parent_file ) {
+
+    global $submenu_file, $current_screen;
+
+    $cpts = [
+      'exam',
+      'exam_section',
+      'exam_score',
+      'exam_score_question',
+      'question',
+      'question_type',
+      'question_option',
+      'question_bank',
+      'question_answer',
+      'course',
+      'lesson',
+      'word',
+      'phrase',
+      'conversation'
+    ];
+
+    if( in_array($current_screen->post_type, $cpts)) {
+      $parent_file = 'saber-dashboard';
+    }
+
+    return $parent_file;
+
   }
 
   public function menu() {
