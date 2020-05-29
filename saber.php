@@ -49,7 +49,11 @@ class Plugin {
     require_once( SABER_PATH . 'components/word/src/Word.php' );
     new \Saber\Word\Word();
 
+    /* admin menu */
     add_action('admin_menu', [$this, 'menu']);
+
+    /* admin menu separators */
+    add_filter( 'parent_file', [$this, 'menuSeparators'] );
 
   }
 
@@ -97,11 +101,14 @@ class Plugin {
       'edit.php?post_type=word'
     );
 
-    acf_add_options_sub_page(array(
-      'page_title' 	=> 'Components',
-      'menu_title'	=> 'Components',
-      'parent_slug'	=> 'saber-dashboard',
-    ));
+    \add_submenu_page(
+      'saber-dashboard',
+      'wp-menu-separator',
+      '',
+      'read',
+      'separator1',
+      ''
+    );
 
     \add_submenu_page(
       'saber-dashboard',
@@ -169,11 +176,45 @@ class Plugin {
 
     \add_submenu_page(
       'saber-dashboard',
+      'wp-menu-separator',
+      '',
+      'read',
+      'separator3',
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
       'Question Types',
       'Question Types',
       'edit_posts',
-      'edit.php?post_type=question_type'
+      'edit.php?post_type=question_type',
+      '',
+      130
     );
+
+    acf_add_options_sub_page(array(
+      'page_title' 	=> 'Settings',
+      'menu_title'	=> 'Settings',
+      'parent_slug'	=> 'saber-dashboard',
+      'position'    => 1
+    ));
+
+  }
+
+  function menuSeparators( $parent_file ) {
+
+  	$submenu = &$GLOBALS['submenu'];
+
+  	foreach( $submenu as $key => $item ) {
+  		foreach ( $item as $index => $data ) {
+  			if ( in_array( 'wp-menu-separator', $data, true ) ) {
+  				$data[0] = '<div class="separator"><hr /></div>';
+  				$submenu[ $key ][ $index ] = $data;
+  			}
+  		}
+  	}
+
+  	return $parent_file;
 
   }
 
