@@ -7,7 +7,11 @@ foreach( $examScore->questions as $qs ) {
   $points += $qs->points;
 }
 $questionCount = count($examScore->questions);
-$scorePercent = round(($points / $questionCount) * 100);
+if( $points ) {
+  $scorePercent = round(($points / $questionCount) * 100);
+} else {
+  $scorePercent = 0;
+}
 
 get_header();
 
@@ -33,13 +37,16 @@ get_header();
 
     <h3>Question Summary</h3>
 
-    <?php foreach( $examScore->questions as $qa ): ?>
+    <?php
+      if(!empty($examScore->questions)):
+        foreach( $examScore->questions as $qa ):
+    ?>
 
       <h3><?php print $qa->title; ?></h3>
       <h5>Points Awarded: <?php print $qa->points; ?></h5>
       <h5>Correct: <?php print $qa->correct; ?></h5>
 
-    <?php endforeach; ?>
+    <?php endforeach; endif; ?>
 
   </div>
 </div>
@@ -47,7 +54,7 @@ get_header();
 <?php
 
 print '<pre>';
-var_dump( $examScore );
+// var_dump( $examScore );
 print '</pre>';
 
 ?>
