@@ -6,6 +6,7 @@ class ExamScore {
 
   public $id;
   public $title;
+  public $permalink;
   public $exam;
   public $user;
   public $start;
@@ -23,6 +24,8 @@ class ExamScore {
         return false;
       }
     }
+
+    $this->permalink = get_permalink( $this->id );
 
     update_field( 'user', $this->user, $this->id );
     update_field( 'exam', $this->exam, $this->id );
@@ -55,6 +58,7 @@ class ExamScore {
     $obj = new ExamScore;
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
+    $obj->permalink = get_permalink( $post->ID );
 
     $fields = get_fields($post->ID);
     $obj->user = $fields['user'];

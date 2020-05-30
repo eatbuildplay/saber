@@ -61,7 +61,7 @@ class ExamSingleShortcode {
 
   public function jxExamScoreCreate() {
 
-    $examId = $_POST['examId'];
+    $examId = intval( $_POST['examId'] );
 
     // create exam score
     $examScore = new \Saber\Exam\Model\ExamScore;
@@ -69,7 +69,8 @@ class ExamSingleShortcode {
     $examScore->save();
 
     $response = array(
-      'examScoreId' => $examScore->id
+      'examScoreId' => $examScore->id,
+      'examScorePermalink' => $examScore->permalink,
     );
     print json_encode( $response );
 

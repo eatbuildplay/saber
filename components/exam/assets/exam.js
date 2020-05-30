@@ -91,6 +91,7 @@ var Exam = {
       console.log( response );
 
       Exam.score.id = response.examScoreId;
+      Exam.score.permalink = response.examScorePermalink;
 
     });
 
