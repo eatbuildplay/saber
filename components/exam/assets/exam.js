@@ -31,6 +31,14 @@ var Exam = {
 
     Exam.restartClickHandler();
 
+    Exam.viewScore();
+
+  },
+
+  viewScore: function() {
+    $(document).on( 'click', '.exam-control-view-score', function() {
+      window.location.href = Exam.score.permalink;
+    });
   },
 
   restartClickHandler: function() {
