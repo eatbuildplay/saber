@@ -41,6 +41,10 @@ class Exam {
       $GLOBALS['examScore'] = Model\ExamScore::load( $post );
     }
 
+    if ( is_object($post) && $post->post_type == 'question' ) {
+      $GLOBALS['question'] = Model\Question::load( $post );
+    }
+
   }
 
   public function singlePageTemplates( $single ) {
@@ -49,6 +53,10 @@ class Exam {
 
     if ( $post->post_type == 'exam_score' ) {
       return SABER_PATH . 'components/exam/templates/singles/exam_score.php';
+    }
+
+    if ( $post->post_type == 'question' ) {
+      return SABER_PATH . 'components/exam/templates/singles/question.php';
     }
 
     return $single;
