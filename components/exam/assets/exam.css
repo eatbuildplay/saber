@@ -1,38 +1,3 @@
-.question {
-  background: #000;
-  color: #FFF;
-}
-.question ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.question li {
-  list-style: none;
-  padding: 8px 25px;
-  margin: 0;
-}
-
-.question ul.selectable li {
-  cursor: pointer;
-}
-.question ul.selectable li:hover {
-  background: #333;
-}
-.question li.selected {
-  background: #666;
-}
-
-.question.focus {
-  background: #222;
-}
-.question li.selected.correct {
-  background: green;
-}
-.question li.selected.incorrect {
-  background: red;
-}
-
 /* Exam Score Single */
 .exam-score-single-wrap {
   background: #D7D7D7;
@@ -44,4 +9,61 @@
 .exam-score-single header {
   display: grid;
   grid-template-columns: 50% 50%;
+}
+
+/* Exam Take */
+.exam-canvas {
+
+}
+#exam-body-canvas {
+  padding: 40px 30px 15px 30px;
+}
+#exam-canvas .question h3 {
+  margin: 5px 0 5px 0;
+}
+#exam-canvas .question h1 {
+  margin: 10px 0 20px 0;
+}
+#exam-canvas .question h4 {
+  margin: 5px 0 10px 0;
+  color: #353535;
+  font-weight: normal;
+}
+#exam-canvas .question ul {
+  margin: 0;
+  padding: 0;
+}
+#exam-canvas .question li {
+  margin: 0;
+  padding: 5px 30px;
+  font-size: 1.25em;
+  list-style: none;
+}
+#exam-canvas .question ul.selectable li {
+  cursor: pointer;
+}
+#exam-canvas .question ul.selectable li:hover {
+  background: #E4E4E4;
+}
+#exam-canvas .question li.selected {
+  background: #D4D4D4;
+}
+
+#exam-canvas .question.focus {
+
+}
+#exam-canvas .question li.selected.correct {
+  background: green;
+}
+#exam-canvas .question li.selected.incorrect {
+  background: red;
+}
+.exam-controls {
+  padding: 0 30px 30px 30px;
+}
+.exam-controls button {
+  background: #30ADBE;
+  margin: 0;
+  border-radius: 8px;
+  min-width: 250px;
 }

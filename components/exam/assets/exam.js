@@ -190,6 +190,9 @@ var Exam = {
     // get the question as an element so we can make changes
     var $questionEl = $('.question');
 
+    var lettering = [
+      'a', 'b', 'c', 'd', 'e', 'f'
+    ];
     var $optionsHtml = '';
     $question.options.forEach( function( option, index ) {
       var $template = $('#question-option-template').html();
@@ -206,7 +209,7 @@ var Exam = {
 
       $template = $template.replace(
         '{questionOptionLabel}',
-        option.label
+        lettering[index] + ') ' + option.label
       );
       $template = $template.replace(
         '{questionId}',
