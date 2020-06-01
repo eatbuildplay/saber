@@ -58,6 +58,9 @@ class Plugin {
     /* highlight saber menu */
     add_filter('parent_file', [$this, 'setParentMenu'], 10, 2 );
 
+    /* script calls */
+    add_action('wp_enqueue_scripts', [$this, 'scripts']);
+
   }
 
   public function setParentMenu( $parent_file ) {
@@ -247,6 +250,34 @@ class Plugin {
   	}
 
   	return $parent_file;
+
+  }
+
+  public function scripts() {
+
+    wp_enqueue_style(
+      'timeline-css',
+      SABER_URL . 'src/assets/timeline/jquery.roadmap.min.css',
+      array(),
+      '1.0.0',
+      'all'
+    );
+
+    wp_enqueue_script(
+      'timeline-js',
+      SABER_URL . 'src/assets/timeline/jquery.roadmap.min.js',
+      array( 'jquery' ),
+      '1.0.0',
+      true
+    );
+
+    wp_enqueue_script(
+      'saber-js',
+      SABER_URL . 'src/assets/saber.js',
+      array( 'jquery' ),
+      '1.0.0',
+      true
+    );
 
   }
 
