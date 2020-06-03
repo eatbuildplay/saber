@@ -12,7 +12,10 @@ class Course {
     require_once( SABER_PATH . 'components/course/src/CourseLessonPostList.php' );
     new CourseLessonPostList();
 
-    require_once( SABER_PATH . 'components/course/models/Course.php' );
+    require_once( SABER_PATH . 'components/course/src/models/Course.php' );
+
+    require_once( SABER_PATH . 'components/course/src/shortcodes/CourseSingleHeaderShortcode.php' );
+    new CourseSingleHeaderShortcode();
 
     add_action('init', [$this, 'registerPostTypes']);
     add_action('init', [$this, 'registerFields']);

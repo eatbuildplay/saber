@@ -20,15 +20,15 @@ button {
 /* Lesson Single Tabs */
 .lesson-single-tabs {
   width: 100%;
-  padding: 15px 30px 30px 30px;
+  padding: 30px 30px 30px 30px;
   margin: 0;
   background: #14699A;
 }
 .lesson-single-tabs h2 {
-  font-size: 22px;
-  font-weight: normal;
-  margin-bottom: 20px;
-  color: #00000055;
+  font-size: 18px;
+  font-weight: 400;
+  color: #FFF;
+  margin: 5px 0 15px 0;
 }
 .lesson-single-tabs ul {
   padding: 0;
@@ -39,22 +39,22 @@ button {
   padding: 20px 40px;
   margin: 0;
   cursor: pointer;
-  border-top: solid 2px #FFFFFF55;
-  border-right: solid 2px #FFFFFF55;
-  border-bottom: solid 2px #FFFFFF55;
-  color: #FFFFFFD5;
+  border-top: solid 2px #FFF;
+  border-right: solid 2px #FFF;
+  border-bottom: solid 2px #FFF;
+  color: #323232;
   font-size: 22px;
-  background: #FFFFFF1A;
+  background: #F1F1F3;
 }
 .lesson-single-tabs li:first-child {
   border-left: solid 2px #FFFFFF55;
 }
 .lesson-single-tabs li.active {
-  background: #148642;
+  background: #F6AE1A;
   color: #FFFFFF;
 }
 .lesson-single-tabs li:hover {
-  background: #F36D21;
+  background: #F6AE1A;
   color: #FFFFFF;
 }
 
@@ -84,9 +84,7 @@ button {
 }
 .lesson-section-header {
   margin: 0 0 30px 0;
-  padding: 50px 50px 50px 50px;
-  border-bottom: solid 6px #0000001A;
-  background: #FFFFFF22;
+  padding: 40px 35px 0px 35px;
   color: #272E39;
   font-size: 20px;
   line-height: 1.7;
@@ -126,23 +124,27 @@ button {
 .wordscan-controls {
   margin: 60px 0 30px 0;
 }
-.wordscan-controls button {
-  background: #0000001A;
-  color: #272E39;
-  font-size: 26px;
-  border: none;
-  padding: 30px 50px;
-  border-right: solid 1px #272E39;
-  margin: 0 0 0 0;
+.wordscan-controls h3 {
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 400;
 }
-.wordscan-controls button:last-child {
-  border-right: none;
+.wordscan-controls button {
+  background: #F1F1F3;
+  color: #323232;
+  font-size: 24px;
+  border: none;
+  padding: 20px 50px;
+  border: solid 3px #FFF;
+  margin: 0 20px 0 0;
+  border-radius: 30px;
 }
 .wordscan-controls button:hover {
-  background: #0000001F;
+  color: #FFF;
+  background: #14699A;
 }
 .wordscan-controls button i {
-  margin-bottom: 12px;
+
 }
 
 /* FlashCards */

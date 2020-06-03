@@ -39,7 +39,7 @@
 ?>
 
   <div class="lesson-section-body">
-    <button class="s10-start-exercise-btn wordscan-start">Hurry up and start the lesson!</button>
+    <button class="s10-start-exercise-btn wordscan-start">Start the Exercise</button>
   </div>
 
 </div>
@@ -54,7 +54,7 @@
 
     <div class="wordscan-controls">
       <h3>Rate your knowledge of this word</h3>
-      <button class="s10-rating s10-rating-flashcard"><i class="fas fa-thumbs-down fa-2x"></i> <br /><span>Weak</span></button><button class="s10-rating s10-rating-flashcard"><i class="fas fa-balance-scale fa-2x"></i> <br /><span>Medium</span></button><button class="s10-rating s10-rating-flashcard"><i class="fas fa-thumbs-up fa-2x"></i> <br /><span>Strong</span></button>
+      <button class="s10-rating s10-rating-flashcard"><i class="fas fa-thumbs-down fa-1x"></i> <span>Weak</span></button><button class="s10-rating s10-rating-flashcard"><i class="fas fa-balance-scale fa-1x"></i> <span>Medium</span></button><button class="s10-rating s10-rating-flashcard"><i class="fas fa-thumbs-up fa-1x"></i> <span>Strong</span></button>
     </div>
   </div>
 </template>
