@@ -7,14 +7,16 @@ h1 {
   font-size: 44px;
 }
 button {
-  font-size: 20px;
-  background: #F36D21;
-  padding: 15px 10px;
-  min-width: 120px;
-  border: solid 2px #FFF;
   cursor: pointer;
-  margin: 10px 15px;
-  color: #FFFFFF;
+  width: auto;
+  background: #F1F1F3;
+  color: #323232;
+  font-size: 24px;
+  border: none;
+  padding: 20px 50px;
+  border: solid 3px #FFF;
+  margin: 0 20px 10px 0;
+  border-radius: 30px;
 }
 
 /* Lesson Single Tabs */
@@ -152,14 +154,17 @@ button {
   display: none;
 }
 .flashcard {
+  position: relative;
   overflow: hidden;
   background: #272E39;
   box-sizing: border-box;
-  padding: 15px;
+  padding: 40px 30px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 25px;
   color: #FFFFFF;
-  max-width: 700px;
+  max-width: 600px;
+  min-width: 280px;
+  margin: 0 0 40px 0;
 }
 .flashcard:hover {
   background: #272E39;
@@ -170,7 +175,16 @@ button {
   font-weight: bold;
 }
 .flashcard-reset {
-  float: right;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px;
+  border: none;
+  background: none;
+}
+.flashcard-reset i.fas {
+  font-size: 20px;
+  color: #bbb;
 }
 
 .flashcard-up, .flashcard-down {
@@ -230,6 +244,11 @@ button {
 
   min-height: 150px;
   white-space: nowrap;
+}
+.flashcard-controls h3 {
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 /*

@@ -39,7 +39,7 @@
   ?>
 
   <div class="lesson-section-body">
-    <button class="s10-start-exercise-btn flashcard-start">Show me the cards!</button>
+    <button class="s10-start-exercise-btn flashcard-start">Start Flashcard Exercise</button>
   </div>
 
 
@@ -50,24 +50,28 @@
 
 <!-- word template -->
 <template id="flashcard-template">
-  <div class="flashcard">
+  <div class="flashcard-item">
+    <div class="flashcard">
 
-    <div class="flashcard-up flashcard-active">
-      <h2 class="flashcard-word-display">{word}</h2>
-      <h3 class="flashcard-word-pronunciation">{pronunciation}</h3>
-    </div>
+      <div class="flashcard-up flashcard-active">
+        <h2 class="flashcard-word-display">{word}</h2>
+        <h3 class="flashcard-word-pronunciation">{pronunciation}</h3>
+      </div>
 
-    <div class="flashcard-down">
+      <div class="flashcard-down">
 
-      <button class="flashcard-reset">Reset Flashcard</button>
-      <h2 class="flashcard-word-translation">{word} = {translation}</h2>
-      <h3 class="flashcard-word-pronunciation">{pronunciation}</h3>
+        <button class="flashcard-reset"><i class="fas fa-redo"></i></button>
+        <h2 class="flashcard-word-translation">{word} = {translation}</h2>
+        <h3 class="flashcard-word-pronunciation">{pronunciation}</h3>
 
-      <div class="flashcard-controls">
-        <h3>Did you know this word?</h3>
-        <button class="s10-rating s10-rating-flashcard"><i class="fas fa-thumbs-down fa-2x"></i> <br /><span>Weak</span></button><button class="s10-rating s10-rating-flashcard"><i class="fas fa-thumbs-up fa-2x"></i> <br /><span>Strong</span></button>
       </div>
 
     </div>
+
+    <div class="flashcard-controls">
+      <h3>Did you know this word?</h3>
+      <button class="s10-rating s10-rating-flashcard"><i class="fas fa-thumbs-up"></i> <span>Yes</span></button><button class="s10-rating s10-rating-flashcard"><i class="fas fa-thumbs-down"></i> <span>No</span></button>
+    </div>
+
   </div>
 </template>
