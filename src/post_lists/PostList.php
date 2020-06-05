@@ -23,7 +23,6 @@ class PostList {
     require_once( SABER_PATH . 'src/post_lists/elementor/PostListWidget.php' );
     \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new PostListWidget() );
 
-
   }
 
   public function getPostType() {
@@ -129,6 +128,20 @@ class PostList {
 
   }
 
+  /*
+   * Setup the list template
+   * Returns the prepared Template object
+   * Override to use custom list item template
+   */
+  public function listTemplate() {
+
+    $template = new Template();
+    $template->path = 'src/post_lists/templates/';
+    $template->name = 'post-list-canvas';
+    return $template;
+
+  }
+
   public function metaQuery( $postId ) {
     return [];
   }
@@ -160,8 +173,8 @@ class PostList {
     $modelClassPath = '\Saber\Course\Model\\' . $modelBaseName;
     $classExists = class_exists( $modelClassPath );
 
-    // load list template
-    $content = '';
+    // load list item template
+    $listItems = '';
     if( !empty( $posts )) :
       foreach( $posts as $index => $post ) :
 
@@ -177,10 +190,17 @@ class PostList {
           'post'  => $post,
           'order' => $index+1
         );
-        $content .= $template->get();
+        $listItems .= $template->get();
       endforeach;
 
     endif;
+
+    /* add list item content to wrapper template */
+    $template = $this->listTemplate();
+    $template->data = array(
+      'listItems' => $listItems
+    );
+    $content .= $template->get();
 
     // send response and exit
     $response = [
