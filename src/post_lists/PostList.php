@@ -137,7 +137,7 @@ class PostList {
 
     $template = new Template();
     $template->path = 'src/post_lists/templates/';
-    $template->name = 'post-list-canvas';
+    $template->name = 'post-list';
     return $template;
 
   }
