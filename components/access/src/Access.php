@@ -4,7 +4,7 @@ namespace Saber\Access;
 
 class Access {
 
-  public $user;
+  public $student;
   public $course;
   public $grant = false;
 
@@ -35,7 +35,7 @@ class Access {
 
   public function courseAccess( $course ) {
 
-    $this->user = wp_get_current_user();
+    $this->student = \Saber\Student\Model\Student::load();
     $this->course = $course;
 
     // check for public access course
@@ -44,12 +44,12 @@ class Access {
     }
 
     // check user is registered
-    if( $this->user->ID != 0 ) {
+    if( $this->student->user->ID != 0 ) {
       $this->grant = 1;
     }
 
     // check if paid membership required
-    
+
 
   }
 

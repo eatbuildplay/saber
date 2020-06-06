@@ -6,14 +6,7 @@ class Student {
 
   public function __construct() {
 
-    add_action('init', [$this, 'getCurrentUser']);
-
-  }
-
-  public function getCurrentUser() {
-
-    $user = \wp_get_current_user();
-    return $user;
+    require_once( SABER_PATH . 'components/student/src/models/Student.php' );
 
   }
 

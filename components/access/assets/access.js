@@ -4,14 +4,17 @@
   var access = {
 
     grant: false,
-    user: false,
+    student: false,
     course: false,
 
     init: function() {
 
-      access.grant    = saberCourseAccess.grant;
-      access.user     = saberCourseAccess.user;
-      access.course   = saberCourseAccess.course;
+      access.grant    = saberCourseAccess.access.grant;
+      access.student  = saberCourseAccess.access.student;
+      access.course   = saberCourseAccess.access.course;
+
+      console.log('ACCESS:');
+      console.log( access );
 
       if( !access.grant ) {
         access.block();
