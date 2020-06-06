@@ -20,6 +20,10 @@ class Course {
     add_action('init', [$this, 'registerPostTypes']);
     add_action('init', [$this, 'registerFields']);
 
+    /* script calls */
+    add_action('wp_enqueue_scripts', [$this, 'scripts']);
+
+
   }
 
   public function registerPostTypes() {
@@ -32,6 +36,26 @@ class Course {
 
   public function registerFields() {
     require_once( SABER_PATH . 'components/course/assets/fields.php' );
+  }
+
+  public function scripts() {
+
+    wp_enqueue_style(
+      'saber-course-css',
+      SABER_URL . 'components/course/assets/course.css',
+      array(),
+      '1.0.0',
+      'all'
+    );
+
+    wp_enqueue_script(
+      'saber-course-js',
+      SABER_URL . 'components/course/assets/course.js',
+      array( 'jquery' ),
+      '1.0.0',
+      true
+    );
+
   }
 
 }
