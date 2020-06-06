@@ -1,3 +1,16 @@
+<?php
+
+$access = new \Saber\Access\Access;
+$access->courseAccess( $course );
+
+//var_dump($access);
+
+?>
+
 <header>
-5768576345
+  <?php
+    if( !$access->grant ):
+      $access->renderBlockMessage();
+    endif;
+  ?>
 </header>

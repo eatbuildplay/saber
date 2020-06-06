@@ -49,6 +49,9 @@ class Plugin {
     require_once( SABER_PATH . 'components/word/src/Word.php' );
     new \Saber\Word\Word();
 
+    require_once( SABER_PATH . 'components/access/src/Access.php' );
+    new \Saber\Access\Access();
+
     /* admin menu */
     add_action('admin_menu', [$this, 'menu']);
 
