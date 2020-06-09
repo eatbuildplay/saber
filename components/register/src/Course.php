@@ -21,6 +21,8 @@ class Course {
     /* script calls */
     add_action('wp_enqueue_scripts', [$this, 'scripts']);
 
+    add_action( 'wp_ajax_saber_course_register', array( $this, 'jxRegister'));
+
   }
 
   public function run() {
@@ -45,7 +47,14 @@ class Course {
     $this->course = $course;
 
     // check if registered
+    $courseRegistration = get_user_meta(
+      $this->student->user->ID,
+      'saber_course_registration_' . $this->course->id
+    );
 
+    if( $courseRegistration ) {
+      $this->registered = 1;
+    }
 
   }
 
@@ -67,6 +76,48 @@ class Course {
       ]
     );
 
+  }
+
+  /*
+   * Check if current student has access to register
+   */
+  public function canRegister() {
+
+    $access = $GLOBALS['saberAccess'];
+    if( $access->grant ) {
+      return true;
+    }
+
+    return false;
+
+  }
+
+  public function jxRegister() {
+
+    $courseId = $_POST['courseId'];
+
+    $registerCourse = new Course;
+    $registerCourse->student = \Saber\Student\Model\Student::load();
+
+    // get post data
+    $response = array(
+      'courseId' => $courseId,
+      'data'    => $data,
+      'message' => 'This response message will become available in the return in your JS ajax call'
+    );
+    print json_encode( $response );
+
+    // end ajax hook callbacks safely
+    wp_die();
+
+  }
+
+  public function renderUnregisteredMessage() {
+    print 'You no registered, you no get in!';
+  }
+
+  public function renderRegisterButton() {
+    print '<h3><button class="course-register-button">Register for this course</button></h3>';
   }
 
 }

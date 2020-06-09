@@ -20,6 +20,23 @@
         registerCourse.block();
       }
 
+      $(document).on('click', '.course-register-button', function() {
+        registerCourse.doRegistration();
+      })
+
+    },
+
+    doRegistration: function() {
+      data = {
+        action: 'saber_course_register',
+        courseId: registerCourse.course.id
+      }
+      $.post( saber_post_list_load.ajaxurl, data, function( response ) {
+
+        response = JSON.parse(response);
+        console.log( response );
+
+      });
     },
 
     block: function() {
