@@ -6,6 +6,10 @@ class Register {
 
   public function __construct() {
 
+    // init course registration 
+    require_once( SABER_PATH . 'components/register/src/Course.php' );
+    new Course();
+
     // shortcode
     // [saber-register]
     $shortcode = new \Saber\Shortcode();

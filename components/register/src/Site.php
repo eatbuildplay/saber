@@ -1,0 +1,1 @@
+/* Move site reg here from Register.php */
