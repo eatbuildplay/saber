@@ -1,4 +1,4 @@
-<div class="saber-post-list-item-wrap">
+<div class="course-lesson-list-item-wrap saber-post-list-item-wrap ">
   <a href="<?php print get_permalink( $post->ID ); ?>">
     <div class="course-lesson-list-item saber-post-list-item">
       <h5>Lesson <?php print $order; ?></h5>

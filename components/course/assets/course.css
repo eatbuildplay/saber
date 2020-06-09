@@ -3,7 +3,7 @@
   max-width: 640px;
   margin: 0 auto;
 }
-.course-list .saber-post-list-item-wrap {
+.course-list .course-list-item-wrap {
   width: 100%;
   max-width: 300px;
   padding: 0;
@@ -19,14 +19,14 @@
   margin: 0;
 }
 
-.saber-post-list-item-wrap:nth-child(even) {
+.course-list-item-wrap:nth-child(even) {
   margin-left: 320px;
 }
-.saber-post-list-item-wrap:nth-child(odd) {
+.course-list-item-wrap:nth-child(odd) {
   margin-left: -20px;
 }
 
-.saber-post-list-item-wrap::before {
+.course-list-item-wrap::before {
   content: '';
   position: absolute;
   width: 20px;
@@ -37,14 +37,14 @@
   border-radius: 50%;
   z-index: 1;
 }
-.saber-post-list-item-wrap:nth-child(odd)::before {
+.course-list-item-wrap:nth-child(odd)::before {
   right: -30px;
 }
-.saber-post-list-item-wrap:nth-child(even)::before {
+.course-list-item-wrap:nth-child(even)::before {
   left: -30px;
 }
 
-.saber-post-list-item-wrap .course-list-item:hover {
+.course-list-item-wrap .course-list-item:hover {
   background: #D5D5D5;
 }
 
@@ -85,4 +85,29 @@
   bottom: 0;
   left: 50%;
   margin-left: -3px;
+}
+
+
+/*
+ * Course single
+ */
+.course-lesson-list {
+  max-width: 320px;
+  color: #353535;
+}
+.course-lesson-list-item-wrap {
+  width: 100%;
+  max-width: 320px;
+  padding: 0;
+}
+.course-lesson-list-item h5 {
+  font-size: 0.75em;
+  font-weight: 300;
+}
+.course-lesson-list-item {
+  text-align: left;
+  background: #EEE;
+  border: none;
+  color: #353535;
+  padding: 0;
 }
