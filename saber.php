@@ -233,6 +233,16 @@ class Plugin {
 
     \add_submenu_page(
       'saber-dashboard',
+      'Course Registrations',
+      'Course Registrations',
+      'edit_posts',
+      'edit.php?post_type=course_registration',
+      '',
+      130
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
       'Question Types',
       'Question Types',
       'edit_posts',

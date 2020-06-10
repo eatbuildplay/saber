@@ -16,6 +16,9 @@ class Course {
 
   public function __construct() {
 
+    require_once( SABER_PATH . 'components/register/src/cpt/CourseRegistrationPostType.php' );
+    add_action('init', [$this, 'registerPostTypes']);
+
     add_action('wp', [$this, 'run']);
 
     /* script calls */
@@ -23,6 +26,11 @@ class Course {
 
     add_action( 'wp_ajax_saber_course_register', array( $this, 'jxRegister'));
 
+  }
+
+  public function registerPostTypes() {
+    $pt = new CourseRegistrationPostType;
+    $pt->register();
   }
 
   public function run() {

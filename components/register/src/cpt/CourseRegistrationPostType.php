@@ -2,7 +2,7 @@
 
 namespace Saber\Register;
 
-class CourseRegisterPostType extends \Saber\PostType {
+class CourseRegistrationPostType extends \Saber\PostType {
 
   public $showInMenu = false;
 
