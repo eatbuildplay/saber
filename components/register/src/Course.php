@@ -17,6 +17,8 @@ class Course {
   public function __construct() {
 
     require_once( SABER_PATH . 'components/register/src/cpt/CourseRegistrationPostType.php' );
+    require_once( SABER_PATH . 'components/register/src/models/CourseRegistration.php' );
+
     add_action('init', [$this, 'registerPostTypes']);
 
     add_action('wp', [$this, 'run']);
@@ -102,15 +104,26 @@ class Course {
 
   public function jxRegister() {
 
-    $courseId = $_POST['courseId'];
+    $courseId = intval( $_POST['courseId'] );
 
+    // assemble this object
     $registerCourse = new Course;
     $registerCourse->student = \Saber\Student\Model\Student::load();
+    $registerCourse->course = \Saber\Course\Model\Course::load( $courseId );
+
+    // setup registration model
+    $crModel = new \Saber\Register\Model\CourseRegistration;
+    $crModel->course = $registerCourse->course;
+    $crModel->course = $registerCourse->student;
+    if( $crModel->duplicateCheck() ) {
+      $result = $crModel->create();
+    }
 
     // get post data
     $response = array(
       'courseId' => $courseId,
       'data'    => $data,
+      'result'  => $result,
       'message' => 'This response message will become available in the return in your JS ajax call'
     );
     print json_encode( $response );

@@ -36,6 +36,11 @@
         response = JSON.parse(response);
         console.log( response );
 
+        if( response.result > 0 ) {
+          $('.course-register-button').replaceWith('Course registration complete, you are now enrolled.');
+          registerCourse.registered = 1;
+        }
+
       });
     },
 
