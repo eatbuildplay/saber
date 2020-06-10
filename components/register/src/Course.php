@@ -113,11 +113,11 @@ class Course {
   }
 
   public function renderUnregisteredMessage() {
-    print 'You no registered, you no get in!';
+    print 'You are not registered for this course yet. Click the register button to activate your enrollment in this course.';
   }
 
   public function renderRegisterButton() {
-    print '<h3><button class="course-register-button">Register for this course</button></h3>';
+    print '<h3><button class="course-register-button">Register Now</button></h3>';
   }
 
 }
