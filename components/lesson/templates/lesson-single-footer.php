@@ -1,7 +1,7 @@
 <div class="lesson-single-footer">
 
-  <button class="s10-to-top"><i class="fas fa-chevron-up fa-3x"></i><br />Return to Top</button>
-  <button class="s10-next-lesson"><i class="fas fa-arrow-right fa-3x"></i><br />Next Lesson</button>
+  <button class="s10-to-top"><i class="fas fa-chevron-up fa-2x"></i><br />Return to Top</button>
+  <button class="s10-next-lesson"><i class="fas fa-arrow-right fa-2x"></i><br />Next Lesson</button>
 
 </div>
 
@@ -29,9 +29,3 @@
 
   </div>
 </template>
-
-<?php
-
-var_dump($lesson);
-
-?>
