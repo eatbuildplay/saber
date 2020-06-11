@@ -13,6 +13,7 @@ class Course {
   public $student;
   public $course;
   public $registered = false;
+  public $courseRegistration; // model CourseRegistration
 
   public function __construct() {
 
@@ -57,12 +58,13 @@ class Course {
     $this->course = $course;
 
     // check if registered
-    $courseRegistration = get_user_meta(
-      $this->student->user->ID,
-      'saber_course_registration_' . $this->course->id
+    $crModel = new Model\CourseRegistration;
+    $crModel = $crModel->fetch(
+      $this->student,
+      $this->course
     );
 
-    if( $courseRegistration ) {
+    if( $crModel ) {
       $this->registered = 1;
     }
 
@@ -114,8 +116,8 @@ class Course {
     // setup registration model
     $crModel = new \Saber\Register\Model\CourseRegistration;
     $crModel->course = $registerCourse->course;
-    $crModel->course = $registerCourse->student;
-    if( $crModel->duplicateCheck() ) {
+    $crModel->student = $registerCourse->student;
+    if( !$crModel->duplicate() ) {
       $result = $crModel->create();
     }
 
