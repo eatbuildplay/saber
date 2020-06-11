@@ -67,13 +67,14 @@ button {
 
 /* Control Buttons */
 .s10-start-exercise-btn {
-  background: #272E39;
-  border: solid 2px #272E39F1;
-  color: #FFFFFF;
-  font-size: 32px;
-  font-weight: bold;
-  width: 100%;
-  margin: 0;
+  background: #F2F2F2;
+  border: solid 1px #FFF;
+  color: #14699A;
+  font-size: 1.3em;
+  font-weight: 500;
+  width: auto;
+  margin: 0 auto;
+  display: block;
 }
 
 /* Lesson Sections */
@@ -92,12 +93,15 @@ button {
   line-height: 1.7;
 }
 .lesson-section-title {
-  font-size: 32px;
+  font-size: 1.8em;
   font-weight: normal;
   margin: 0 0 25px 0;
   color: #272E39;
 }
-.lesson-section-intro {}
+.lesson-section-intro {
+  color: #FFF;
+  text-align: center;
+}
 
 /* WordScan */
 .wordscan-word {

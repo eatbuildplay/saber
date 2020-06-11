@@ -39,7 +39,7 @@
   ?>
 
   <div class="lesson-section-body">
-    <button class="s10-start-exercise-btn flashcard-start">Start Flashcard Exercise</button>
+    <button class="s10-start-exercise-btn flashcard-start">Start Exercise</button>
   </div>
 
 

@@ -78,7 +78,7 @@ function fetchSelectionOptions( $allTranslations, $correctTranslation ) {
 ?>
 
   <div class="lesson-section-body">
-    <button class="s10-start-exercise-btn word-selection-start">Test my knowledge!</button>
+    <button class="s10-start-exercise-btn word-selection-start">Start Exercise</button>
   </div>
 
 </div>

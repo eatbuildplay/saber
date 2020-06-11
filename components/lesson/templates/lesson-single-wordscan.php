@@ -39,7 +39,7 @@
 ?>
 
   <div class="lesson-section-body">
-    <button class="s10-start-exercise-btn wordscan-start">Start the Exercise</button>
+    <button class="s10-start-exercise-btn wordscan-start">Start Exercise</button>
   </div>
 
 </div>
