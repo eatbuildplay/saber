@@ -21,7 +21,6 @@ class LessonSingleShortcode {
     $lesson = Model\Lesson::load( $post );
 
     // get next lesson
-    // $lessonFields['display_order']
     $nextLesson = false; // default false
     $lessons = get_posts([
       'post_type'   => 'lesson',
@@ -51,6 +50,7 @@ class LessonSingleShortcode {
       'saber-lesson-js',
       'saberLesson',
       [
+        'lesson'      => $lesson,
         'fields'      => $lessonFields,
         'post'        => $lesson,
         'nextLesson'  => $nextLesson
@@ -61,6 +61,13 @@ class LessonSingleShortcode {
     $template->path = 'components/lesson/templates/';
 
     $content = '';
+
+    // lesson header
+    $template->name = 'lesson-single-header';
+    $template->data = array(
+      'lesson' => $lesson
+    );
+    $content .= $template->get();
 
     // tabs
     $template->name = 'lesson-single-tabs';

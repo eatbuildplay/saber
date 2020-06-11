@@ -7,6 +7,7 @@ class Lesson {
   public $id;
   public $title;
   public $course;
+  public $displayOrder;
 
   public function load( $post ) {
 
@@ -21,6 +22,8 @@ class Lesson {
 
     $fields = get_fields($post->ID);
     $obj->course = \Saber\Course\Model\Course::load( $fields['course'] );
+
+    $obj->displayOrder = $fields['display_order'];
 
     return $obj;
 
