@@ -9,6 +9,8 @@ class Lesson {
     add_action('wp_ajax_saber_lesson_list_load', [$this, 'jxListLoad']);
     add_action('wp_ajax_nopriv_saber_lesson_list_load', [$this, 'jxListLoad']);
 
+    require_once( SABER_PATH . 'components/lesson/src/models/Lesson.php' );
+
     require_once( SABER_PATH . 'components/lesson/src/LessonSingleShortcode.php' );
     new LessonSingleShortcode();
 

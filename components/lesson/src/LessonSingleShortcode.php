@@ -17,8 +17,8 @@ class LessonSingleShortcode {
   public function doShortcode( $atts ) {
 
     global $post;
-    $lesson = $post;
-    $lessonFields = get_fields( $lesson->ID );
+    $lessonFields = get_fields( $post->ID );
+    $lesson = Model\Lesson::load( $post );
 
     // get next lesson
     // $lessonFields['display_order']
@@ -90,7 +90,9 @@ class LessonSingleShortcode {
 
     // tabs
     $template->name = 'lesson-single-footer';
-    $template->data = array();
+    $template->data = array(
+      'lesson' => $lesson
+    );
     $content .= $template->get();
 
     return $content;

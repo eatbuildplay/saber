@@ -29,3 +29,9 @@
 
   </div>
 </template>
+
+<?php
+
+var_dump($lesson);
+
+?>
