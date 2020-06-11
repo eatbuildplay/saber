@@ -47,12 +47,12 @@
     block: function() {
 
       // this needs to be fired as event call after post list loads
-      var $lessonItems = $('.saber-post-list-item-wrap');
+      var $lessonItems = $('.course-lesson-list-item-wrap');
       console.log($lessonItems);
-      $lessonItems.addClass('registerCourse-blocked');
+      $lessonItems.addClass('register-course-blocked');
 
       // block click
-      $(document).on('click', '.saber-post-list-item-wrap a', function(e) {
+      $(document).on('click', '.course-lesson-list-item-wrap.register-course-blocked a', function(e) {
         e.preventDefault();
       })
 
