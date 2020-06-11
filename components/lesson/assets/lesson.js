@@ -242,9 +242,9 @@
 
       // show results
       if( isCorrect ) {
-        var message = 'Nice job, you got it right!';
+        var message = '<i class="fas fa-thumbs-up"></i> Yes, you are correct.';
       } else {
-        var message = 'Not this time, sorry.';
+        var message = '<i class="fas fa-thumbs-down"></i> No that answer is incorrect.';
       }
 
       var template = $('#word-selection-result-template').html();

@@ -101,7 +101,7 @@ function fetchSelectionOptions( $allTranslations, $correctTranslation ) {
 
     <h2 class="word-selection-result-message">{message}</h2>
 
-    <button class="s10-word-selection-next"><i class="fas fa-thumbs-down fa-2x"></i> <br /><span>Next Word</span></button>
+    <button class="s10-word-selection-next"><span>Next Word</span></button>
 
   </div>
 </template>

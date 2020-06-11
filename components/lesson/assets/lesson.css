@@ -258,21 +258,48 @@ button {
 /*
  * Word selection
  */
+.word-selection {
+  padding: 0 80px 0 120px;
+}
+ .word-selection h2 {
+   font-size: 2.0em;
+   color: #FFF;
+ }
+ .word-selection h3 {
+   font-size: 1.5em;
+   font-style: italic;
+   color: #FFF;
+ }
 .word-selection ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .word-selection li {
+  color: #FFF;
   margin: 0;
   padding: 25px 40px;
-  background: #F3F3F3;
   font-size: 20px;
 }
 .word-selection li.selectable:hover {
-  background: #D3D3D3;
+  background: #F7AF19;
   cursor: pointer;
 }
 .word-selection li.selected {
-  background: #C3C3C3;
+  background: #D8D8D8;
+}
+.word-selection-result {
+  padding: 0 80px 0 120px;
+  margin: 60px 0 0 0;
+  color: #FFF;
+  text-align: right;
+}
+.word-selection-result h2 {
+  font-size: 1.8em;
+  font-weight: 400;
+}
+.s10-word-selection-next {
+  border-radius: 0;
+  color: #14699A;
+  margin: 0;
 }
