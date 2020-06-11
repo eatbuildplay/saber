@@ -33,7 +33,7 @@ class Lesson {
   }
 
   public function registerFields() {
-    require_once( SABER_PATH . 'components/lesson/assets/fields.php' );
+    require_once( SABER_PATH . 'components/lesson/assets/fields/fields.php' );
   }
 
   public function addScripts() {
