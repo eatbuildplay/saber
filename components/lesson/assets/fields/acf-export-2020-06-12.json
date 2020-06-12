@@ -74,36 +74,9 @@
                 "return_format": "id"
             },
             {
-                "key": "field_5ecef7f591f28",
-                "label": "Phrases",
-                "name": "phrases",
-                "type": "relationship",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "post_type": [
-                    "phrase"
-                ],
-                "taxonomy": "",
-                "filters": [
-                    "search",
-                    "post_type",
-                    "taxonomy"
-                ],
-                "elements": "",
-                "min": "",
-                "max": "",
-                "return_format": "object"
-            },
-            {
                 "key": "field_5ee2ba6cfde4c",
-                "label": "Conversations",
-                "name": "conversations",
+                "label": "Conversation",
+                "name": "conversation",
                 "type": "post_object",
                 "instructions": "",
                 "required": 0,
@@ -118,7 +91,7 @@
                 ],
                 "taxonomy": "",
                 "allow_null": 0,
-                "multiple": 1,
+                "multiple": 0,
                 "return_format": "object",
                 "ui": 1
             }

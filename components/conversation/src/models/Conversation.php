@@ -6,6 +6,7 @@ class Conversation {
 
   public $id;
   public $title;
+  public $phrases;
 
   public static function load( $post ) {
 
@@ -19,6 +20,7 @@ class Conversation {
     $obj->title = $post->post_title;
 
     $fields = get_fields($post);
+    $obj->phrases = $fields['phrases'];
 
     return $obj;
 
