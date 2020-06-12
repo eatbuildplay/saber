@@ -20,7 +20,17 @@ class Conversation {
     $obj->title = $post->post_title;
 
     $fields = get_fields($post);
-    $obj->phrases = $fields['phrases'];
+
+    if( empty( $fields['phrases'] )) {
+      $obj->phrases = false;
+    } else {
+      $phrases = [];
+      foreach( $fields['phrases'] as $phrasePost ) :
+        $phrases[] = \Saber\Phrase\Model\Phrase::load( $phrasePost );
+      endforeach;
+      $obj->phrases = $phrases;
+    }
+
 
     return $obj;
 

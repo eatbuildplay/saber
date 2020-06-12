@@ -208,6 +208,16 @@ button {
 /* Conversation */
 .lesson-section-conversation {
   display: none;
+  text-align: center;
+  padding: 40px 60px;
+}
+.conversation-canvas {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  background: #FFF;
+  color: #000;
+  padding: 30px;
 }
 
 /*
