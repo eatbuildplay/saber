@@ -346,7 +346,6 @@
 
     var sectionName = $(this).data('section')
 
-
     $('.lesson-section').hide()
     $('.lesson-section-' + sectionName).show()
 

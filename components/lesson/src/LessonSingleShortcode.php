@@ -95,6 +95,13 @@ class LessonSingleShortcode {
     );
     $content .= $template->get();
 
+    // word selection
+    $template->name = 'lesson-single-conversations';
+    $template->data = array(
+      'lesson' => $lesson
+    );
+    $content .= $template->get();
+
     // tabs
     $template->name = 'lesson-single-footer';
     $template->data = array(

@@ -205,6 +205,11 @@ button {
   display: none;
 }
 
+/* Conversation */
+.lesson-section-conversation {
+  display: none;
+}
+
 /*
  * Lesson Single Footer
  */
