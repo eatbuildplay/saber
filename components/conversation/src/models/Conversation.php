@@ -6,6 +6,8 @@ class Conversation {
 
   public $id;
   public $title;
+  public $speakerA;
+  public $speakerB;
   public $phrases;
 
   public static function load( $post ) {
@@ -21,16 +23,31 @@ class Conversation {
 
     $fields = get_fields($post);
 
+    // speakers
+    $obj->speakerA = $fields['speakers']['speaker_a'];
+    $obj->speakerB = $fields['speakers']['speaker_b'];
+
     if( empty( $fields['phrases'] )) {
       $obj->phrases = false;
     } else {
+
       $phrases = [];
-      foreach( $fields['phrases'] as $phrasePost ) :
-        $phrases[] = \Saber\Phrase\Model\Phrase::load( $phrasePost );
+
+      foreach( $fields['phrases'] as $phraseField ) :
+
+        $phrase = new \stdClass;
+        $phrasePost = $phraseField['phrase'];
+        $phrase->model = \Saber\Phrase\Model\Phrase::load( $phrasePost );
+
+        $phrase->speaker = $phraseField['speaker'];
+        $phrase->audio = $phraseField['audio'];
+
+        $phrases[] = $phrase;
+
       endforeach;
       $obj->phrases = $phrases;
-    }
 
+    }
 
     return $obj;
 
