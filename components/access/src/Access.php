@@ -73,7 +73,7 @@ class Access {
         } else {
           $message = [];
           $message['body']  = 'Register for this course.';
-          $message['body'] .= '<p><button data-course-id="' . $this->course->id . '" class="course-register-button">Register Now</button></p>';
+          $message['body'] .= '<p><a href="#" data-course-id="' . $this->course->id . '" class="course-register-button">Register Now</a></p>';
           $this->messages[] = $message;
         }
         break;
