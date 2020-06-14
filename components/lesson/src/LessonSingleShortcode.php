@@ -71,12 +71,15 @@ class LessonSingleShortcode {
 
     // tabs
     $template->name = 'lesson-single-tabs';
-    $template->data = array();
+    $template->data = array(
+      'lesson' => $lesson
+    );
     $content .= $template->get();
 
     // wordscan
     $template->name = 'lesson-single-wordscan';
     $template->data = array(
+      'lesson' => $lesson,
       'lessonFields' => $lessonFields
     );
     $content .= $template->get();
@@ -95,12 +98,14 @@ class LessonSingleShortcode {
     );
     $content .= $template->get();
 
-    // word selection
-    $template->name = 'lesson-single-conversations';
-    $template->data = array(
-      'lesson' => $lesson
-    );
-    $content .= $template->get();
+    // conversation
+    if( $lesson->conversation ):
+      $template->name = 'lesson-single-conversations';
+      $template->data = array(
+        'lesson' => $lesson
+      );
+      $content .= $template->get();
+    endif;
 
     // tabs
     $template->name = 'lesson-single-footer';

@@ -6,7 +6,7 @@ class Conversation {
 
   public function __construct() {
 
-    require_once( SABER_PATH . 'components/Conversation/src/models/conversation.php' );
+    require_once( SABER_PATH . 'components/conversation/src/models/Conversation.php' );
 
     add_action('init', [$this, 'registerPostTypes']);
     add_action('init', [$this, 'registerFields']);

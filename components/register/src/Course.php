@@ -96,6 +96,9 @@ class Course {
   public function canRegister() {
 
     $access = $GLOBALS['saberAccess'];
+
+var_dump($access);
+
     if( $access->grant ) {
       return true;
     }

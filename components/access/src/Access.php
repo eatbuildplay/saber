@@ -48,9 +48,6 @@ class Access {
       $this->grant = 1;
     }
 
-    // check if paid membership required
-
-
   }
 
   public function renderBlockMessage() {

@@ -49,8 +49,11 @@
   <div class="wordscan-word">
 
     <img src="{image}" />
-    <h2 class="wordscan-word-display">{word} = {translation}</h2>
     <h3 class="wordscan-word-pronunciation">{pronunciation}</h3>
+    <h2 class="wordscan-word-display">
+      <span class="word">{word}</span>
+      <span class="translation">{translation}</span>
+    </h2>
 
     <div class="wordscan-controls">
       <h3>Rate your knowledge of this word</h3>

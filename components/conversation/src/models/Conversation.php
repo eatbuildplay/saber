@@ -17,6 +17,10 @@ class Conversation {
       $post = get_post( $post );
     }
 
+    if( !$post ) {
+      return false;
+    }
+
     $obj = new Conversation;
     $obj->id = $post->ID;
     $obj->title = $post->post_title;

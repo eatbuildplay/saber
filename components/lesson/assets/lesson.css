@@ -62,7 +62,7 @@ button {
 
 /* Lesson Exercise Body */
 .lesson-section-body {
-  padding: 35px;
+  padding: 0px;
 }
 
 /* Control Buttons */
@@ -111,39 +111,51 @@ button {
   padding: 15px;
 }
 .lesson-section-body .wordscan-word img {
-  max-width: 340px;
-  min-width: 180px;
-  float: right;
-  border: solid 2px #FFFFFF80;
+  max-width: 500px;
+  width: 100%;
 }
 .wordscan-word-display {
-  font-size: 48px;
+  text-align: center;
+  font-size: 2.5em;
   color: #FFFFFF;
   margin: 0 0 10px 0;
 }
+.wordscan-word-display span {
+  width: 100%;
+}
+.wordscan-word-display span.translation {
+  color: #DDD;
+}
 .wordscan-word-pronunciation {
-  font-size: 28px;
+  font-size: 1.5em;
   font-style: italic;
-  color: #FFFFFFF8;
-  margin: 0 0 30px 0;
+  color: #DDD;
+  margin: 10px 0 30px 0;
+  text-align: center;
 }
 .wordscan-controls {
   margin: 60px 0 30px 0;
 }
 .wordscan-controls h3 {
   color: #FFF;
-  font-size: 14px;
+  font-size: 1.0em;
   font-weight: 400;
+  text-align: center;
 }
 .wordscan-controls button {
   background: #F1F1F3;
   color: #323232;
-  font-size: 24px;
+  font-size: 1.2em;
   border: none;
-  padding: 20px 50px;
-  border: solid 3px #FFF;
-  margin: 0 20px 0 0;
-  border-radius: 30px;
+  padding: 20px 0px;
+  border: none;
+  margin: 0 0 0 0;
+  border-radius: 0;
+  width: 33.3333333%;
+  display: inline-block;
+}
+.wordscan-controls button span {
+  display: block;
 }
 .wordscan-controls button:hover {
   color: #FFF;
@@ -249,9 +261,8 @@ button {
     display: inline-block;
     box-sizing: border-box;
     width: 100%;
-    padding: 15px;
+    padding: 0px;
     margin: 0;
-    background: #209FBF;
   }
 
 }
