@@ -1,11 +1,7 @@
 <?php
 
-
 $access = $GLOBALS['saberAccess'];
 $registration = $GLOBALS['saberRegisterCourse'];
-
-//var_dump($access);
-//var_dump($registration);
 
 ?>
 
@@ -20,12 +16,11 @@ $registration = $GLOBALS['saberRegisterCourse'];
   ?>
 
   <?php if( !$registration->registered ):
-      $registration->renderUnregisteredMessage();
 
       if( $registration->canRegister() ) :
-        $registration->renderRegisterButton();
+        $registration->renderUnregisteredMessage();
       endif;
-      
+
     endif;
   ?>
 

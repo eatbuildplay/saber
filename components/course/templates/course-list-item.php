@@ -10,9 +10,3 @@
     </div>
   </a>
 </div>
-
-<?php
-
-// var_dump( $model );
-
-?>

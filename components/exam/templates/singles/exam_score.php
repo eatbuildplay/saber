@@ -51,12 +51,4 @@ get_header();
   </div>
 </div>
 
-<?php
-
-print '<pre>';
-// var_dump( $examScore );
-print '</pre>';
-
-?>
-
 <?php get_footer(); ?>

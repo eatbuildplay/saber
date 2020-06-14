@@ -1,0 +1,24 @@
+.saber-access-block {
+  margin: 30px 0;
+  background: #FBCD10;
+  color: #333;
+  padding: 25px;
+  font-size: 1.4em;
+}
+.saber-access-block p {
+  margin: 15px 0 0 0;
+  max-width: 320px;
+  font-weight: bold;
+  border: solid 1px #FFF;
+  background: #323232;
+  text-align: center;
+
+}
+.saber-access-block a {
+  color: #FFF;
+  display: block;
+  padding: 10px 25px;
+}
+.saber-access-block a:hover {
+  background: #454545;
+}

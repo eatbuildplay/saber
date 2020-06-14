@@ -52,11 +52,19 @@ class Access {
 
   public function renderBlockMessage() {
     print '<div class="saber-access-block">';
-    print 'Sorry, you do not currently have access to this course.';
+    print 'You will need to open a Spanish10 account to access this course.';
+    print '<p><a href="https://spanish10.com/register/">Join Now</a></p>';
     print '</div>';
   }
 
   public function scripts() {
+
+    wp_enqueue_style(
+      'saber-access-css',
+      SABER_URL . 'components/access/assets/access.css',
+      [],
+      '1.0.0'
+    );
 
     wp_enqueue_script(
       'saber-access-js',

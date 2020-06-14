@@ -34,6 +34,4 @@
 
   </section>
 
-  <?php // var_dump( $lesson->conversation->phrases[0] ); ?>
-
 </div>
