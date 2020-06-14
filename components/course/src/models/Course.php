@@ -8,7 +8,7 @@ class Course {
   public $title;
   public $displayOrder;
   public $intro;
-  public $publicAccess = false;
+  public $courseAccess = false;
 
   public static function load( $post ) {
 
@@ -24,7 +24,7 @@ class Course {
     $fields = get_fields($post);
     $obj->displayOrder = $fields['display_order'];
     $obj->intro = $fields['intro'];
-    $obj->publicAccess = $fields['public_access'];
+    $obj->courseAccess = $fields['course_access'];
 
     return $obj;
 

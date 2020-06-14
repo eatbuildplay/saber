@@ -15,13 +15,4 @@ $registration = $GLOBALS['saberRegisterCourse'];
     endif;
   ?>
 
-  <?php if( !$registration->registered ):
-
-      if( $registration->canRegister() ) :
-        $registration->renderUnregisteredMessage();
-      endif;
-
-    endif;
-  ?>
-
 </header>

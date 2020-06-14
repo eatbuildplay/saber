@@ -64,8 +64,8 @@ acf_add_local_field_group(array(
 		),
 		array(
 			'key' => 'field_5edb9301ce7a9',
-			'label' => 'Public Access',
-			'name' => 'public_access',
+			'label' => 'Course Access',
+			'name' => 'course_access',
 			'type' => 'button_group',
 			'instructions' => 'If selected everybody will be able to enroll in this course.',
 			'required' => 0,
@@ -76,8 +76,9 @@ acf_add_local_field_group(array(
 				'id' => '',
 			),
 			'choices' => array(
-				0 => 'No',
-				1 => 'Yes',
+				1 => 'Public Access',
+				2 => 'All Registered Users',
+				3 => 'Course Registered Only',
 			),
 			'allow_null' => 0,
 			'default_value' => 0,

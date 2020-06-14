@@ -22,8 +22,6 @@ class Course {
 
     add_action('init', [$this, 'registerPostTypes']);
 
-    add_action('wp', [$this, 'run']);
-
     /* script calls */
     add_action('wp_enqueue_scripts', [$this, 'scripts']);
 
@@ -34,22 +32,6 @@ class Course {
   public function registerPostTypes() {
     $pt = new CourseRegistrationPostType;
     $pt->register();
-  }
-
-  public function run() {
-
-    global $post;
-    if( $post->post_type != 'course' ) {
-      return;
-    }
-
-    // is course, proceed with check
-    $course = \Saber\Course\Model\Course::load( $post );
-    $this->check( $course );
-
-    // stash into global
-    $GLOBALS['saberRegisterCourse'] = $this;
-
   }
 
   public function check( $course ) {
@@ -66,7 +48,10 @@ class Course {
 
     if( $crModel ) {
       $this->registered = 1;
+      return true;
     }
+
+    return false;
 
   }
 
@@ -79,29 +64,6 @@ class Course {
       '1.0.0',
       true
     );
-
-    wp_localize_script(
-      'saber-register-course-js',
-      'saberCourseRegistry',
-      [
-        'data' => $GLOBALS['saberRegisterCourse']
-      ]
-    );
-
-  }
-
-  /*
-   * Check if current student has access to register
-   */
-  public function canRegister() {
-
-    $access = $GLOBALS['saberAccess'];
-
-    if( $access->grant ) {
-      return true;
-    }
-
-    return false;
 
   }
 

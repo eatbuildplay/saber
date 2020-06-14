@@ -35,7 +35,7 @@ class Course {
   }
 
   public function registerFields() {
-    require_once( SABER_PATH . 'components/course/assets/fields.php' );
+    require_once( SABER_PATH . 'components/course/assets/fields/fields.php' );
   }
 
   public function scripts() {

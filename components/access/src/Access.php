@@ -7,6 +7,7 @@ class Access {
   public $student;
   public $course;
   public $grant = false;
+  public $messages = [];
 
   public function __construct() {
 
@@ -38,22 +39,53 @@ class Access {
     $this->student = \Saber\Student\Model\Student::load();
     $this->course = $course;
 
-    // check for public access course
-    if( $this->course->publicAccess ) {
-      $this->grant = 1;
+    // set default course access
+    if( !$this->course->courseAccess ) {
+      $this->course->courseAccess = 3;
     }
 
-    // check user is registered
-    if( $this->student->user->ID != 0 ) {
-      $this->grant = 1;
+    switch( $this->course->courseAccess ) {
+      case 1:
+        $this->grant = 1;
+        break;
+      case 2:
+        if( $this->student->user->ID != 0 ) {
+          $this->grant = 1;
+        } else {
+          $message = [];
+          $message['body']  = 'You will need to open a Spanish10 account to access this course.';
+          $message['body'] .= '<p><a href="https://spanish10.com/register/">Join Now</a></p>';
+          $this->messages[] = $message;
+        }
+        break;
+      case 3:
+        if( $this->student->user->ID == 0 ) {
+          $message = [];
+          $message['body']  = 'You will need to open a Spanish10 account to access this course.';
+          $message['body'] .= '<p><a href="https://spanish10.com/register/">Join Now</a></p>';
+          $this->messages[] = $message;
+          break;
+        }
+        $registerCourse = new \Saber\Register\Course;
+        $check = $registerCourse->check( $this->course );
+        if( $check ) {
+          $this->grant = 1;
+        } else {
+          $message = [];
+          $message['body']  = 'Register for this course.';
+          $message['body'] .= '<p><button data-course-id="' . $this->course->id . '" class="course-register-button">Register Now</button></p>';
+          $this->messages[] = $message;
+        }
+        break;
     }
 
   }
 
   public function renderBlockMessage() {
     print '<div class="saber-access-block">';
-    print 'You will need to open a Spanish10 account to access this course.';
-    print '<p><a href="https://spanish10.com/register/">Join Now</a></p>';
+    foreach( $this->messages as $message ):
+      print $message['body'];
+    endforeach;
     print '</div>';
   }
 
