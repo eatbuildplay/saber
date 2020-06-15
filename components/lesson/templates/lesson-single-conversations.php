@@ -17,6 +17,18 @@
 
         <h2><?php print $phrase->model->phrase; ?></h2>
         <h3><?php print $phrase->model->translation; ?></h2>
+
+        <figure>
+          <!--<figcaption>Listen to audio in Spanish:</figcaption>-->
+          <audio
+            controls
+            src="<?php print $phrase->model->audio['url']; ?>">
+              Your browser does not support the
+              <code>audio</code> element.
+          </audio>
+        </figure>
+
+
         <hr />
 
       <?php
@@ -35,3 +47,8 @@
   </section>
 
 </div>
+
+
+<?php
+
+var_dump( $lesson->conversation->phrases[0] ); ?>

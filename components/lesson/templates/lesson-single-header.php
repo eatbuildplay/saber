@@ -11,9 +11,7 @@
   <?php
     if( isset( $access ) && $access->grant ):
   ?>
-    <h2><?php print $lesson->course->title; ?></h2>
-    <h5>Lesson <?php print $lesson->displayOrder; ?></h5>
-    <h3><?php print $lesson->title; ?></h3>
+    <h3><?php print $lesson->course->title; ?> / Lesson <?php print $lesson->displayOrder; ?> / <?php print $lesson->title; ?></h3>
   <?php endif; ?>
 
 </header>

@@ -329,3 +329,12 @@ button {
   color: #14699A;
   margin: 0;
 }
+
+/* Single header */
+.lesson-single-header {
+  margin: 0 0 20px 0;
+}
+.lesson-single-header h3 {
+  font-size: 1.5em;
+  font-weight: 400;
+}
