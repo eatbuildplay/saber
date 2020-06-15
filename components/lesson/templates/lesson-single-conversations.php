@@ -6,17 +6,22 @@
 
   <section class="conversation-canvas">
 
-    <div class="conversation-left">
+    <div class="conversation-canvas-header">
+      <div class="speaker-left">
+        <?php print $lesson->conversation->speakerA; ?>
+      </div>
+      <div class="speaker-right">
+        <?php print $lesson->conversation->speakerB; ?>
+      </div>
+    </div>
 
-      <?php print $lesson->conversation->speakerA; ?>
+    <?php
+      foreach( $lesson->conversation->phrases as $phrase ):
+    ?>
 
-      <?php
-
-        foreach( $lesson->conversation->phrases as $phrase ):
-      ?>
-
-        <h2><?php print $phrase->model->phrase; ?></h2>
-        <h3><?php print $phrase->model->translation; ?></h2>
+      <div class="speaker-text speaker-text-<?php print $phrase->speaker; ?>">
+        <h3><?php print $phrase->model->phrase; ?></h3>
+        <h4><?php print $phrase->model->translation; ?></h4>
 
         <figure>
           <!--<figcaption>Listen to audio in Spanish:</figcaption>-->
@@ -27,28 +32,12 @@
               <code>audio</code> element.
           </audio>
         </figure>
+      </div>
 
-
-        <hr />
-
-      <?php
-        endforeach;
-
-      ?>
-
-    </div>
-
-    <div class="conversation-right">
-
-      <?php print $lesson->conversation->speakerB; ?>
-
-    </div>
+    <?php endforeach; ?>
 
   </section>
-
 </div>
 
 
-<?php
-
-var_dump( $lesson->conversation->phrases[0] ); ?>
+<?php // var_dump( $lesson->conversation->phrases[0] ); ?>
