@@ -13,9 +13,6 @@
       access.student  = saberCourseAccess.access.student;
       access.course   = saberCourseAccess.access.course;
 
-      console.log('ACCESS:');
-      console.log( access );
-
       if( !access.grant ) {
         access.block();
       }
@@ -24,14 +21,12 @@
 
     block: function() {
 
-      // this needs to be fired as event call after post list loads
-      var $lessonItems = $('.saber-post-list-item-wrap');
-      console.log($lessonItems);
-      $lessonItems.addClass('access-blocked');
+      console.log('blocking...');
 
       // block click
-      $(document).on('click', '.saber-post-list-item-wrap a', function(e) {
+      $(document).on('click.block', '.course-lesson-list-item-wrap a', function(e) {
         e.preventDefault();
+        console.log('blocking!!!!');
       })
 
     }
