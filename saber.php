@@ -55,6 +55,9 @@ class Plugin {
     require_once( SABER_PATH . 'components/access/src/Access.php' );
     new \Saber\Access\Access();
 
+    require_once( SABER_PATH . 'components/intel/src/IntelComponent.php' );
+    new \Saber\Intel\IntelComponent();
+
     /* admin menu */
     add_action('admin_menu', [$this, 'menu']);
 
