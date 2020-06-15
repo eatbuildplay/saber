@@ -21,12 +21,20 @@ class Access {
   public function run() {
 
     global $post;
-    if( $post->post_type != 'course' ) {
+    if( $post->post_type != 'course' &&
+        $post->post_type != 'lesson' ) {
       return;
     }
 
-    // is course, proceed with check
-    $course = \Saber\Course\Model\Course::load( $post );
+    // get course
+    if( $post->post_type == 'lesson' ) {
+      $lesson = $course = \Saber\Lesson\Model\Lesson::load( $post );
+      $course = $lesson->course;
+    } else {
+      $course = \Saber\Course\Model\Course::load( $post );
+    }
+
+    // proceed with check
     $this->courseAccess( $course );
 
     // stash into global

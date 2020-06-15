@@ -1,9 +1,4 @@
-<?php
-
-$access = $GLOBALS['saberAccess'];
-$registration = $GLOBALS['saberRegisterCourse'];
-
-?>
+<?php $access = $GLOBALS['saberAccess']; ?>
 
 <header>
   <h1><?php print $course->title; ?></h1>
