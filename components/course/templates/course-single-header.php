@@ -10,7 +10,7 @@ $registration = $GLOBALS['saberRegisterCourse'];
   <div><?php print $course->intro; ?></div>
 
   <?php
-    if( !$access->grant ):
+    if( isset( $access ) && !$access->grant ):
       $access->renderBlockMessage();
     endif;
   ?>
