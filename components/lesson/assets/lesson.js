@@ -249,7 +249,7 @@
 
       var template = $('#word-selection-result-template').html();
       template = template.replace('{message}', message);
-      $('.lesson-section-body').append( template );
+      $('.word-selection').append( template );
 
     },
 
