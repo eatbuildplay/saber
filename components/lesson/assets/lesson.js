@@ -361,4 +361,22 @@
     window.location.href = saberLesson.nextLesson.url;
   })
 
+  // record start exercise
+  $('.s10-start-exercise-btn').on('click', function() {
+    data = {
+      action: 'saber_exercise_view',
+      lessonId: courseId
+    }
+    $.post( saber_post_list_load.ajaxurl, data, function( response ) {
+
+      response = JSON.parse(response);
+
+      if( response.result > 0 ) {
+        $('.saber-access-block').html('Course registration complete, you are now enrolled.');
+        $( document ).off('click.block', '.course-lesson-list-item-wrap a');
+      }
+
+    });
+  })
+
 })( jQuery );

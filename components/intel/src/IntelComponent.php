@@ -8,6 +8,8 @@ class IntelComponent {
   public function __construct() {
 
     add_action('wp_enqueue_scripts', [$this, 'scripts']);
+    require_once( SABER_PATH . 'components/intel/src/Tracker.php' );
+
 
   }
 

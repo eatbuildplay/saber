@@ -22,6 +22,46 @@ class Lesson {
 
     add_action('wp_enqueue_scripts', [$this, 'addScripts']);
 
+    // track view lesson
+    add_action('wp', [$this, 'trackView']);
+    add_action( 'wp_ajax_saber_exercise_view', array( $this, 'jxTrackExerciseView'));
+
+  }
+
+  public function jxTrackExerciseView() {
+
+    $lessonId = intval( $_POST['lessonId'] );
+    $exercise = intval( $_POST['exercise'] );
+
+    $tracker = new \Saber\Intel\Tracker;
+    $tracker->setObject('lesson', $lessonId);
+    $tracker->trackType = 'view';
+    $tracker->trackData = [
+      'type' => $exercise,
+      'timestamp' => time()
+    ];
+    $tracker->save();
+
+  }
+
+  public function trackView() {
+
+    global $post;
+    if( $post->post_type != 'lesson' ) {
+      return;
+    }
+
+    $tracker = new \Saber\Intel\Tracker;
+    $tracker->setObject('lesson', $post->ID);
+    $tracker->trackType = 'view';
+    $tracker->trackData = [
+      'type' => 'main',
+      'timestamp' => time()
+    ];
+    $tracker->save();
+
+    var_dump( $tracker->fetch() );
+
   }
 
   public function registerPostTypes() {
