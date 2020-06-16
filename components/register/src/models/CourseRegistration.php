@@ -34,7 +34,32 @@ class CourseRegistration {
     return false;
   }
 
-  public function fetchAllStudent( $student ) {
+  public function fetchAllStudent( $student = false ) {
+
+    if( !$student ) {
+      $student = \Saber\Student\Model\Student::load();
+    }
+
+    $posts = get_posts([
+      'post_type'   => 'course_registration',
+      'numberposts' => -1,
+      'meta_query'  => [
+        [
+          'key' => 'student',
+          'value' => $student->user->ID
+        ]
+      ]
+    ]);
+
+    if( !empty( $posts )) {
+      $courses = [];
+      foreach( $posts as $post ) {
+        $courses[] = $this->load( $post );
+      }
+      return $courses;
+    }
+
+    return false;
 
   }
 

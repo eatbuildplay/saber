@@ -58,6 +58,13 @@ class Plugin {
     require_once( SABER_PATH . 'components/intel/src/IntelComponent.php' );
     new \Saber\Intel\IntelComponent();
 
+    foreach( $this->componentList() as $componentDef ) {
+      $key = $componentDef['key'];
+      require_once( SABER_PATH . 'components/' . $key . '/src/' . ucfirst($key) . 'Component.php' );
+      $namespace = '\\Saber\\' . ucfirst($key) . '\\' . ucfirst($key) . 'Component';
+      new $namespace();
+    }
+
     /* admin menu */
     add_action('admin_menu', [$this, 'menu']);
 
@@ -69,6 +76,16 @@ class Plugin {
 
     /* script calls */
     add_action('wp_enqueue_scripts', [$this, 'scripts']);
+
+  }
+
+  public function componentList() {
+
+    return [
+      [
+        'key' => 'dashboard'
+      ]
+    ];
 
   }
 
