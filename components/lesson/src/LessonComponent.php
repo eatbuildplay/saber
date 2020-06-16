@@ -42,6 +42,10 @@ class LessonComponent {
     ];
     $tracker->save();
 
+    // no response
+    print 1;
+    wp_die();
+
   }
 
   public function trackView() {
@@ -60,7 +64,7 @@ class LessonComponent {
     ];
     $tracker->save();
 
-    var_dump( $tracker->fetch() );
+    // var_dump( $tracker->fetch() );
 
   }
 
