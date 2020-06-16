@@ -2,7 +2,7 @@
 
 namespace Saber\Lesson;
 
-class Lesson {
+class LessonComponent {
 
   public function __construct() {
 
@@ -31,7 +31,7 @@ class Lesson {
   public function jxTrackExerciseView() {
 
     $lessonId = intval( $_POST['lessonId'] );
-    $exercise = intval( $_POST['exercise'] );
+    $exercise = sanitize_text_field( $_POST['exercise'] );
 
     $tracker = new \Saber\Intel\Tracker;
     $tracker->setObject('lesson', $lessonId);
@@ -77,6 +77,11 @@ class Lesson {
   }
 
   public function addScripts() {
+
+    global $post;
+    if( $post->post_type != 'lesson' ):
+      return;
+    endif;
 
     wp_enqueue_style(
       'saber-lesson-style',

@@ -1,0 +1,1 @@
+Uses click handler on .s10-start-exercise-btn (start exercise buttons) to init the view tracker using the Intel Component.

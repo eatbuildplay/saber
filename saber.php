@@ -31,8 +31,8 @@ class Plugin {
     require_once( SABER_PATH . 'components/course/src/Course.php' );
     new \Saber\Course\Course();
 
-    require_once( SABER_PATH . 'components/lesson/src/Lesson.php' );
-    new \Saber\Lesson\Lesson();
+    require_once( SABER_PATH . 'components/lesson/src/LessonComponent.php' );
+    new \Saber\Lesson\LessonComponent();
 
     require_once( SABER_PATH . 'components/student/src/Student.php' );
     new \Saber\Student\Student();

@@ -363,18 +363,18 @@
 
   // record start exercise
   $('.s10-start-exercise-btn').on('click', function() {
+
+    let exercise = $(this).data('exercise');
+
     data = {
       action: 'saber_exercise_view',
-      lessonId: courseId
+      lessonId: saberLesson.lesson.id,
+      exercise: exercise
     }
     $.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
       response = JSON.parse(response);
-
-      if( response.result > 0 ) {
-        $('.saber-access-block').html('Course registration complete, you are now enrolled.');
-        $( document ).off('click.block', '.course-lesson-list-item-wrap a');
-      }
+      console.log( response );
 
     });
   })
