@@ -22,7 +22,7 @@ class Phrase {
   }
 
   public function registerFields() {
-    require_once( SABER_PATH . 'components/phrase/assets/fields.php' );
+    require_once( SABER_PATH . 'components/phrase/assets/fields/fields.php' );
   }
 
 }
