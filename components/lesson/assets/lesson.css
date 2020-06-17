@@ -1,11 +1,3 @@
-body {
-  font-family: "Montserrat", Sans-serif;
-  font-size: 16px;
-  margin: 0;
-}
-h1 {
-  font-size: 44px;
-}
 button {
   cursor: pointer;
   width: auto;
