@@ -22,7 +22,7 @@ class CourseSingleHeaderShortcode {
     $course = Model\Course::load( $post );
 
     $student = \Saber\Student\Model\Student::load();
-    $crModel = Saber\Register\Model\CourseRegistration;
+    $crModel = new \Saber\Register\Model\CourseRegistration;
     $courseReg = $crModel->fetch( $student, $course );
 
     $template = new \Saber\Template();
