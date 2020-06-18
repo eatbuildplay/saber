@@ -97,6 +97,12 @@ class Access {
     print '</div>';
   }
 
+  public function renderGrantMessage() {
+    print '<div class="saber-access-grant">';
+    print 'You are registered for this course.';
+    print '</div>';
+  }
+
   public function scripts() {
 
     wp_enqueue_style(

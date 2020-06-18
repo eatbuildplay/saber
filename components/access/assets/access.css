@@ -22,3 +22,13 @@
 .saber-access-block a:hover {
   background: #454545;
 }
+
+.saber-access-grant {
+  max-width: 800px;
+  box-sizing: border-box;
+  background: #148642;
+  color: #FFF;
+  border-radius: 15px;
+  padding: 30px 50px;
+  margin: 30px 0;
+}
