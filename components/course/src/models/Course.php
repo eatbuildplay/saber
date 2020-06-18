@@ -6,6 +6,7 @@ class Course {
 
   public $id;
   public $title;
+  public $permalink;
   public $displayOrder;
   public $intro;
   public $courseAccess = false;
@@ -20,6 +21,7 @@ class Course {
     $obj = new Course;
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
+    $obj->permalink = get_permalink( $post );
 
     $fields = get_fields($post);
     $obj->displayOrder = $fields['display_order'];
