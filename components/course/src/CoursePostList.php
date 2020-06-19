@@ -37,6 +37,17 @@ class CoursePostList extends \Saber\PostList {
 
   }
 
+  public function listItemData( $data ) {
+
+    $course = $data['model'];
+    $student = \Saber\Student\Model\Student::load();
+    $cr = new \Saber\Register\Model\CourseRegistration;
+    $courseRegistration = $cr->fetch( $student, $course );
+    $data['courseRegistration'] = $courseRegistration;
+    return $data;
+
+  }
+
   public function order() {
     return [
       'orderby' => 'meta_value_num',

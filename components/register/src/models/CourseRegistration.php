@@ -102,6 +102,7 @@ class CourseRegistration {
     $obj = new CourseRegistration;
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
+    $obj->registrationDate = get_the_date( 'Y-m-d', $post );
 
     $fields = get_fields($post);
 

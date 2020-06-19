@@ -185,21 +185,22 @@ class PostList {
           $model = false;
         }
 
-        $template->data = array(
-          'model' => $model,
-          'post'  => $post,
-          'order' => $index+1
-        );
+        $template->data['model'] = $model;
+        $template->data['post'] = $post;
+        $template->data['order'] = $index+1;
+
+        // filter template data
+        $template->data = $this->listItemData( $template->data );
+
         $listItems .= $template->get();
+
       endforeach;
 
     endif;
 
     /* add list item content to wrapper template */
     $template = $this->listTemplate();
-    $template->data = array(
-      'listItems' => $listItems
-    );
+    $template->data['listItems'] = $listItems;
     $content .= $template->get();
 
     // send response and exit
@@ -211,6 +212,11 @@ class PostList {
     print json_encode( $response );
     wp_die();
 
+  }
+
+  // override to add more data to the list items
+  public function listItemData( $data ) {
+    return $data;
   }
 
 }

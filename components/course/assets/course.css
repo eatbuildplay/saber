@@ -128,3 +128,21 @@
 .course-register-button:hover {
 
 }
+
+/* Course list item */
+.course-registration-notice {
+  background: #6DB843;
+  color: #FFF;
+  padding: 20px 30px;
+  font-size: 1.1em;
+  font-weight: 400;
+}
+
+.course-list-item-header {
+  background: #DE2026;
+  color: #FFF;
+  padding: 20px 30px;
+  font-size: 1.1em;
+  font-weight: 400;
+  margin: 0 0 10px 0; 
+}

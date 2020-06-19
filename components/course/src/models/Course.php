@@ -8,6 +8,7 @@ class Course {
   public $title;
   public $permalink;
   public $displayOrder;
+  public $level;
   public $intro;
   public $courseAccess = false;
 
@@ -27,6 +28,7 @@ class Course {
     $obj->displayOrder = $fields['display_order'];
     $obj->intro = $fields['intro'];
     $obj->courseAccess = $fields['course_access'];
+    $obj->level = $fields['level'];
 
     return $obj;
 
