@@ -107,7 +107,14 @@ class LessonSingleShortcode {
       $content .= $template->get();
     endif;
 
-    // tabs
+    // exam
+    $template->name = 'lesson-single-exam';
+    $template->data = array(
+      'lesson' => $lesson
+    );
+    $content .= $template->get();
+
+    // footer
     $template->name = 'lesson-single-footer';
     $template->data = array(
       'lesson' => $lesson

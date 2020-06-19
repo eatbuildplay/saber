@@ -110,12 +110,17 @@ class ExamSingleShortcode {
     add_shortcode($this->tag, array($this, 'doShortcode'));
   }
 
-  public function doShortcode( $atts ) {
+  public function doShortcode( $atts = [] ) {
 
-    global $post;
-    $examFields = get_fields( $post->ID );
-
-    $exam = Model\Exam::load( $post );
+    if( isset( $atts['id'] )) {
+      $examId = $atts['id'];
+      $exam = Model\Exam::load( $examId );
+    } else {
+      global $post;
+      $exam = Model\Exam::load( $post->ID );
+    }
+    
+    $examFields = get_fields( $exam->ID );
 
     $template = new \Saber\Template();
     $template->path = 'components/exam/templates/';

@@ -98,6 +98,28 @@ acf_add_local_field_group(array(
 			'return_format' => 'object',
 			'ui' => 1,
 		),
+		array(
+			'key' => 'field_5eec85dd417fc',
+			'label' => 'Exam',
+			'name' => 'exam',
+			'type' => 'post_object',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array(
+				0 => 'exam',
+			),
+			'taxonomy' => '',
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
+		),
 	),
 	'location' => array(
 		array(
