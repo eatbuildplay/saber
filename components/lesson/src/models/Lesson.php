@@ -26,7 +26,12 @@ class Lesson {
     $obj->course = \Saber\Course\Model\Course::load( $fields['course'] );
     $obj->conversation = \Saber\Conversation\Model\Conversation::load( $fields['conversation'] );
     $obj->displayOrder = $fields['display_order'];
-    $obj->exam = \Saber\Exam\Model\Exam::load( $fields['exam'] );
+
+    if( isset( $fields['exam'] ) && $fields['exam'] > 0 ) {
+      $obj->exam = \Saber\Exam\Model\Exam::load( $fields['exam'] );
+    } else {
+      $obj->exam = 0;
+    }
 
     return $obj;
 
