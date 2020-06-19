@@ -21,6 +21,9 @@ class DashboardShortcode {
 
     $content = '';
 
+    // get student
+    $student = \Saber\Student\Model\Student::load();
+
     // get course registrations
     $cr = new \Saber\Register\Model\CourseRegistration;
     $courses = $cr->fetchAllStudent();
@@ -28,6 +31,15 @@ class DashboardShortcode {
     // header
     $template->name = 'header';
     $template->data = [
+      'student' => $student,
+      'courses' => $courses
+    ];
+    $content .= $template->get();
+
+    // widgets
+    $template->name = 'widgets';
+    $template->data = [
+      'student' => $student,
       'courses' => $courses
     ];
     $content .= $template->get();
