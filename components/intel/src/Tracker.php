@@ -5,11 +5,11 @@ namespace Saber\Intel;
 class Tracker {
 
   public $userId;
-  public $timestamp;
-  public $objectType;
-  public $objectId;
-  public $trackType;
-  public $trackData = 1;
+  public $objectType; // lesson | course | student | exercise
+  public $objectId; // lesson_id | course_id
+  public $trackType; // view | complete | current_lesson
+  public $trackData = 1; // [] | numeric | string
+  public $singular = 0;
 
   public function __construct() {
     $this->userId = get_current_user_id();
@@ -59,7 +59,11 @@ class Tracker {
     }
 
     // add new tracking
-    $objectRecord->{$this->trackType}[] = $this->trackData;
+    if( $this->singular ) {
+      $objectRecord->{$this->trackType} = $this->trackData;
+    } else {
+      $objectRecord->{$this->trackType}[] = $this->trackData;
+    }
 
     update_user_meta( $this->userId, $this->metakey(), $objectRecord );
   }

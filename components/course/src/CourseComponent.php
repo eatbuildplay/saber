@@ -2,7 +2,7 @@
 
 namespace Saber\Course;
 
-class Course {
+class CourseComponent {
 
   public function __construct() {
 

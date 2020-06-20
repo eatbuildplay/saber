@@ -28,8 +28,11 @@ class Plugin {
     require_once( SABER_PATH . 'src/post_lists/PostList.php' );
     require_once( SABER_PATH . 'src/post_types/PostType.php' );
 
-    require_once( SABER_PATH . 'components/course/src/Course.php' );
-    new \Saber\Course\Course();
+    require_once( SABER_PATH . 'components/intel/src/IntelComponent.php' );
+    new \Saber\Intel\IntelComponent();
+
+    require_once( SABER_PATH . 'components/course/src/CourseComponent.php' );
+    new \Saber\Course\CourseComponent();
 
     require_once( SABER_PATH . 'components/lesson/src/LessonComponent.php' );
     new \Saber\Lesson\LessonComponent();
@@ -54,9 +57,6 @@ class Plugin {
 
     require_once( SABER_PATH . 'components/access/src/Access.php' );
     new \Saber\Access\Access();
-
-    require_once( SABER_PATH . 'components/intel/src/IntelComponent.php' );
-    new \Saber\Intel\IntelComponent();
 
     foreach( $this->componentList() as $componentDef ) {
       $key = $componentDef['key'];
