@@ -14,15 +14,9 @@ class IntelComponent {
 
     // init the trackers
     add_action('init', function() {
-
-      $userMeta = get_user_meta(4, 'saber_student_course_2236');
-      var_dump($userMeta);
-
       new Tracker();
       new TrackerCourse();
     });
-
-
 
   }
 

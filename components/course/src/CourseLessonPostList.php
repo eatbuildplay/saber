@@ -36,6 +36,25 @@ class CourseLessonPostList extends \Saber\PostList {
 
   }
 
+  public function listItemData( $data ) {
+
+    // add current lesson variable to each list item
+    $lesson = $data['model'];
+    $trackerCourse = new \Saber\Intel\TrackerCourse();
+    $trackerCourse->setObject('course', $lesson->course->id);
+    $tracker = $trackerCourse->fetch();
+    $currentLesson = $tracker->current_lesson;
+
+    if( $currentLesson == $lesson->id ) {
+      $data['isCurrentLesson'] = 1;
+    } else {
+      $data['isCurrentLesson'] = 0;
+    }
+
+    return $data;
+
+  }
+
   public function metaQuery( $postId ) {
 
     $metaquery = [

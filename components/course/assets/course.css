@@ -144,5 +144,28 @@
   padding: 20px 30px;
   font-size: 1.1em;
   font-weight: 400;
-  margin: 0 0 10px 0; 
+  margin: 0 0 10px 0;
+}
+
+.course-lesson-list-item-wrap.current-lesson .course-lesson-list-item {
+  background: #64B745;
+  color: #FFF;
+}
+
+header.course-single {
+  max-width: 800px;
+}
+
+.progress-bar {
+	width: 100%;
+	background-color: #D9D9D9;
+	border-radius: 0px;
+}
+
+.progress-bar-fill {
+  display: block;
+  height: 30px;
+  background-color: #148642;
+  border-radius: 2px;
+  transition: width 500ms ease-in-out;
 }

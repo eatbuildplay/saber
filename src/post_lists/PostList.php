@@ -170,7 +170,7 @@ class PostList {
 
     // test if we can autoload the post model
     $modelBaseName = ucfirst( $this->getPostType() );
-    $modelClassPath = '\Saber\Course\Model\\' . $modelBaseName;
+    $modelClassPath = '\Saber\\' . $modelBaseName . '\\Model\\' . $modelBaseName;
     $classExists = class_exists( $modelClassPath );
 
     // load list item template
@@ -180,7 +180,7 @@ class PostList {
 
         // autoload model
         if( $classExists ) {
-          $model = \Saber\Course\Model\Course::load( $post );
+          $model = $modelClassPath::load( $post );
         } else {
           $model = false;
         }

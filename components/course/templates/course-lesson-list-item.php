@@ -2,7 +2,7 @@
 
 $classes = 'course-lesson-list-item-wrap saber-post-list-item-wrap';
 
-if( $isCurrent ) {
+if( $isCurrentLesson ) {
   $classes .= ' current-lesson';
 }
 
