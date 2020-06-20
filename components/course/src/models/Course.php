@@ -34,4 +34,42 @@ class Course {
 
   }
 
+  public function loadLessons() {
+
+    $lessonPosts = get_posts([
+      'post_type' => 'lesson',
+      'numberposts' => -1,
+      'meta_query' => [
+        [
+          'key'     => 'course',
+          'value'   => $this->id,
+          'compare' => '='
+        ]
+      ],
+      'orderby'   => 'meta_value_num',
+      'order'     => 'ASC',
+      'meta_key'  => 'display_order'
+    ]);
+
+    if(empty( $lessonPosts )) {
+      $this->lessons = false;
+    }
+
+    $lessons = [];
+    foreach( $lessonPosts as $lessonPost ) {
+      $lessons[] = \Saber\Lesson\Model\Lesson::load( $lessonPost );
+    }
+
+    $this->lessons = $lessons;
+
+  }
+
+  public function getFirstLesson() {
+    if( !empty($this->lessons)) {
+      return $this->lessons[0];
+    }
+
+    return 0;
+  }
+
 }

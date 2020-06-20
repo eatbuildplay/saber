@@ -8,7 +8,20 @@ class IntelComponent {
   public function __construct() {
 
     add_action('wp_enqueue_scripts', [$this, 'scripts']);
+
     require_once( SABER_PATH . 'components/intel/src/Tracker.php' );
+    require_once( SABER_PATH . 'components/intel/src/TrackerCourse.php' );
+
+    // init the trackers
+    add_action('init', function() {
+
+      $userMeta = get_user_meta(4, 'saber_student_course_2236');
+      var_dump($userMeta);
+
+      new Tracker();
+      new TrackerCourse();
+    });
+
 
 
   }

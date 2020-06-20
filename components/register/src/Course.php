@@ -84,6 +84,12 @@ class Course {
       $result = $crModel->create();
     }
 
+    // after course registration
+    // used by intel to setup initial course tracking for the student 
+    do_action('saber_course_registration_after',
+      $crModel, $result
+    );
+
     // get post data
     $response = array(
       'courseId' => $courseId,
