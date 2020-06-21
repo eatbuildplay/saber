@@ -6,6 +6,10 @@ if( $isCurrentLesson ) {
   $classes .= ' current-lesson';
 }
 
+if( $isCompletedLesson ) {
+  $classes .= ' completed-lesson';
+}
+
 ?>
 
 <div class="<?php print $classes; ?>">

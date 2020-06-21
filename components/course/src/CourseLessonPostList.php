@@ -51,6 +51,13 @@ class CourseLessonPostList extends \Saber\PostList {
       $data['isCurrentLesson'] = 0;
     }
 
+    // add completed lesson to each item
+    if( in_array( $lesson->id, $tracker->lessons_completed )) {
+      $data['isCompletedLesson'] = 1;
+    } else {
+      $data['isCompletedLesson'] = 0;
+    }
+
     return $data;
 
   }

@@ -147,9 +147,16 @@
   margin: 0 0 10px 0;
 }
 
+/* current lesson */
 .course-lesson-list-item-wrap.current-lesson .course-lesson-list-item {
   background: #64B745;
   color: #FFF;
+}
+
+/* completed lesson */
+.course-lesson-list-item-wrap.completed-lesson .course-lesson-list-item {
+  background: #272E39;
+  color: #DDD;
 }
 
 header.course-single {
