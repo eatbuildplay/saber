@@ -98,6 +98,12 @@ class TrackerCourse extends Tracker {
     $this->singular   = 0;
     $this->save();
 
+    // advance current lesson
+    $course = $lesson->course;
+    $course->loadLessons();
+    $nextLesson = $course->getNextLesson( $lesson );
+    $this->setCurrentLesson( $lesson->course, $nextLesson );
+
   }
 
   public function isLessonComplete( $lesson, $course ) {

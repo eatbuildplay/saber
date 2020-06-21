@@ -65,11 +65,28 @@ class Course {
   }
 
   public function getFirstLesson() {
+
     if( !empty($this->lessons)) {
       return $this->lessons[0];
     }
 
     return 0;
+
+  }
+
+  public function getNextLesson( $currentLesson ) {
+
+    $currentLessonIndex = 0;
+    foreach( $this->lessons as $index => $lesson ) {
+      if( $lesson->id == $currentLesson->id ) {
+        $currentLessonIndex = $index;
+        break;
+      }
+    }
+
+    $nextLessonIndex = $currentLessonIndex +1;
+    return $this->lessons[ $nextLessonIndex ];
+
   }
 
 }
