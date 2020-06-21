@@ -4,11 +4,68 @@
   background: #E5E5E5;
   padding: 30px;
   margin: 30px 0;
+  border-top: solid 5px #DE2026;
 }
 
 .dashboard-widget h2 {
   font-size: 1.4em;
   color: #454545;
+}
+
+.dashboard-widget a.block-link {
+  display: block;
+  background: #30ADBE;
+  color: #FFF;
+  font-size: 1.4em;
+  font-weight: 500;
+  padding: 20px 40px;
+  width: 100%;
+  max-width: 320px;
+  margin: 20px auto;
+  line-height: normal;
+  text-align: center;
+}
+
+.dashboard-widget a.block-link:hover {
+  background: #DE2026;
+}
+
+.dashboard-widget table {
+  margin: 30px 0;
+}
+
+.dashboard-widget table th,
+.dashboard-widget table td {
+  font-size: 1.4em;
+  font-weight: 400;
+  color: #454545;
+  text-align: left;
+  padding: 12px 20px;
+}
+
+.dashboard-widget table th {
+  color: #656565;
+}
+
+.dashboard-widget table thead {
+  border-bottom: solid 3px #272E39;
+}
+
+.dashboard-widget table a {
+  display: block;
+  background: #30ADBE;
+  color: #FFF;
+  font-size: 1.0em;
+  font-weight: 500;
+  padding: 5px 10px;
+  width: 100%;
+  max-width: 320px;
+  margin: 20px auto;
+  line-height: normal;
+  text-align: center;
+}
+.dashboard-widget table a:hover {
+  background: #DE2026;
 }
 
 
