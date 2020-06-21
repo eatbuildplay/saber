@@ -14,6 +14,20 @@ class ExamSingleShortcode {
     add_action( 'wp_ajax_saber_exam_question_load', array( $this, 'jxQuestionLoad'));
     add_action( 'wp_ajax_saber_exam_exam_load', array( $this, 'jxExamLoad'));
     add_action( 'wp_ajax_saber_exam_create_exam_score', array( $this, 'jxExamScoreCreate'));
+    add_action( 'wp_ajax_saber_exam_end', array( $this, 'jxExamEnd'));
+
+  }
+
+  public function jxExamEnd() {
+
+    $examId = $_POST['examId'];
+
+    $response = array();
+    print json_encode( $response );
+
+    do_action('saber_exam_end', $examId );
+
+    wp_die();
 
   }
 
@@ -107,7 +121,9 @@ class ExamSingleShortcode {
   }
 
   public function init() {
+
     add_shortcode($this->tag, array($this, 'doShortcode'));
+
   }
 
   public function doShortcode( $atts = [] ) {
@@ -119,7 +135,7 @@ class ExamSingleShortcode {
       global $post;
       $exam = Model\Exam::load( $post->ID );
     }
-    
+
     $examFields = get_fields( $exam->ID );
 
     $template = new \Saber\Template();

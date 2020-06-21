@@ -56,6 +56,19 @@ var Exam = {
     var $template = $('#exam-single-end').html();
     Exam.canvas.body.html( $template );
 
+    // send end call
+    data = {
+      action: 'saber_exam_end',
+      examId: Exam.id
+    }
+    $.post( saber_post_list_load.ajaxurl, data, function( response ) {
+
+      response = JSON.parse(response);
+      console.log( response );
+
+    });
+
+
   },
 
   showStart: function() {
