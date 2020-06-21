@@ -9,6 +9,7 @@ class Phrase {
   public $phrase;
   public $translation;
   public $audio;
+  public $audioMiguel;
 
   public static function load( $post ) {
 
@@ -26,6 +27,7 @@ class Phrase {
     $obj->phrase = $fields['phrase'];
     $obj->translation = $fields['translation'];
     $obj->audio = $fields['audio_file'];
+    $obj->audioMiguel = $fields['audio_miguel'];
 
     return $obj;
 

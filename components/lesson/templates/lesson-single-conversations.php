@@ -16,7 +16,39 @@
     </div>
 
     <?php
+
+      $speakerA = $lesson->conversation->speakerA;
+      $speakerB = $lesson->conversation->speakerB;
+
+      $maleSpeakers = [
+        'Miguel', 'Diego'
+      ];
+
+      $speakerBSexMale = 0;
+      if( in_array( $speakerB, $maleSpeakers )) {
+        $speakerBSexMale = true;
+      }
+
+      $speakerASexMale = 0;
+      if( in_array( $speakerA, $maleSpeakers )) {
+        $speakerASexMale = true;
+      }
+
       foreach( $lesson->conversation->phrases as $phrase ):
+
+        /*
+        print '<pre>';
+        var_dump( $phrase );
+        print '</pre>';
+        */
+
+        if( $phrase->speaker == 'a' && $speakerASexMale ||
+            $phrase->speaker == 'b' && $speakerBSexMale ) {
+          $audio = $phrase->model->audioMiguel;
+        } else {
+          $audio = $phrase->model->audio;
+        }
+
     ?>
 
       <div class="speaker-text speaker-text-<?php print $phrase->speaker; ?>">
@@ -27,7 +59,7 @@
           <!--<figcaption>Listen to audio in Spanish:</figcaption>-->
           <audio
             controls
-            src="<?php print $phrase->model->audio['url']; ?>">
+            src="<?php print $audio['url']; ?>">
               Your browser does not support the
               <code>audio</code> element.
           </audio>

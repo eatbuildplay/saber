@@ -44,8 +44,6 @@ class Conversation {
         $phrase->model = \Saber\Phrase\Model\Phrase::load( $phrasePost );
 
         $phrase->speaker = $phraseField['speaker'];
-        $phrase->audio = $phraseField['audio'];
-
         $phrases[] = $phrase;
 
       endforeach;
