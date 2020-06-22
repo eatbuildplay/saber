@@ -1,5 +1,3 @@
-<?php // var_dump( $courseRegistration ); ?>
-
 <div class="course-list-item-wrap saber-post-list-item-wrap">
   <a href="<?php print get_permalink( $post->ID ); ?>">
     <div class="course-list-item saber-post-list-item">

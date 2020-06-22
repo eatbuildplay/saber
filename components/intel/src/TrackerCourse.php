@@ -128,9 +128,6 @@ class TrackerCourse extends Tracker {
   public function getCourseProgress() {
 
     $tracker = $this->fetch();
-
-    var_dump( $tracker );
-
     if( is_array( $tracker->lessons_completed )) {
       $lessonsCompleted = count($tracker->lessons_completed);
     } else {
