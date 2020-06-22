@@ -76,9 +76,8 @@ class TrackerCourse extends Tracker {
 
   public function getCurrentLesson() {
 
-    $this->setObject('course', $courseId);
-    $courseTracker = $this->fetch();
-    return $courseTracker['current_lesson'];
+    $tracker = $this->fetch();
+    return $tracker['current_lesson'];
 
   }
 
@@ -120,6 +119,26 @@ class TrackerCourse extends Tracker {
   public function isCourseComplete() {
 
     return false;
+
+  }
+
+  /*
+   * Return overall course progress based on lessons marked completed
+   */
+  public function getCourseProgress() {
+
+    $tracker = $this->fetch();
+
+    var_dump( $tracker );
+
+    if( is_array( $tracker->lessons_completed )) {
+      $lessonsCompleted = count($tracker->lessons_completed);
+    } else {
+      return 0;
+    }
+
+    $totalLessons = 25; // presume 25 for now
+    return round( ($lessonsCompleted / $totalLessons) * 100, 2 );
 
   }
 

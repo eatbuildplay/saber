@@ -1,5 +1,14 @@
 <?php $access = $GLOBALS['saberAccess']; ?>
 
+
+<?php
+
+$tracker = new Saber\Intel\TrackerCourse;
+$tracker->setObject('course', $course->id);
+$progress = $tracker->getCourseProgress();
+
+?>
+
 <header class="course-single">
 
   <h1><?php print $course->title; ?></h1>
@@ -24,10 +33,10 @@
     <div class="course-progress">
 
       <div class="progress-bar">
-        <span class="progress-bar-fill" style="width: 70%;"></span>
+        <span class="progress-bar-fill" style="width: <?php print $progress; ?>%;"></span>
       </div>
 
-      <h5>Course Progress</h5>
+      <h5>Course Progress (<?php print $progress; ?>%)</h5>
 
     </div>
 
