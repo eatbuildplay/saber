@@ -1,8 +1,8 @@
-
-
 <form id="saber-register-form" class="saber-form" method="POST">
 
   <input class="register-name" type="hidden" />
+
+  <div class="saber-register-messages"></div>
 
   <div class="saber-form-group">
     <label>Email</label>

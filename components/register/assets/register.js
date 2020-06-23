@@ -17,7 +17,12 @@
         var usernameEl = $('.register-username');
 
         if( !emailValid ) {
-          register.showValidationError();
+          register.showValidationError(100);
+          return;
+        }
+
+        if( usernameEl == '' || usernameEl.length < 6 ) {
+          register.showValidationError(200);
           return;
         }
 
@@ -31,8 +36,21 @@
 
     },
 
-    showValidationError: function() {
-      console.log( 'validation error handler...' );
+    showValidationError: function( $errorCode ) {
+
+      switch( $errorCode ) {
+        case 100:
+          $msg = "Invalid email address.";
+          break;
+        case 200:
+          $msg = "Invalid username, please choose a username with a minimum of 6 characters.";
+          break;
+      }
+      $msgEl = $('.saber-register-messages');
+
+      $msgEl.html( $msg );
+      $msgEl.show();
+
     },
 
     process: function( fieldData ) {
