@@ -1,0 +1,10 @@
+#saber-register-form button {
+  background: #148643;
+  padding: 15px 40px;
+  text-align: center;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+#saber-register-form button:hover {
+  background: #148643D9;
+}

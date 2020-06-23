@@ -40,7 +40,7 @@ class Plugin {
     require_once( SABER_PATH . 'components/student/src/Student.php' );
     new \Saber\Student\Student();
 
-    require_once( SABER_PATH . 'components/register/src/Register.php' );
+    require_once( SABER_PATH . 'components/register/src/RegisterComponent.php' );
     new \Saber\Register\Register();
 
     require_once( SABER_PATH . 'components/exam/src/Exam.php' );

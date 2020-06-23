@@ -6,7 +6,7 @@ class Register {
 
   public function __construct() {
 
-    // init course registration 
+    // init course registration
     require_once( SABER_PATH . 'components/register/src/Course.php' );
     new Course();
 
@@ -21,6 +21,8 @@ class Register {
     // ajax hook
     add_action( 'wp_ajax_saber_register', array( $this, 'processRegistration'));
     add_action( 'wp_ajax_nopriv_saber_register', array( $this, 'processRegistration'));
+
+    add_action('wp_enqueue_scripts', [$this, 'scripts']);
 
   }
 
@@ -45,6 +47,23 @@ class Register {
 
   }
 
+  public function scripts() {
 
+    wp_enqueue_script(
+      'saber-register-js',
+      SABER_URL . 'components/register/assets/register.js',
+      array( 'jquery' ),
+      '1.0.0',
+      true
+    );
+
+    wp_enqueue_style(
+      'saber-register-css',
+      SABER_URL . 'components/register/assets/register.css',
+      [],
+      '1.0.0'
+    );
+
+  }
 
 }
