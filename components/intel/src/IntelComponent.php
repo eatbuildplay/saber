@@ -40,4 +40,10 @@ class IntelComponent {
 
   }
 
+  public function getAllCourses() {
+
+    
+
+  }
+
 }

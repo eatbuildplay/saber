@@ -67,6 +67,13 @@
 <!-- Activity Log -->
 <div class="dashboard-widget dashboard-widget-activity">
 
+<?php
+
+$tc = new \Saber\Intel\TrackerCourse;
+
+?>
+
+
   <h2>Activity Log</h2>
   <div class="activity-log">
 
