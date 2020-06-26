@@ -65,6 +65,8 @@ class CourseRegistration {
 
   public function fetchAllCourse( $student ) {
 
+
+
   }
 
   public function fetch( $student, $course ) {

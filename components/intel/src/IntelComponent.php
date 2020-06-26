@@ -11,6 +11,8 @@ class IntelComponent {
 
     require_once( SABER_PATH . 'components/intel/src/Tracker.php' );
     require_once( SABER_PATH . 'components/intel/src/TrackerCourse.php' );
+    require_once( SABER_PATH . 'components/intel/src/IntelReport.php' );
+
 
     // init the trackers
     add_action('init', function() {
@@ -37,12 +39,6 @@ class IntelComponent {
       '1.0.0',
       true
     );
-
-  }
-
-  public function getAllCourses() {
-
-    
 
   }
 

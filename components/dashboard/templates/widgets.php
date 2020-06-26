@@ -69,13 +69,24 @@
 
 <?php
 
-$tc = new \Saber\Intel\TrackerCourse;
+$intel = new \Saber\Intel\IntelReport;
+$intel->loadCourseRegistrations();
+// var_dump( $intel );
 
 ?>
 
 
   <h2>Activity Log</h2>
   <div class="activity-log">
+
+    <div class="activity-log-stat">
+      <h3>Active Courses</h3>
+      <div>
+        <?php
+          print $intel->getCourseCount();
+        ?>
+      </div>
+    </div>
 
     <table>
       <thead>
