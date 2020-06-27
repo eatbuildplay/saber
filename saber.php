@@ -28,6 +28,15 @@ class Plugin {
     require_once( SABER_PATH . 'src/post_lists/PostList.php' );
     require_once( SABER_PATH . 'src/post_types/PostType.php' );
 
+    // acf new post field
+    require_once( SABER_PATH . 'src/acf/acf_new_post/acf-new-post.php' );
+
+    /*
+     *
+     * Component loading
+     *
+     */
+
     require_once( SABER_PATH . 'components/intel/src/IntelComponent.php' );
     new \Saber\Intel\IntelComponent();
 
