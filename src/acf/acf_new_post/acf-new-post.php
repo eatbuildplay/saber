@@ -32,13 +32,13 @@ class AcfNewPostField {
 			'path'		=> plugin_dir_path( __FILE__ )
 		);
 
-
 		// include field
 		add_action('acf/include_field_types', 	array($this, 'include_field')); // v5
 		add_action('acf/register_fields', 		array($this, 'include_field')); // v4
 
 	}
 
+	
 
 	/*
 	*  include_field

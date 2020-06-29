@@ -31,7 +31,7 @@ class saber_acf_field_new_post extends acf_field {
 		*  label (string) Multiple words, can include spaces, visible when selecting a field type
 		*/
 
-		$this->label = __('New Post', 'TEXTDOMAIN');
+		$this->label = __('New Post', 'saber');
 
 
 		/*
@@ -44,31 +44,26 @@ class saber_acf_field_new_post extends acf_field {
 		/*
 		*  defaults (array) Array of default settings which are merged into the field object. These are used later in settings
 		*/
-
 		$this->defaults = array(
-			'font_size'	=> 14,
+			'post_type'	=> 'post',
 		);
-
 
 		/*
 		*  l10n (array) Array of strings that are used in JavaScript. This allows JS strings to be translated in PHP and loaded via:
 		*  var message = acf._e('FIELD_NAME', 'error');
 		*/
-
 		$this->l10n = array(
-			'error'	=> __('Error! Please enter a higher value', 'TEXTDOMAIN'),
+			'error'	=> __('Error! Please enter a higher value', 'saber'),
 		);
-
 
 		/*
 		*  settings (array) Store plugin settings (url, path, version) as a reference for later use with assets
 		*/
-
 		$this->settings = $settings;
 
 
 		// do not delete!
-    	parent::__construct();
+    parent::__construct();
 
 	}
 
@@ -414,7 +409,7 @@ class saber_acf_field_new_post extends acf_field {
 		// Advanced usage
 		if( $value < $field['custom_minimum_setting'] )
 		{
-			$valid = __('The value is too little!','TEXTDOMAIN'),
+			$valid = __('The value is too little!','saber'),
 		}
 
 

@@ -120,13 +120,17 @@ class Access {
       true
     );
 
-    wp_localize_script(
-      'saber-access-js',
-      'saberCourseAccess',
-      [
-        'access' => $GLOBALS['saberAccess']
-      ]
-    );
+    if( isset( $GLOBALS['saberAccess'] )) {
+
+      wp_localize_script(
+        'saber-access-js',
+        'saberCourseAccess',
+        [
+          'access' => $GLOBALS['saberAccess']
+        ]
+      );
+
+    }
 
   }
 

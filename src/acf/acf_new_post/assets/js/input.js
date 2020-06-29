@@ -1,75 +1,82 @@
-(function($){
+(function($) {
 
+	function initialize_field() {
 
-	/**
-	*  initialize_field
-	*
-	*  This function will initialize the $field.
-	*
-	*  @date	30/11/17
-	*  @since	5.6.5
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-
-	function initialize_field( $field ) {
-
-		var $field = $('.acf-new-post-field');
+		/*
+		 * Open dialog button
+		 */
 		var $button = $('.acf-new-post-field button');
+		console.log($button)
+		$button.on('click', function(e) {
 
-		// initalise the dialog
-	  $('#my-dialog').dialog({
-	    title: 'My Dialog',
-	    dialogClass: 'wp-dialog',
-	    autoOpen: false,
-	    draggable: false,
-	    width: '800',
-	    modal: true,
-	    resizable: false,
-	    closeOnEscape: true,
-	    position: {
-	      my: "center",
-	      at: "center",
-	      of: window
-	    },
-	    open: function () {
-	      // close dialog by clicking the overlay behind it
-	      $('.ui-widget-overlay').bind('click', function(){
-	        $('#my-dialog').dialog('close');
-	      })
-	    },
-	    create: function () {
-	      // style fix for WordPress admin
-	      $('.ui-dialog-titlebar-close').addClass('ui-button');
-	    },
-	  });
+			console.log("PREVENT#!!!!!")
 
-		$button.on('click', function() {
-
+			e.preventDefault();
 	    $('#my-dialog').dialog('open');
+
+		});
+
+		/*
+		 * Dialog init
+		 */
+		 // initalise the dialog
+	   $('#my-dialog').dialog({
+	     title: 'My Dialog',
+	     dialogClass: 'wp-dialog',
+	     autoOpen: false,
+	     draggable: false,
+	     width: '800',
+	     modal: true,
+	     resizable: false,
+	     closeOnEscape: true,
+	     position: {
+	       my: "center",
+	       at: "center",
+	       of: window
+	     },
+	     open: function () {
+
+	 			// form setup
+	 			var form = $('template#new-post-form');
+	 			var formWrapper = $('.form-wrapper');
+	 			$('.form-wrapper').html( form.html() );
+
+	       $('.ui-widget-overlay').on('click', function() {
+	 				$('#my-dialog').dialog('close');
+	       })
+	     },
+	     create: function () {
+	       // style fix for WordPress admin
+	       $('.ui-dialog-titlebar-close').addClass('ui-button');
+	     },
+	   });
+
+		/*
+		 * Submit form handler
+		 */
+		$(document).on('submit', '#saber-form', function(e) {
+
+			e.preventDefault();
+			let $form = $('#saber-form');
+
+			data = {
+		    action: 'saber_new_post_form',
+				formData: $form.serialize()
+		  }
+		  $.post( ajaxurl, data, function( response ) {
+
+		     response = JSON.parse(response);
+		     console.log( response )
+
+		  });
 
 		});
 
 	}
 
-	if( typeof acf.add_action !== 'undefined' ) {
+	acf.addAction('ready', function(){
+    initialize_field();
+});
 
-		/*
-		*  ready & append (ACF5)
-		*
-		*  These two events are called when a field element is ready for initizliation.
-		*  - ready: on page load similar to $(document).ready()
-		*  - append: on new DOM elements appended via repeater field or other AJAX calls
-		*
-		*  @param	n/a
-		*  @return	n/a
-		*/
-
-		acf.add_action('ready_field/type=new_post', initialize_field);
-		acf.add_action('append_field/type=new_post', initialize_field);
-
-
-	}
 
 })(jQuery);
