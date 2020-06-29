@@ -4,7 +4,7 @@
 
 <div id="my-dialog">
 
-  <h2>Add New Post 965</h2>
+  <h2>Create Phrase</h2>
 
   <div class="form-wrapper"></div>
 
@@ -12,7 +12,7 @@
 
     <form id="saber-form" method="post">
 
-      
+
 
       <input type="submit" value="SEND!!" />
     </form>

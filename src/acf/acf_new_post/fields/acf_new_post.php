@@ -20,49 +20,13 @@ class saber_acf_field_new_post extends acf_field {
 
 	function __construct( $settings ) {
 
-		/*
-		*  name (string) Single word, no spaces. Underscores allowed
-		*/
-
 		$this->name = 'new_post';
-
-
-		/*
-		*  label (string) Multiple words, can include spaces, visible when selecting a field type
-		*/
-
 		$this->label = __('New Post', 'saber');
-
-
-		/*
-		*  category (string) basic | content | choice | relational | jquery | layout | CUSTOM GROUP NAME
-		*/
-
 		$this->category = 'basic';
-
-
-		/*
-		*  defaults (array) Array of default settings which are merged into the field object. These are used later in settings
-		*/
 		$this->defaults = array(
 			'post_type'	=> 'post',
 		);
-
-		/*
-		*  l10n (array) Array of strings that are used in JavaScript. This allows JS strings to be translated in PHP and loaded via:
-		*  var message = acf._e('FIELD_NAME', 'error');
-		*/
-		$this->l10n = array(
-			'error'	=> __('Error! Please enter a higher value', 'saber'),
-		);
-
-		/*
-		*  settings (array) Store plugin settings (url, path, version) as a reference for later use with assets
-		*/
 		$this->settings = $settings;
-
-
-		// do not delete!
     parent::__construct();
 
 	}
@@ -73,12 +37,6 @@ class saber_acf_field_new_post extends acf_field {
 	*
 	*  Create extra settings for your field. These are visible when editing a field
 	*
-	*  @type	action
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$field (array) the $field being edited
-	*  @return	n/a
 	*/
 
 	function render_field_settings( $field ) {
@@ -99,8 +57,6 @@ class saber_acf_field_new_post extends acf_field {
 	*/
 	function render_field( $field ) {
 
-		// print_r( $field );
-
 		$template = new \Saber\Template;
 		$template->path = 'src/acf/acf_new_post/templates/';
 		$template->name = 'inputs';
@@ -114,13 +70,6 @@ class saber_acf_field_new_post extends acf_field {
 	*
 	*  This action is called in the admin_enqueue_scripts action on the edit screen where your field is created.
 	*  Use this action to add CSS + JavaScript to assist your render_field() action.
-	*
-	*  @type	action (admin_enqueue_scripts)
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	n/a
-	*  @return	n/a
 	*/
 
 	function input_admin_enqueue_scripts() {
@@ -145,141 +94,7 @@ class saber_acf_field_new_post extends acf_field {
 
 		wp_enqueue_style('wp-jquery-ui-dialog');
 
-		/*
-		wp_enqueue_style(
-			'saber-admin-ui-css',
-	    'http://ajax.googleapis.com/ajax/libs/jqueryui/' . $wp_scripts->registered['jquery-ui-core']->ver . '/themes/smoothness/jquery-ui.css',
-	    false,
-	   	'1.0.0',
-	    false
-		);
-		*/
-
 	}
-
-	/*
-	*  input_admin_head()
-	*
-	*  This action is called in the admin_head action on the edit screen where your field is created.
-	*  Use this action to add CSS and JavaScript to assist your render_field() action.
-	*
-	*  @type	action (admin_head)
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-
-	/*
-
-	function input_admin_head() {
-
-
-
-	}
-
-	*/
-
-
-	/*
-   	*  input_form_data()
-   	*
-   	*  This function is called once on the 'input' page between the head and footer
-   	*  There are 2 situations where ACF did not load during the 'acf/input_admin_enqueue_scripts' and
-   	*  'acf/input_admin_head' actions because ACF did not know it was going to be used. These situations are
-   	*  seen on comments / user edit forms on the front end. This function will always be called, and includes
-   	*  $args that related to the current screen such as $args['post_id']
-   	*
-   	*  @type	function
-   	*  @date	6/03/2014
-   	*  @since	5.0.0
-   	*
-   	*  @param	$args (array)
-   	*  @return	n/a
-   	*/
-
-   	/*
-
-   	function input_form_data( $args ) {
-
-
-
-   	}
-
-   	*/
-
-
-	/*
-	*  input_admin_footer()
-	*
-	*  This action is called in the admin_footer action on the edit screen where your field is created.
-	*  Use this action to add CSS and JavaScript to assist your render_field() action.
-	*
-	*  @type	action (admin_footer)
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-
-	/*
-
-	function input_admin_footer() {
-
-
-
-	}
-
-	*/
-
-
-	/*
-	*  field_group_admin_enqueue_scripts()
-	*
-	*  This action is called in the admin_enqueue_scripts action on the edit screen where your field is edited.
-	*  Use this action to add CSS + JavaScript to assist your render_field_options() action.
-	*
-	*  @type	action (admin_enqueue_scripts)
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-
-	/*
-
-	function field_group_admin_enqueue_scripts() {
-
-	}
-
-	*/
-
-
-	/*
-	*  field_group_admin_head()
-	*
-	*  This action is called in the admin_head action on the edit screen where your field is edited.
-	*  Use this action to add CSS and JavaScript to assist your render_field_options() action.
-	*
-	*  @type	action (admin_head)
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-
-	/*
-
-	function field_group_admin_head() {
-
-	}
-
-	*/
-
 
 	/*
 	*  load_value()
@@ -295,16 +110,11 @@ class saber_acf_field_new_post extends acf_field {
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	$value
 	*/
-
-	/*
-
 	function load_value( $value, $post_id, $field ) {
 
 		return $value;
 
 	}
-
-	*/
 
 
 	/*
@@ -321,61 +131,11 @@ class saber_acf_field_new_post extends acf_field {
 	*  @param	$field (array) the field array holding all the field options
 	*  @return	$value
 	*/
-
-	/*
-
 	function update_value( $value, $post_id, $field ) {
 
 		return $value;
 
 	}
-
-	*/
-
-
-	/*
-	*  format_value()
-	*
-	*  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value (mixed) the value which was loaded from the database
-	*  @param	$post_id (mixed) the $post_id from which the value was loaded
-	*  @param	$field (array) the field array holding all the field options
-	*
-	*  @return	$value (mixed) the modified value
-	*/
-
-	/*
-
-	function format_value( $value, $post_id, $field ) {
-
-		// bail early if no value
-		if( empty($value) ) {
-
-			return $value;
-
-		}
-
-
-		// apply setting
-		if( $field['font_size'] > 12 ) {
-
-			// format the value
-			// $value = 'something';
-
-		}
-
-
-		// return
-		return $value;
-	}
-
-	*/
-
 
 	/*
 	*  validate_value()
@@ -419,105 +179,6 @@ class saber_acf_field_new_post extends acf_field {
 	}
 
 	*/
-
-
-	/*
-	*  delete_value()
-	*
-	*  This action is fired after a value has been deleted from the db.
-	*  Please note that saving a blank value is treated as an update, not a delete
-	*
-	*  @type	action
-	*  @date	6/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	$post_id (mixed) the $post_id from which the value was deleted
-	*  @param	$key (string) the $meta_key which the value was deleted
-	*  @return	n/a
-	*/
-
-	/*
-
-	function delete_value( $post_id, $key ) {
-
-
-
-	}
-
-	*/
-
-
-	/*
-	*  load_field()
-	*
-	*  This filter is applied to the $field after it is loaded from the database
-	*
-	*  @type	filter
-	*  @date	23/01/2013
-	*  @since	3.6.0
-	*
-	*  @param	$field (array) the field array holding all the field options
-	*  @return	$field
-	*/
-
-	/*
-
-	function load_field( $field ) {
-
-		return $field;
-
-	}
-
-	*/
-
-
-	/*
-	*  update_field()
-	*
-	*  This filter is applied to the $field before it is saved to the database
-	*
-	*  @type	filter
-	*  @date	23/01/2013
-	*  @since	3.6.0
-	*
-	*  @param	$field (array) the field array holding all the field options
-	*  @return	$field
-	*/
-
-	/*
-
-	function update_field( $field ) {
-
-		return $field;
-
-	}
-
-	*/
-
-
-	/*
-	*  delete_field()
-	*
-	*  This action is fired after a field is deleted from the database
-	*
-	*  @type	action
-	*  @date	11/02/2014
-	*  @since	5.0.0
-	*
-	*  @param	$field (array) the field array holding all the field options
-	*  @return	n/a
-	*/
-
-	/*
-
-	function delete_field( $field ) {
-
-
-
-	}
-
-	*/
-
 
 }
 
