@@ -86,22 +86,7 @@ class Plugin {
     /* script calls */
     add_action('wp_enqueue_scripts', [$this, 'scripts']);
 
-    // process ajax hook
-		add_action( 'wp_ajax_saber_new_post_form', array( $this, 'jxFormProcess'));
-
   }
-
-  public function jxFormProcess() {
-
-		$response = array(
-      'message' => 'This response message will become vailable in the return in your JS ajax call'
-    );
-    print json_encode( $response );
-
-    // end ajax hook callbacks safely
-    wp_die();
-
-	}
 
   public function componentList() {
 

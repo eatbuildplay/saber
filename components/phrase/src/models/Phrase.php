@@ -11,6 +11,43 @@ class Phrase {
   public $audio;
   public $audioMiguel;
 
+  public function save() {
+
+    if( $this->id > 0 ) {
+      $this->update();
+    } else {
+      $this->id = $this->create();
+      if( !$this->id ) {
+        return false;
+      }
+    }
+
+    $this->permalink = get_permalink( $this->id );
+
+    update_field( 'phrase', $this->phrase, $this->id );
+    update_field( 'translation', $this->translation, $this->id );
+
+    // @TODO missing audio file updates here!
+
+  }
+
+  public function create() {
+
+    $params = [
+      'post_type'   => 'phrase',
+      'post_title'  => $this->title,
+      'post_status' => 'publish'
+    ];
+    $postId = wp_insert_post( $params );
+    $this->id = $postId;
+    return $postId;
+
+  }
+
+  public function update() {
+    // @TODO
+  }
+
   public static function load( $post ) {
 
     // enable passing id and loading post from id

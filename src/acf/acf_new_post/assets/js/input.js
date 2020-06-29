@@ -6,10 +6,7 @@
 		 * Open dialog button
 		 */
 		var $button = $('.acf-new-post-field button');
-		console.log($button)
 		$button.on('click', function(e) {
-
-			console.log("PREVENT#!!!!!")
 
 			e.preventDefault();
 	    $('#create-phrase-dialog').dialog('open');
@@ -63,10 +60,23 @@
 		    action: 'saber_new_post_form',
 				formData: $form.serialize()
 		  }
-		  $.post( ajaxurl, data, function( response ) {
+				$.post( ajaxurl, data, function( response ) {
 
-		     response = JSON.parse(response);
-		     console.log( response )
+					response = JSON.parse(response);
+
+					$('#create-phrase-dialog').dialog('close');
+					$('.acf-repeater .acf-actions .acf-button').click();
+
+					// create new option
+					var newOption = new Option(
+						response.phrase.title,
+						response.phrase.id,
+						false,
+						false
+					);
+
+					$s2 = $('.acf-repeater tr:not(".acf-clone") select:last');
+					$s2.append(newOption);
 
 		  });
 
@@ -74,9 +84,9 @@
 
 	}
 
-	acf.addAction('ready', function(){
+	// init field
+	acf.addAction('ready', function() {
     initialize_field();
-});
-
+	});
 
 })(jQuery);
