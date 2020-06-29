@@ -2,9 +2,7 @@
   <button>Add New Post</button>
 </div>
 
-<div id="my-dialog">
-
-  <h2>Create Phrase</h2>
+<div id="create-phrase-dialog">
 
   <div class="form-wrapper"></div>
 
@@ -12,9 +10,38 @@
 
     <form id="saber-form" method="post">
 
+      <div class="acf-label">
+        <label for="post_title">Title</label>
+      </div>
 
+      <div class="acf-input">
+        <div class="acf-input-wrap">
+          <input type="text" id="post_title" name="post_title">
+        </div>
+      </div>
 
-      <input type="submit" value="SEND!!" />
+      <div class="acf-label">
+        <label for="phrase">Phrase</label>
+      </div>
+
+      <div class="acf-input">
+        <div class="acf-input-wrap">
+          <input type="text" id="phrase" name="phrase">
+        </div>
+      </div>
+
+      <div class="acf-label">
+        <label for="translation">Translation</label>
+      </div>
+
+      <div class="acf-input">
+        <div class="acf-input-wrap">
+          <input type="text" id="translation" name="translation">
+        </div>
+      </div>
+
+      <input type="submit" value="Create Phrase" />
+
     </form>
 
   </template>

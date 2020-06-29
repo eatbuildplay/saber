@@ -12,7 +12,7 @@
 			console.log("PREVENT#!!!!!")
 
 			e.preventDefault();
-	    $('#my-dialog').dialog('open');
+	    $('#create-phrase-dialog').dialog('open');
 
 		});
 
@@ -20,8 +20,8 @@
 		 * Dialog init
 		 */
 		 // initalise the dialog
-	   $('#my-dialog').dialog({
-	     title: 'My Dialog',
+	   $('#create-phrase-dialog').dialog({
+	     title: 'Create Phrase',
 	     dialogClass: 'wp-dialog',
 	     autoOpen: false,
 	     draggable: false,
@@ -42,7 +42,7 @@
 	 			$('.form-wrapper').html( form.html() );
 
 	       $('.ui-widget-overlay').on('click', function() {
-	 				$('#my-dialog').dialog('close');
+	 				$('#create-phrase-dialog').dialog('close');
 	       })
 	     },
 	     create: function () {
