@@ -21,7 +21,9 @@
           return;
         }
 
-        if( usernameEl == '' || usernameEl.length < 6 ) {
+        console.log( usernameEl );
+
+        if( usernameEl.val() == '' || usernameEl.val().length < 6 ) {
           register.showValidationError(200);
           return;
         }
@@ -53,6 +55,21 @@
 
     },
 
+    showResponse: function( response ) {
+
+      if( response.status == 200 ) {
+        $msg = 'Your account is now open. Please verify your email address.';
+      } else {
+        $msg = 'Your account could not be created.';
+      }
+
+      // show message
+      $msgEl = $('.saber-register-messages');
+      $msgEl.html( $msg );
+      $msgEl.show();
+
+    },
+
     process: function( fieldData ) {
 
       data = {
@@ -62,14 +79,7 @@
       $.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
         response = JSON.parse( response );
-
-        console.log(response)
-
-        if ( response.status == 'success' ) {
-
-        } else {
-
-        }
+        register.showResponse( response );
 
       });
 
