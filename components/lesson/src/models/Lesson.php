@@ -8,7 +8,6 @@ class Lesson {
   public $title;
   public $course;
   public $displayOrder;
-  public $conversation;
   public $exam;
 
   public function load( $post ) {
@@ -24,7 +23,6 @@ class Lesson {
 
     $fields = get_fields($post->ID);
     $obj->course = \Saber\Course\Model\Course::load( $fields['course'] );
-    $obj->conversation = \Saber\Conversation\Model\Conversation::load( $fields['conversation'] );
     $obj->displayOrder = $fields['display_order'];
 
     if( isset( $fields['exam'] ) && $fields['exam'] > 0 ) {

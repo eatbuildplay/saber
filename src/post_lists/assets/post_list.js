@@ -17,7 +17,9 @@
     }
     $.post( window[saberLoaderKey].ajaxurl, data, function( response ) {
 
-      response = JSON.parse( response )
+      response = JSON.parse( response );
+
+
 
       if ( response.status == 'success' ) {
 
@@ -27,6 +29,14 @@
       } else {
 
       }
+
+
+      $( document ).trigger({
+        type: "saber_post_list_loaded",
+        loaderKey: window[saberLoaderKey],
+        response: response
+      });
+
     });
 
   }
