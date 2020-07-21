@@ -38,18 +38,24 @@ class CourseComponent {
 
   public function jxLessonSearch() {
 
-    $lesson1 = new \stdClass;
-    $lesson1->id = 743;
-    $lesson1->title = "What up dog?";
-    $lesson2 = new \stdClass;
-    $lesson2->id = 238;
-    $lesson2->title = "Fish or steak?";
-    $lessons = [
-      $lesson1,
-      $lesson2
-    ];
-
     $search = $_POST['search'];
+
+    // search for lessons
+    $args = [
+      's' => $search,
+      'post_type' => 'lesson'
+    ];
+    $lessonPosts = \get_posts( $args );
+
+    // form lesson array
+    $lessons = [];
+    foreach( $lessonPosts as $lessonPost ) {
+      $lesson = new \stdClass;
+      $lesson->id = $lessonPost->ID;
+      $lesson->title = $lessonPost->post_title;
+      $lessons[] = $lesson;
+    }
+
     $response = [
       'code'    => 200,
       'lessons' => $lessons,
