@@ -62,6 +62,9 @@
 
       });
 
+      /* setup sorting */
+      $( '.course-editor-timeline-grid' ).sortable();
+
 
     },
 

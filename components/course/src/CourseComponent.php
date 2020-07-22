@@ -95,7 +95,7 @@ class CourseComponent {
       wp_enqueue_script(
         'saber-course-editor-js',
         SABER_URL . 'components/course/assets/course-editor.js',
-        array( 'jquery' ),
+        array( 'jquery', 'jquery-ui-droppable' ),
         '1.0.0',
         true
       );
