@@ -104,10 +104,7 @@ class Plugin {
       'question_bank',
       'question_answer',
       'course',
-      'lesson',
-      'word',
-      'phrase',
-      'conversation'
+      'lesson'
     ];
 
     if( in_array($current_screen->post_type, $cpts)) {
@@ -144,30 +141,6 @@ class Plugin {
       'Lessons',
       'edit_posts',
       'edit.php?post_type=lesson'
-    );
-
-    \add_submenu_page(
-      'saber-dashboard',
-      'Conversations',
-      'Conversations',
-      'edit_posts',
-      'edit.php?post_type=conversation'
-    );
-
-    \add_submenu_page(
-      'saber-dashboard',
-      'Phrases',
-      'Phrases',
-      'edit_posts',
-      'edit.php?post_type=phrase'
-    );
-
-    \add_submenu_page(
-      'saber-dashboard',
-      'Words',
-      'Words',
-      'edit_posts',
-      'edit.php?post_type=word'
     );
 
     \add_submenu_page(

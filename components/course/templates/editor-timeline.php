@@ -23,30 +23,17 @@
 
 
 <div class="course-editor-timeline">
-
-  <div class="course-editor-timeline-grid">
-    <div class="course-editor-timeline-item">
-      <h4>Lesson 0928323</h4>
-    </div>
-    <div class="course-editor-timeline-item">
-      <h4>Lesson 45345345</h4>
-    </div>
-    <div class="course-editor-timeline-item">
-      <h4>Lesson Fish</h4>
-    </div>
-    <div class="course-editor-timeline-item course-editor-timeline-item-exam">
-      <h4>Lesson Cat</h4>
-    </div>
-    <div class="course-editor-timeline-item">
-      <h4>Lesson Sandwich</h4>
-    </div>
-    <div class="course-editor-timeline-item">
-      <h4>Exam Fish Cat</h4>
-    </div>
-  </div>
-
+  <div class="course-editor-timeline-grid"></div>
 </div>
 
-<textarea id="ceEditorData" name="ceEditorData">
+<?php
 
+global $post;
+$key = 'saber_course_timeline_data';
+$value = get_post_meta( $post->ID, $key, true );
+
+?>
+
+<textarea id="ceEditorData" name="ceEditorData">
+  <?php print $value; ?>
 </textarea>
