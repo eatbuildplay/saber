@@ -8,15 +8,24 @@
 
     init: function() {
 
+      /* init load */
+      var dataJson = $('#ceEditorData').val();
+      courseEditor.data = JSON.parse( dataJson );
+
+      /* menu handlers */
+      courseEditor.menuClear();
+      courseEditor.lessonSetup();
+      courseEditor.examSetup();
+
+      /*
+      courseEditor.data.timeline.forEach( function( data ) {
+        courseEditor.insertTimeline( data );
+      });
+        // replaced by PHP output
+      */
+
       $('.course-editor-menu button').on('click', function(e) {
         e.preventDefault();
-      });
-
-      $('#ceLessonAddButton').on('click', function() {
-
-        $('.course-editor-lesson-search').show();
-        $(this).addClass('active');
-
       });
 
       /* Run lesson search */
@@ -141,6 +150,40 @@
       });
 
       return isDuplicate;
+
+    },
+
+    menuClear: function() {
+
+      $('.course-editor-lesson-search').hide();
+      $('#ceLessonAddButton').removeClass('active');
+
+      $('.course-editor-exam-search').hide();
+      $('#ceExamAddButton').removeClass('active');
+
+    },
+
+    examSetup: function() {
+
+      $('#ceExamAddButton').on('click', function() {
+
+        courseEditor.menuClear();
+        $('.course-editor-exam-search').show();
+        $(this).addClass('active');
+
+      });
+
+    },
+
+    lessonSetup: function() {
+
+      $('#ceLessonAddButton').on('click', function() {
+
+        courseEditor.menuClear();
+        $('.course-editor-lesson-search').show();
+        $(this).addClass('active');
+
+      });
 
     },
 

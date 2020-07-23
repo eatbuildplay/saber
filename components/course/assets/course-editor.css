@@ -76,15 +76,18 @@
   background: #2E6514;
 }
 
-#lessonSearchBox {
+/*
+ * Search forms
+ */
+.course-editor-add-forms .ce-search-box {
   padding: 7px 20px;
   font-size: 1.3em;
   width: 320px;
   vertical-align: top;
 }
 
-/* Search button */
-#ceLessonSearchButton {
+/* search button */
+.course-editor-add-forms .ce-search-button {
   padding: 12px 20px;
   font-size: 1.3em;
   cursor: pointer;

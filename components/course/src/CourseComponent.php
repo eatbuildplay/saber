@@ -128,13 +128,16 @@ class CourseComponent {
 
   public function metaboxCb( $post ) {
 
+    $course = \Saber\Course\Model\Course::Load( $post );
     $template = new \Saber\Template();
     $template->path = 'components/course/templates/';
 
     $content = '';
 
     $template->name = 'editor-timeline';
-    $template->data = [];
+    $template->data = [
+      'course' => $course
+    ];
     $content .= $template->get();
 
     print $content;

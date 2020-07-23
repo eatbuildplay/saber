@@ -6,6 +6,7 @@ class Course {
 
   public $id;
   public $title;
+  public $data; // json loading data
   public $permalink;
   public $displayOrder;
   public $level;
@@ -24,11 +25,25 @@ class Course {
     $obj->title = $post->post_title;
     $obj->permalink = get_permalink( $post );
 
+    // acf field data
     $fields = get_fields($post);
     $obj->displayOrder = $fields['display_order'];
     $obj->intro = $fields['intro'];
     $obj->courseAccess = $fields['course_access'];
     $obj->level = $fields['level'];
+
+    // course editor data
+    $key = 'saber_course_timeline_data';
+    $obj->data = get_post_meta( $post->ID, $key, true );
+
+    // form timeline objects
+    $obj->timeline = [];
+    $data = json_decode( $obj->data );
+    foreach( $data->timeline as $item ) {
+      if( $item->type == 'lesson' ) {
+        $obj->timeline[] = \Saber\Lesson\Model\Lesson::load( $item->id );
+      }
+    }
 
     return $obj;
 
