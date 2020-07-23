@@ -1,3 +1,13 @@
+<?php
+
+/*
+print '<pre>';
+var_dump( $course );
+print '</pre>';
+*/
+
+?>
+
 <div class="course-editor-menu">
 
   <div class="course-editor-menu-add">
@@ -40,9 +50,22 @@
 
     <?php
       if( count($course->timeline) > 0):
-        foreach( $course->timeline as $item ) : ?>
+        foreach( $course->timeline as $item ) :
 
-        <div class="course-editor-timeline-item"
+          if (is_a( $item, 'Saber\Lesson\Model\Lesson')) {
+            $type = 'lesson';
+          }
+
+          if (is_a( $item, 'Saber\Exam\Model\Exam')) {
+            $type = 'exam';
+          }
+
+          // setup classes
+          $classes = 'course-editor-timeline-item course-editor-timeline-item-' . $type;
+
+    ?>
+
+        <div class="<?php print $classes; ?>"
           data-id="<?php print $item->id ?>"
           data-type="lesson"><h4><?php print $item->title ?></h4>
           <span class="dashicons dashicons-trash"></span>

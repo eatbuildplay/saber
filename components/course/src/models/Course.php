@@ -7,6 +7,7 @@ class Course {
   public $id;
   public $title;
   public $data; // json loading data
+  public $timeline; // timeline objects
   public $permalink;
   public $displayOrder;
   public $level;
@@ -42,6 +43,9 @@ class Course {
     foreach( $data->timeline as $item ) {
       if( $item->type == 'lesson' ) {
         $obj->timeline[] = \Saber\Lesson\Model\Lesson::load( $item->id );
+      }
+      if( $item->type == 'exam' ) {
+        $obj->timeline[] = \Saber\Exam\Model\Exam::load( $item->id );
       }
     }
 
