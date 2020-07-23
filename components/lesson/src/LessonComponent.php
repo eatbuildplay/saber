@@ -18,7 +18,6 @@ class LessonComponent {
     new LessonPostList();
 
     add_action('init', [$this, 'registerPostTypes']);
-    add_action('init', [$this, 'registerFields']);
 
     add_action('wp_enqueue_scripts', [$this, 'addScripts']);
 
@@ -74,10 +73,6 @@ class LessonComponent {
     $pt = new LessonPostType();
     $pt->register();
 
-  }
-
-  public function registerFields() {
-    require_once( SABER_PATH . 'components/lesson/assets/fields/fields.php' );
   }
 
   public function addScripts() {
