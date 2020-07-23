@@ -97,7 +97,7 @@
 
       /* setup sorting */
       $( '.course-editor-timeline-grid' ).sortable({
-        over: function( event, ui ) {
+        stop: function( event, ui ) {
           courseEditor.sortingHandler();
         }
       });
@@ -107,6 +107,15 @@
         e.preventDefault();
         $('#ceLessonSearchResults').html('');
         $('#lessonSearchBox').val('');
+      });
+
+      /* trash item */
+      $(document).on('click', '.course-editor-timeline-item .dashicons-trash', function() {
+        console.log('trashican...')
+
+        $(this).parent().remove();
+        courseEditor.sortingHandler();
+
       });
 
     },
@@ -140,6 +149,7 @@
 
       var timelineItem = '<div class="course-editor-timeline-item" data-id="' + data.id + '" data-type="lesson">';
       timelineItem += data.title;
+      timelineItem += '<span class="dashicons dashicons-trash"></span>';
       timelineItem += '</div>';
 
       var timelineGrid = $('.course-editor-timeline-grid');
