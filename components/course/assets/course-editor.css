@@ -6,13 +6,20 @@
 
 .course-editor-menu-add button {
   background: #D4D4D4;
-  font-size: 1.5em;
+  font-size: 1.4em;
   padding: 20px 40px;
   cursor: pointer;
   border: #C9C9C9;
 }
 .course-editor-menu-add button:hover {
   background: #D9D9D9;
+}
+.course-editor-menu-add button:focus {
+  outline: none;
+}
+.course-editor-menu-add button.active {
+  background: #476339;
+  color: #FFF;
 }
 
 .course-editor-lesson-search,
@@ -22,8 +29,16 @@
 
 .clickable-option {
   cursor: pointer;
+  background: #F4F4F4;
+  padding: 12px 20px;
+  margin: 6px 0;
 }
 
+.course-editor-timeline {
+  border-top: solid 3px #D8D8D8;
+  margin: 40px 0 0 0;
+  padding: 25px 0;
+}
 .course-editor-timeline-grid {
   display: grid;
   grid-gap: 5px;
@@ -32,5 +47,26 @@
 
 .course-editor-timeline-item {
   background: #D9D9D9;
+  cursor: pointer;
+  padding: 15px 20px;
+  background: #1D536D;
+  color: #FFF;
+}
 
+.course-editor-timeline-item.course-editor-timeline-item-exam {
+  background: #2E6514;
+}
+
+#lessonSearchBox {
+  padding: 7px 20px;
+  font-size: 1.3em;
+  width: 320px;
+  vertical-align: top;
+}
+
+/* Search button */
+#ceLessonSearchButton {
+  padding: 12px 20px;
+  font-size: 1.3em;
+  cursor: pointer;
 }
