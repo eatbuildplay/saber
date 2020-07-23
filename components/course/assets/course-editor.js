@@ -28,58 +28,21 @@
         e.preventDefault();
       });
 
-      /* Run lesson search */
+      /* lesson search handler */
       $('#ceLessonSearchButton').on('click', function() {
+        courseEditor.searchLessons();
+      });
 
-        console.log('run lesson search...')
-
-        // post to lesson search function
-        data = {
-          action: 'saber_course_editor_lesson_search',
-          search: $('#lessonSearchBox').val(),
-        }
-        $.post(
-          ajaxurl,
-          data,
-          function( response ) {
-
-            $('#ceLessonSearchResults').html('');
-
-            response = JSON.parse(response);
-            console.log( response );
-
-            if( response.lessons.length == 0 ) {
-              courseEditor.emptySearchHandler();
-              return;
-            }
-
-            response.lessons.forEach( function( lesson ) {
-
-              console.log( lesson )
-
-              var clickableOption = '<div class="clickable-option" data-id="' + lesson.id + '">';
-              clickableOption += '<h4>' + lesson.title + '</h4>';
-              clickableOption += '</div>';
-
-              $('#ceLessonSearchResults').append( clickableOption );
-
-            });
-
-            var clearButton = '<button class="ce-search-clear">';
-            clearButton += 'Clear';
-            clearButton += '</button>';
-            $('#ceLessonSearchResults').append( clearButton );
-
-          }
-        );
-
+      /* exam search handler */
+      $('#ceExamSearchButton').on('click', function() {
+        courseEditor.searchExams();
       });
 
       /* Click on option returned from search */
       $(document).on('click', '.clickable-option', function() {
 
         var data = {};
-        data.type = 'lesson';
+        data.type = $(this).data('type');
         data.id = $(this).data('id');
         data.title = $(this).html();
 
@@ -95,7 +58,7 @@
 
         // update the data
         var timelineItem = {
-          type: 'lesson',
+          type: data.type,
           id: data.id
         };
         courseEditor.data.timeline.push( timelineItem );
@@ -129,11 +92,18 @@
 
     },
 
-    emptySearchHandler: function() {
+    emptySearchHandlerLessons: function() {
       var msg = '<div class="course-editor-empty-search">';
       msg +=    'No results found, please try a different search term.';
       msg +=    '</div>';
       $('#ceLessonSearchResults').append( msg );
+    },
+
+    emptySearchHandlerExams: function() {
+      var msg = '<div class="course-editor-empty-search">';
+      msg +=    'No exams found, please try a different search term.';
+      msg +=    '</div>';
+      $('#ceExamSearchResults').append( msg );
     },
 
     /* Duplicate check */
@@ -190,7 +160,11 @@
     /* Insert item to timeline */
     insertTimeline: function( data ) {
 
-      var timelineItem = '<div class="course-editor-timeline-item" data-id="' + data.id + '" data-type="lesson">';
+      if( data.type == 'exam' ) {
+        var timelineItem = '<div class="course-editor-timeline-item course-editor-timeline-item-exam" data-id="' + data.id + '" data-type="lesson">';
+      } else {
+        var timelineItem = '<div class="course-editor-timeline-item" data-id="' + data.id + '" data-type="lesson">';
+      }
       timelineItem += data.title;
       timelineItem += '<span class="dashicons dashicons-trash"></span>';
       timelineItem += '</div>';
@@ -222,6 +196,85 @@
       });
 
       $('#ceEditorData').val( JSON.stringify(courseEditor.data));
+
+    },
+
+    searchLessons: function() {
+
+      data = {
+        action: 'saber_course_editor_lesson_search',
+        search: $('#lessonSearchBox').val(),
+      }
+      $.post(
+        ajaxurl,
+        data,
+        function( response ) {
+
+          $('#ceLessonSearchResults').html('');
+          response = JSON.parse(response);
+
+          if( response.lessons.length == 0 ) {
+            courseEditor.emptySearchHandlerLessons();
+            return;
+          }
+
+          response.lessons.forEach( function( lesson ) {
+
+            var clickableOption = '<div class="clickable-option" data-id="' + lesson.id + '" data-type="lesson">';
+            clickableOption += '<h4>' + lesson.title + '</h4>';
+            clickableOption += '</div>';
+
+            $('#ceLessonSearchResults').append( clickableOption );
+
+          });
+
+          var clearButton = '<button class="ce-search-clear">';
+          clearButton += 'Clear';
+          clearButton += '</button>';
+          $('#ceLessonSearchResults').append( clearButton );
+
+        }
+      );
+
+    },
+
+    searchExams: function() {
+
+      data = {
+        action: 'saber_course_editor_exam_search',
+        search: $('#examSearchBox').val(),
+      }
+      $.post(
+        ajaxurl,
+        data,
+        function( response ) {
+
+          $('#ceExamSearchResults').html('');
+          response = JSON.parse(response);
+
+          if( response.exams.length == 0 ) {
+            console.log('empty!!')
+            courseEditor.emptySearchHandlerExams();
+            return;
+          }
+
+          response.exams.forEach( function( exam ) {
+
+            var clickableOption = '<div class="clickable-option" data-id="' + exam.id + '" data-type="exam">';
+            clickableOption += '<h4>' + exam.title + '</h4>';
+            clickableOption += '</div>';
+
+            $('#ceExamSearchResults').append( clickableOption );
+
+          });
+
+          var clearButton = '<button class="ce-search-clear">';
+          clearButton += 'Clear';
+          clearButton += '</button>';
+          $('#ceExamSearchResults').append( clearButton );
+
+        }
+      );
 
     }
 

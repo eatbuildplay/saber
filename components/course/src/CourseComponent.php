@@ -35,6 +35,8 @@ class CourseComponent {
 
     /* search ajax hook */
     add_action( 'wp_ajax_saber_course_editor_lesson_search', array( $this, 'jxLessonSearch'));
+    add_action( 'wp_ajax_saber_course_editor_exam_search', array( $this, 'jxExamSearch'));
+
 
   }
 
@@ -82,6 +84,36 @@ class CourseComponent {
     $response = [
       'code'    => 200,
       'lessons' => $lessons,
+      'search' => $search
+    ];
+    print json_encode( $response );
+    wp_die();
+
+  }
+
+  public function jxExamSearch() {
+
+    $search = $_POST['search'];
+
+    // search for lessons
+    $args = [
+      's' => $search,
+      'post_type' => 'exam'
+    ];
+    $posts = \get_posts( $args );
+
+    // form lesson array
+    $exams = [];
+    foreach( $posts as $post ) {
+      $exam = new \stdClass;
+      $exam->id = $post->ID;
+      $exam->title = $post->post_title;
+      $exams[] = $exam;
+    }
+
+    $response = [
+      'code'    => 200,
+      'exams' => $exams,
       'search' => $search
     ];
     print json_encode( $response );

@@ -27,6 +27,7 @@
         class="ce-search-box"
       />
       <button class="ce-search-button" id="ceExamSearchButton">Search</button>
+      <div id="ceExamSearchResults"></div>
     </div>
 
   </div>
