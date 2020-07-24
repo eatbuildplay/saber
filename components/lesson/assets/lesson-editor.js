@@ -1,16 +1,22 @@
 (function($) {
 
+	var LessonEditor = {
+
+	}
+
 	$(document).on( 'click', '.saber-uploader', function(e) {
 
 		e.preventDefault();
 
 		var button = $(this);
     var lessonVideoInput = $('#lessonVideo');
+
+		// see https://core.trac.wordpress.org/browser/tags/5.4.2/src/js/_enqueues/wp/media/models.js#L0
 		var uploader = wp.media({
 			title: 'Add Video',
 			library : {
 				// uploadedTo : wp.media.view.settings.post.id, // attach to the current post?
-				type : 'image'
+				// type : 'image'
 			},
 			button: {
 				text: '+ Add Video' // button label text

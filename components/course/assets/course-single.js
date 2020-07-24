@@ -2,6 +2,13 @@
 
   var CourseSingle = {
 
+    player: videojs('videoPlayer', {
+      controls: 1,
+      autoplay: 0,
+      preload: 'auto',
+      fluid: 1
+    }),
+
     init: function() {
 
       $('.course-menu-section-list li').on('click', function() {
@@ -27,9 +34,18 @@
 
       console.log( saberCourse );
 
-      var content = 'CONTENT!! ---- ';
-      content += id;
-      $('#lesson-canvas').html( content );
+      var videoUrl = saberCourse.course.timeline[0].video.url;
+
+      console.log( videoUrl );
+
+      CourseSingle.player.src({
+        type: 'video/mp4',
+        src: videoUrl
+      });
+
+      //var content = 'CONTENT!! ---- ';
+      //content += id;
+      //$('#lesson-canvas').html( content );
 
     }
 

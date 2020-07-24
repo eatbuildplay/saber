@@ -229,6 +229,14 @@ class CourseComponent {
       'all'
     );
 
+    wp_enqueue_style(
+      'saber-video-js',
+      'https://vjs.zencdn.net/7.8.3/video-js.css',
+      array(),
+      '1.0.0',
+      'all'
+    );
+
     wp_enqueue_script(
       'saber-course-js',
       SABER_URL . 'components/course/assets/course.js',
@@ -237,20 +245,19 @@ class CourseComponent {
       true
     );
 
+    // video.js
     wp_enqueue_script(
-      'saber-course-single',
-      SABER_URL . 'components/course/assets/course-single.js',
+      'saber-videojs',
+      'https://vjs.zencdn.net/7.8.3/video.js',
       array( 'jquery' ),
       '1.0.0',
       true
     );
 
-    // include video.js scripts
-
     wp_enqueue_script(
-      'saber-videojs',
-      'https://vjs.zencdn.net/7.8.3/video.js',
-      array( 'jquery' ),
+      'saber-course-single',
+      SABER_URL . 'components/course/assets/course-single.js',
+      array( 'jquery', 'saber-videojs' ),
       '1.0.0',
       true
     );

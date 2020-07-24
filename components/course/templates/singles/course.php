@@ -1,24 +1,4 @@
-<link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
-
-
-<?php
-
-/**
- *
- * Course single default template
- *
- *
- */
-
-get_header();
-
-/*
-print '<pre>';
-var_dump( $GLOBALS['course'] );
-print '</pre>';
-*/
-
-?>
+<?php get_header(); ?>
 
 <div class="course-page-wrap">
 
@@ -43,15 +23,8 @@ print '</pre>';
         <a href="">Share</a>
 
       </div>
-
     </div>
-
-
-
-
-
   </div><!-- / .course-header -->
-
 
   <!-- Course Body -->
   <div class="course-body">
@@ -90,7 +63,6 @@ print '</pre>';
             </ul>
 
           </li><!-- / .course-menu-section -->
-
         </ul><!-- / .course-menu-list -->
 
       </div>
@@ -102,25 +74,12 @@ print '</pre>';
       <div id="lesson-canvas">
 
         <!-- Video Player -->
-        <video
-          id="my-video"
-          class="video-js"
-          controls
-          preload="auto"
-          width="800"
-          height="320"
-          poster="https://eatbuildplay.com/wp-content/uploads/2020/07/architect-on-construction-site.jpg"
-          data-setup="{}"
-        >
-          <source src="https://eatbuildplay.com/wp-content/uploads/2020/07/video1.mp4" type="video/mp4" />
-          <p class="vjs-no-js">
-            To view this video please enable JavaScript, and consider upgrading to a
-            web browser that
-            <a href="https://videojs.com/html5-video-support/" target="_blank"
-              >supports HTML5 video</a
-            >
-          </p>
-        </video><!-- ./ video player -->
+        <div data-vjs-player>
+          <video id="videoPlayer" class="video-js">
+            <source src="//vjs.zencdn.net/v/oceans.mp4">
+          </video>
+        </div>
+        <!-- ./ video player -->
 
         <!-- Lesson Tabs -->
         <div id="lesson-tabs">

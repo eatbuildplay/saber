@@ -8,7 +8,7 @@ if( $image = wp_get_attachment_image_src( $videoId ) ) {
 
 	echo '<a href="#" class="saber-uploader"><img src="' . $image[0] . '" /></a>
 	      <a href="#" class="saber-uploader-remove">Remove Video</a>
-	      <input type="hidden" name="lesson-video" value="' . $image_id . '">';
+	      <input type="hidden" id="lessonVideo" name="lessonVideo" value="' . $image_id . '">';
 
 } else {
 
