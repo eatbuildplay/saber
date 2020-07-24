@@ -25,6 +25,8 @@
 
     updateLesson: function( id ) {
 
+      console.log( saberCourse );
+
       var content = 'CONTENT!! ---- ';
       content += id;
       $('#lesson-canvas').html( content );

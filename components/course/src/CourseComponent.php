@@ -59,9 +59,12 @@ class CourseComponent {
 
     global $post;
 
-    if ( is_object($post) && $post->post_type == 'course' ) {
-      $GLOBALS['course'] = Model\Course::load( $post );
+    if ( !is_object($post) || $post->post_type != 'course' ) {
+      return;
     }
+
+    $course = Model\Course::load( $post );
+    $GLOBALS['course'] = $course;
 
   }
 
@@ -246,6 +249,17 @@ class CourseComponent {
       '1.0.0',
       true
     );
+
+    // localize course
+    if( isset( $GLOBALS['course'] )) {
+      wp_localize_script(
+        'saber-course-js',
+        'saberCourse',
+        [
+          'course' => $GLOBALS['course']
+        ]
+      );
+    }
 
   }
 

@@ -6,7 +6,8 @@ class Lesson {
 
   public $id;
   public $title;
-  public $displayOrder;
+  public $permalink;
+  public $video;
 
   public function load( $post ) {
 
@@ -19,8 +20,7 @@ class Lesson {
     $obj->title = $post->post_title;
     $obj->permalink = get_permalink( $post->ID );
 
-    $fields = get_fields($post->ID);
-    $obj->displayOrder = $fields['display_order'];
+    $obj->video = get_post_meta( $obj->id, 'saber_lesson_video', 1 );
 
     return $obj;
 
