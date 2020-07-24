@@ -102,24 +102,24 @@ print '</pre>';
 
       <!-- Video Player -->
       <video
-    id="my-video"
-    class="video-js"
-    controls
-    preload="auto"
-    width="640"
-    height="264"
-    poster="https://eatbuildplay.com/wp-content/uploads/2020/07/architect-on-construction-site.jpg"
-    data-setup="{}"
-  >
-    <source src="https://eatbuildplay.com/wp-content/uploads/2020/07/video1.mp4" type="video/mp4" />
-    <p class="vjs-no-js">
-      To view this video please enable JavaScript, and consider upgrading to a
-      web browser that
-      <a href="https://videojs.com/html5-video-support/" target="_blank"
-        >supports HTML5 video</a
+        id="my-video"
+        class="video-js"
+        controls
+        preload="auto"
+        width="640"
+        height="264"
+        poster="https://eatbuildplay.com/wp-content/uploads/2020/07/architect-on-construction-site.jpg"
+        data-setup="{}"
       >
-    </p>
-  </video>
+        <source src="https://eatbuildplay.com/wp-content/uploads/2020/07/video1.mp4" type="video/mp4" />
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a
+          web browser that
+          <a href="https://videojs.com/html5-video-support/" target="_blank"
+            >supports HTML5 video</a
+          >
+        </p>
+      </video>
 
 
     </div><!-- / .course-body-right -->
