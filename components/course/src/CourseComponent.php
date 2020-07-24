@@ -37,6 +37,18 @@ class CourseComponent {
     add_action( 'wp_ajax_saber_course_editor_lesson_search', array( $this, 'jxLessonSearch'));
     add_action( 'wp_ajax_saber_course_editor_exam_search', array( $this, 'jxExamSearch'));
 
+    /* load $course for single templates */
+    add_action('wp', [$this, 'setGlobals']);
+
+  }
+
+  public function setGlobals() {
+
+    global $post;
+
+    if ( is_object($post) && $post->post_type == 'course' ) {
+      $GLOBALS['course'] = Model\Course::load( $post );
+    }
 
   }
 
@@ -198,9 +210,25 @@ class CourseComponent {
       'all'
     );
 
+    wp_enqueue_style(
+      'saber-course-single',
+      SABER_URL . 'components/course/assets/course-single.css',
+      array(),
+      '1.0.0',
+      'all'
+    );
+
     wp_enqueue_script(
       'saber-course-js',
       SABER_URL . 'components/course/assets/course.js',
+      array( 'jquery' ),
+      '1.0.0',
+      true
+    );
+
+    wp_enqueue_script(
+      'saber-course-single',
+      SABER_URL . 'components/course/assets/course-single.js',
       array( 'jquery' ),
       '1.0.0',
       true
