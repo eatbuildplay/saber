@@ -28,6 +28,24 @@
 
       //course-menu-expand
 
+
+      // init tabs
+      CourseSingle.initTabs();
+
+    },
+
+    initTabs: function() {
+
+      $( '#lesson-tabs header a' ).on('click', function(e) {
+        e.preventDefault();
+        $( '#lesson-tabs li.lesson-tabs-tab' ).hide();
+        $( '#lesson-tabs header a' ).removeClass('active')
+        $(this).addClass('active');
+
+        var target = $(this).data('target');
+        $('#' + target).show();
+      });
+
     },
 
     updateLesson: function( id ) {
