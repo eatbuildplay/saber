@@ -5,7 +5,12 @@
     init: function() {
 
       $('.course-menu-section-list li').on('click', function() {
-        console.log('CLICK LESSON...');
+
+        var item = $(this);
+        var id = item.data('id');
+
+        CourseSingle.updateLesson( id );
+
       })
 
       // course menu controls
@@ -15,6 +20,14 @@
       });
 
       //course-menu-expand
+
+    },
+
+    updateLesson: function( id ) {
+
+      var content = 'CONTENT!! ---- ';
+      content += id;
+      $('#lesson-canvas').html( content );
 
     }
 

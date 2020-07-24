@@ -79,7 +79,9 @@ print '</pre>';
             <ul class="course-menu-section-list">
 
               <?php foreach( $course->timeline as $timelineItem ): ?>
-                <li>
+                <li
+                  data-id="<?php print $timelineItem->id; ?>"
+                  >
                   <h3><?php print $timelineItem->title; ?></h3>
                   <h5>5 minutes</h5>
                 </li>
@@ -96,6 +98,8 @@ print '</pre>';
     </div><!-- / .course-body-left -->
 
     <div class="course-body-right">
+
+      <div id="lesson-canvas"></div>
 
 
       <!-- Video Player -->
