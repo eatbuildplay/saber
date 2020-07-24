@@ -37,8 +37,21 @@ class CourseComponent {
     add_action( 'wp_ajax_saber_course_editor_lesson_search', array( $this, 'jxLessonSearch'));
     add_action( 'wp_ajax_saber_course_editor_exam_search', array( $this, 'jxExamSearch'));
 
-    /* load $course for single templates */
+    /* single templates */
     add_action('wp', [$this, 'setGlobals']);
+    add_filter('single_template', [$this, 'singlePageTemplates'] );
+
+  }
+
+  public function singlePageTemplates( $single ) {
+
+    global $post;
+
+    if ( $post->post_type == 'course' ) {
+      return SABER_PATH . 'components/course/templates/singles/course.php';
+    }
+
+    return $single;
 
   }
 
