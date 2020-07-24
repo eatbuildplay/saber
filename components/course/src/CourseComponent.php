@@ -18,7 +18,6 @@ class CourseComponent {
     new CourseSingleHeaderShortcode();
 
     add_action('init', [$this, 'registerPostTypes']);
-    add_action('init', [$this, 'registerFields']);
 
     /* script calls */
     add_action('wp_enqueue_scripts', [$this, 'scripts']);
@@ -210,10 +209,6 @@ class CourseComponent {
     $pt = new CoursePostType();
     $pt->register();
 
-  }
-
-  public function registerFields() {
-    require_once( SABER_PATH . 'components/course/assets/fields/fields.php' );
   }
 
   public function scripts() {
