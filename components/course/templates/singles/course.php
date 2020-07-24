@@ -99,30 +99,48 @@ print '</pre>';
 
     <div class="course-body-right">
 
-      <div id="lesson-canvas"></div>
+      <div id="lesson-canvas">
 
+        <!-- Video Player -->
+        <video
+          id="my-video"
+          class="video-js"
+          controls
+          preload="auto"
+          width="800"
+          height="320"
+          poster="https://eatbuildplay.com/wp-content/uploads/2020/07/architect-on-construction-site.jpg"
+          data-setup="{}"
+        >
+          <source src="https://eatbuildplay.com/wp-content/uploads/2020/07/video1.mp4" type="video/mp4" />
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a
+            web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank"
+              >supports HTML5 video</a
+            >
+          </p>
+        </video><!-- ./ video player -->
 
-      <!-- Video Player -->
-      <video
-        id="my-video"
-        class="video-js"
-        controls
-        preload="auto"
-        width="640"
-        height="264"
-        poster="https://eatbuildplay.com/wp-content/uploads/2020/07/architect-on-construction-site.jpg"
-        data-setup="{}"
-      >
-        <source src="https://eatbuildplay.com/wp-content/uploads/2020/07/video1.mp4" type="video/mp4" />
-        <p class="vjs-no-js">
-          To view this video please enable JavaScript, and consider upgrading to a
-          web browser that
-          <a href="https://videojs.com/html5-video-support/" target="_blank"
-            >supports HTML5 video</a
-          >
-        </p>
-      </video>
+        <!-- Lesson Tabs -->
+        <div id="lesson-tabs">
 
+          <header>
+            <a href="#">About this Lesson</a>
+            <a href="#">Resources</a>
+          </header>
+
+          <ul>
+            <li>
+
+              <h4>Lesson overview</h4>
+
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
 
     </div><!-- / .course-body-right -->
 
@@ -130,30 +148,4 @@ print '</pre>';
 
 </div><!-- / .course-page-wrap -->
 
-
-<?php
-
-function saberRenderCatalogUrl() {
-  print 'https://eatbuildplay.com/courses/';
-}
-
-function saberRenderCourseTitle() {
-  print "Mastering Three.js";
-  // print $course->title;
-}
-
-function hasStudyGuide() {
-  return 1;
-}
-
-function saberRenderStudyGuideUrl() {
-  print 'https://eatbuildplay.com/courses/';
-}
-
-?>
-
-<script src="https://vjs.zencdn.net/7.8.3/video.js"></script>
-
-<?php
-
-get_footer();
+<?php get_footer();

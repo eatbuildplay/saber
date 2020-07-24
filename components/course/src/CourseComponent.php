@@ -245,6 +245,16 @@ class CourseComponent {
       true
     );
 
+    // include video.js scripts
+
+    wp_enqueue_script(
+      'saber-videojs',
+      'https://vjs.zencdn.net/7.8.3/video.js',
+      array( 'jquery' ),
+      '1.0.0',
+      true
+    );
+
     // localize course
     if( isset( $GLOBALS['course'] )) {
       wp_localize_script(
