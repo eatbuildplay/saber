@@ -22,8 +22,6 @@ print '</pre>';
 
 <div class="course-page-wrap">
 
-  GET GET IT FROM SABER PL!
-
   <!-- Header -->
   <div class="course-header">
 
