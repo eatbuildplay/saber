@@ -27,7 +27,7 @@ print '</pre>';
 
     <div class="course-header-left">
 
-      <a href="<?php print $course->permalink; ?>"><i class="fa fa-chevron-left" aria-hidden="true"></i> View Catalog</a>
+      <a class="catalog-return" href="<?php print $course->permalink; ?>"><i class="fa fa-chevron-left" aria-hidden="true"></i> View Catalog</a>
 
       <div class="course-title">
         <h1><?php print $course->title; ?></h1>

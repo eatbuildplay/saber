@@ -9,10 +9,6 @@ class Course {
   public $data; // json loading data
   public $timeline; // timeline objects
   public $permalink;
-  public $displayOrder;
-  public $level;
-  public $intro;
-  public $courseAccess = false;
 
   public static function load( $post ) {
 
@@ -25,13 +21,6 @@ class Course {
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
     $obj->permalink = get_permalink( $post );
-
-    // acf field data
-    $fields = get_fields($post);
-    $obj->displayOrder = $fields['display_order'];
-    $obj->intro = $fields['intro'];
-    $obj->courseAccess = $fields['course_access'];
-    $obj->level = $fields['level'];
 
     // course editor data
     $key = 'saber_course_timeline_data';

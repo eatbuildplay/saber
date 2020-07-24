@@ -13,71 +13,98 @@
 .course-title h1 {
   font-size: 1.7em;
   font-weight: 500;
-  margin: 0 0 0.5em 0;
+  margin: 0.4em 0 0.8em 0;
 }
-  .course-page-wrap {
-    max-width: 1200px;
-    margin: 40px auto;
-  }
+.course-page-wrap {
+  max-width: 1200px;
+  margin: 40px auto;
+}
 
-  .course-body {
-    display: grid;
-    grid-template-columns: 2fr 4fr;
-  }
+.course-body {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+}
 
-  /* Course Body */
-  .course-body-left {
-    padding: 20px 50px 20px 0;
-  }
-  .course-body-right {
+/* Course Body */
+.course-body-left {
+  padding: 20px 50px 20px 0;
+}
+.course-body-right {
 
-  }
+}
 
 
-  /* Course Menu */
-  .course-menu {
-    background: #F1F1F1;
-  }
-  .course-menu-section {
-    border-bottom: solid 1px #F2F2F2;
-    background: #D8D8D8;
-    cursor: pointer;
-  }
-  .course-menu li {
-    padding: 0px 15px 20px 30px;
-    margin: 0;
-  }
-  .course-menu li h3 {
-    font-size: 1.0em;
-  }
-  .course-menu li h5 {
-    font-size: 0.8em;
-    font-weight: 400;
-  }
+/* Course Menu */
+.course-menu {
+  background: #F1F1F1;
+}
+.course-menu-section {
+  border-bottom: solid 1px #F2F2F2;
+  background: #D8D8D8;
+  cursor: pointer;
+}
+.course-menu li {
+  padding: 0px 15px 20px 30px;
+  margin: 0;
+}
+.course-menu li h3 {
+  font-size: 1.0em;
+}
+.course-menu li h5 {
+  font-size: 0.8em;
+  font-weight: 400;
+}
 
-  /* list of lessons */
-  .course-menu-section-list {
+/* list of lessons */
+.course-menu-section-list {
 
-  }
+}
 
-  /* section header above list lessons */
-  .course-menu-section-header {
-    padding: 0 0 0 0;
-    display: grid;
-    grid-template-columns: 30px 1fr;
-    padding: 20px 0 20px 0;
-  }
+/* section header above list lessons */
+.course-menu-section-header {
+  padding: 0 0 0 0;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  padding: 20px 0 20px 0;
+}
 
-  .course-menu-section-header-controls {
-    padding-top: 20px;
-  }
+.course-menu-section-header-controls {
+  padding-top: 20px;
+}
 
-  .course-menu-section-header h2 {
-    font-size: 1.3em;
-  }
+.course-menu-section-header h2 {
+  font-size: 1.3em;
+}
 
-  /* menu collapse */
-  .course-menu-collapse {
-    text-align: right;
-    padding: 12px;
-  }
+/* menu collapse */
+.course-menu-collapse {
+  text-align: right;
+  padding: 12px;
+}
+
+.catalog-return {
+  color: #0091ae;
+  font-size: 0.9em;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+.catalog-return:hover {
+  opacity: 0.9;
+}
+.catalog-return i {
+  font-size: 0.7em;
+}
+
+.course-header-menu {
+  margin-top: 1.8em;
+  padding: 0 0 30px 0;
+}
+.course-header-menu a {
+  display: inline-block;
+  margin: 0 6px;
+  background: #EAF0F6;
+  border: solid 1px #D3D3D3;
+  border-radius: 2px;
+  font-size: 0.8em;
+  padding: 8px;
+}
