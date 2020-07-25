@@ -2,15 +2,18 @@
 
 namespace Saber\Exam;
 
-class Exam {
+class ExamComponent {
 
   public function __construct() {
 
     add_action('init', [$this, 'registerPostTypes']);
-    add_action('init', [$this, 'registerFields']);
 
     require_once( SABER_PATH . 'components/exam/src/shortcodes/ExamSingleShortcode.php' );
     new ExamSingleShortcode();
+
+    // load controllers
+    require_once( SABER_PATH . 'components/exam/src/ExamEditor.php' );
+    new ExamEditor();
 
     // load models
     require_once( SABER_PATH . 'components/exam/src/models/Exam.php' );
@@ -80,10 +83,6 @@ class Exam {
       true
     );
 
-  }
-
-  public function registerFields() {
-    require_once( SABER_PATH . 'components/exam/assets/fields.php' );
   }
 
   public function registerPostTypes() {

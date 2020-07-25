@@ -52,8 +52,8 @@ class Plugin {
     require_once( SABER_PATH . 'components/register/src/RegisterComponent.php' );
     new \Saber\Register\Register();
 
-    require_once( SABER_PATH . 'components/exam/src/Exam.php' );
-    new \Saber\Exam\Exam();
+    require_once( SABER_PATH . 'components/exam/src/ExamComponent.php' );
+    new \Saber\Exam\ExamComponent();
 
     require_once( SABER_PATH . 'components/access/src/Access.php' );
     new \Saber\Access\Access();
