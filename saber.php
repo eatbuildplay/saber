@@ -117,15 +117,23 @@ class Plugin {
 
   public function menu() {
 
-    acf_add_options_page(array(
-      'page_title' 	=> 'Saber LMS',
-      'menu_title'	=> 'Saber LMS',
-      'menu_slug' 	=> 'saber-dashboard',
-      'icon_url'    => 'dashicons-welcome-learn-more',
-      'capability'	=> 'edit_posts',
-      'position'    => 2,
-      'redirect'		=> false
-    ));
+    \add_menu_page(
+      'Saber LMS',
+      'Saber LMS',
+      'edit_posts',
+      'saber-dashboard',
+      [$this, 'pageDashboard'],
+      'dashicons-welcome-learn-more',
+      2
+    );
+
+    \add_submenu_page(
+      'saber-dashboard',
+      'Dashboard',
+      'Dashboard',
+      'edit_posts',
+      'saber-dashboard'
+    );
 
     \add_submenu_page(
       'saber-dashboard',
@@ -162,58 +170,10 @@ class Plugin {
 
     \add_submenu_page(
       'saber-dashboard',
-      'Exam Section',
-      'Exam Section',
-      'edit_posts',
-      'edit.php?post_type=exam_section'
-    );
-
-    \add_submenu_page(
-      'saber-dashboard',
       'Questions',
       'Questions',
       'edit_posts',
       'edit.php?post_type=question'
-    );
-
-    \add_submenu_page(
-      'saber-dashboard',
-      'Question Options',
-      'Question Options',
-      'edit_posts',
-      'edit.php?post_type=question_option'
-    );
-
-    \add_submenu_page(
-      'saber-dashboard',
-      'Question Banks',
-      'Question Banks',
-      'edit_posts',
-      'edit.php?post_type=question_bank'
-    );
-
-    \add_submenu_page(
-      'saber-dashboard',
-      'Question Answers',
-      'Question Answers',
-      'edit_posts',
-      'edit.php?post_type=question_answer'
-    );
-
-    \add_submenu_page(
-      'saber-dashboard',
-      'Exam Scores',
-      'Exam Scores',
-      'edit_posts',
-      'edit.php?post_type=exam_score'
-    );
-
-    \add_submenu_page(
-      'saber-dashboard',
-      'Exam Score Questions',
-      'Exam Score Questions',
-      'edit_posts',
-      'edit.php?post_type=exam_score_question'
     );
 
     \add_submenu_page(
@@ -226,31 +186,34 @@ class Plugin {
 
     \add_submenu_page(
       'saber-dashboard',
-      'Course Registrations',
-      'Course Registrations',
+      'Reports',
+      'Reports',
       'edit_posts',
-      'edit.php?post_type=course_registration',
-      '',
-      130
+      'saber-reports',
+      [$this, 'pageReports']
     );
 
     \add_submenu_page(
       'saber-dashboard',
-      'Question Types',
-      'Question Types',
+      'Settings',
+      'Settings',
       'edit_posts',
-      'edit.php?post_type=question_type',
-      '',
-      130
+      'saber-settings',
+      [$this, 'pageSettings']
     );
 
-    acf_add_options_sub_page(array(
-      'page_title' 	=> 'Settings',
-      'menu_title'	=> 'Settings',
-      'parent_slug'	=> 'saber-dashboard',
-      'position'    => 1
-    ));
+  }
 
+  public static function pageDashboard() {
+    print 'this is the Saber dashboard page';
+  }
+
+  public static function pageReports() {
+    print 'this is the Saber reports page';
+  }
+
+  public static function pageSettings() {
+    print 'this is the Saber settings page';
   }
 
   function menuSeparators( $parent_file ) {
