@@ -27,7 +27,7 @@
 
 /* Course Body */
 .course-body-left {
-  padding: 20px 50px 20px 0;
+  padding: 0px 50px 20px 0;
 }
 .course-body-right {
 
@@ -36,11 +36,10 @@
 
 /* Course Menu */
 .course-menu {
-  background: #F1F1F1;
+  background: #DCDCDC;
 }
 .course-menu-section {
   border-bottom: solid 1px #F2F2F2;
-  background: #D8D8D8;
   cursor: pointer;
 }
 .course-menu li h3 {
@@ -78,9 +77,11 @@
 }
 
 /* menu collapse */
-.course-menu-collapse {
+.course-menu-collapse,
+.course-menu-expand {
   text-align: right;
   padding: 12px;
+  cursor: pointer;
 }
 
 .catalog-return {

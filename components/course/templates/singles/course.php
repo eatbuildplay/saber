@@ -33,9 +33,7 @@
 
       <div class="course-menu">
         <div class="course-menu-collapse">
-          <a href="">
-            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
-          </a>
+          <i class="fa fa-angle-double-left" aria-hidden="true"></i>
         </div>
 
         <ul class="course-menu-list">

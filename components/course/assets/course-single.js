@@ -23,8 +23,24 @@
 
       /* section header */
       $('.course-menu-section-header').on('click', function() {
-        $('.course-menu-section-list').toggle();
+        if( $(this).hasClass('open') ) {
+          $('.course-menu-section-list').hide();
+          $(this).removeClass('open');
+          $(this).find('i').removeClass('fa-chevron-down');
+          $(this).find('i').addClass('fa-chevron-right');
+        } else {
+          $('.course-menu-section-list').show();
+          $(this).addClass('open');
+          $(this).find('i').removeClass('fa-chevron-right');
+          $(this).find('i').addClass('fa-chevron-down');
+        }
       });
+
+      // open by default
+      $('.course-menu-section-list').show();
+      $('.course-menu-section-header').addClass('open');
+      $('.course-menu-section-header').find('i').removeClass('fa-chevron-right');
+      $('.course-menu-section-header').find('i').addClass('fa-chevron-down');
 
       $('.course-menu-section-list li').on('click', function() {
 
@@ -50,17 +66,12 @@
         $('.course-menu-list').show();
       });
 
-      //course-menu-expand
-
-
       // init tabs
       CourseSingle.initTabs();
 
     },
 
     initTabs: function() {
-
-
 
       $( '#lesson-tabs header a' ).on('click', function(e) {
         e.preventDefault();
