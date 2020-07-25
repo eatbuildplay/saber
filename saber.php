@@ -4,7 +4,7 @@
  *
  * Plugin Name: Saber
  * Plugin URI: https://eatbuildplay.com/plugins/saber
- * Description: Saber is a WordPress plugin that provides a saberwork for building apps. It requires ACF Pro, and integrates with Elementor.
+ * Description: Saber is a WordPress plugin that provides a saberwork for building apps.
  * Version: 1.0.0
  * Author: Casey Milne, Eat/Build/Play
  * Author URI: https://eatbuildplay.com/
@@ -27,9 +27,6 @@ class Plugin {
     require_once( SABER_PATH . 'src/Shortcode.php' );
     require_once( SABER_PATH . 'src/post_lists/PostList.php' );
     require_once( SABER_PATH . 'src/post_types/PostType.php' );
-
-    // acf new post field
-    require_once( SABER_PATH . 'src/acf/acf_new_post/acf-new-post.php' );
 
     /*
      *
