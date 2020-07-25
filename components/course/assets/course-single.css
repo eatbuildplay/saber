@@ -58,15 +58,20 @@
 
 /* section header above list lessons */
 .course-menu-section-header {
-  padding: 0 0 0 0;
-  display: grid;
-  grid-template-columns: 30px 1fr;
-  padding: 20px 0 20px 0;
+  padding: 20px 0 20px 20px;
+  display: flex;
+
 }
 
 .course-menu-section-header-controls {
-  padding-top: 20px;
+  padding: 1px 8px 0 0;
 }
+
+.course-menu-section-header h2 {
+  font-weight: 400;
+  margin: 0;
+}
+
 
 .course-menu-section-header h2 {
   font-size: 1.3em;
@@ -142,6 +147,9 @@
  .timeline {
    position: relative;
    padding: 0 25px 0 60px;
+ }
+ .timeline-item {
+   padding: 15px 0;
  }
 .timeline-item::before {
   content: '';

@@ -11,6 +11,16 @@
 
     init: function() {
 
+      /* header menu items */
+      $('.course-header-menu a').on('click', function(e) {
+        e.preventDefault();
+      });
+
+      /* section header */
+      $('.course-menu-section-header').on('click', function() {
+        $('.course-menu-section-list').toggle();
+      });
+
       $('.course-menu-section-list li').on('click', function() {
 
         var item = $(this);
@@ -21,9 +31,18 @@
       })
 
       // course menu controls
-      $('.course-menu-collapse').on('click', function(e) {
+      $(document).on('click', '.course-menu-collapse', function(e) {
         e.preventDefault();
+        $(this).removeClass('course-menu-collapse').addClass('course-menu-expand');
+        $(this).find('i').removeClass('fa-angle-double-left').addClass('fa-angle-double-right');
         $('.course-menu-list').hide();
+      });
+
+      $(document).on('click', '.course-menu-expand', function(e) {
+        e.preventDefault();
+        $(this).removeClass('course-menu-expand').addClass('course-menu-collapse');
+        $(this).find('i').removeClass('fa-angle-double-right').addClass('fa-angle-double-left');
+        $('.course-menu-list').show();
       });
 
       //course-menu-expand
