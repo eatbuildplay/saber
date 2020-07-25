@@ -19,3 +19,8 @@ if( $image = wp_get_attachment_image_src( $videoId ) ) {
 }
 
 ?>
+
+<div class="saber-field">
+	<label>Lesson Overview</label>
+	<textarea></textarea>
+</div>
