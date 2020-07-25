@@ -14,6 +14,11 @@
       /* header menu items */
       $('.course-header-menu a').on('click', function(e) {
         e.preventDefault();
+
+        if( $(this).hasClass('course-study-guide-download') ) {
+          window.open('https://eatbuildplay.com/wp-content/uploads/2020/07/Saber-LMS-Docs.pdf');
+        }
+
       });
 
       /* section header */
@@ -55,6 +60,8 @@
 
     initTabs: function() {
 
+
+
       $( '#lesson-tabs header a' ).on('click', function(e) {
         e.preventDefault();
         $( '#lesson-tabs li.lesson-tabs-tab' ).hide();
@@ -64,6 +71,9 @@
         var target = $(this).data('target');
         $('#' + target).show();
       });
+
+
+      $( '#lesson-tabs header a' ).first().click();
 
     },
 
