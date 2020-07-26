@@ -92,18 +92,23 @@
 
       console.log( saberCourse );
 
+      var lesson = saberCourse.course.timeline[0];
+      var overview = lesson.overview;
+
+      console.log( overview );
+
+      // do replacement
+      var lessonTabsHtml = $('#lesson-tabs').html();
+      var updatedHtml = lessonTabsHtml.replace( '{{lesson_overview}}', lesson.overview);
+      $('#lesson-tabs').html( updatedHtml );
+
+      /*
       var videoUrl = saberCourse.course.timeline[0].video.url;
-
-      console.log( videoUrl );
-
       CourseSingle.player.src({
         type: 'video/mp4',
         src: videoUrl
       });
-
-      //var content = 'CONTENT!! ---- ';
-      //content += id;
-      //$('#lesson-canvas').html( content );
+      */
 
     }
 

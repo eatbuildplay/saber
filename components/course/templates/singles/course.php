@@ -20,7 +20,6 @@
       <div class="course-header-menu">
 
         <a class="course-study-guide-download" href="">Download study guide</a>
-        <a href="">Share</a>
 
       </div>
     </div>
