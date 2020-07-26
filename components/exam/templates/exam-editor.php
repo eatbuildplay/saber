@@ -10,12 +10,12 @@
       <input
         type="text"
         placeholder="Question Title or ID"
-        id="lesson-search-box"
-        name="lesson-search-box"
+        id="question-search-box"
+        name="question-search-box"
         class="search-box"
         />
       <button class="search-button" id="question-search-button">Search</button>
-      <div class="search-results">SERACH RESULTS</div>
+      <div class="search-results"></div>
     </div>
 
   </div>
@@ -53,3 +53,8 @@
 <textarea id="exam-editor-data" name="exam-editor-data">
   <?php print $exam->data; ?>
 </textarea>
+
+
+<pre>
+<?php var_dump( $exam ); ?>
+</pre>

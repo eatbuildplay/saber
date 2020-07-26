@@ -36,7 +36,6 @@
         // check for duplicate in timeline
         var isDuplicate = ExamEditor.timelineDuplicateCheck( data );
         if( isDuplicate ) {
-          console.log('is dup');
           return;
         }
 
@@ -49,7 +48,7 @@
           id: data.id
         };
         ExamEditor.data.timeline.push( timelineItem );
-        $('#ceEditorData').val( JSON.stringify(ExamEditor.data));
+        $('#exam-editor-data').val( JSON.stringify(ExamEditor.data));
 
 
       });
@@ -64,17 +63,14 @@
       /* search clear */
       $(document).on('click', '.ce-search-clear', function(e) {
         e.preventDefault();
-        $('#ceLessonSearchResults').html('');
-        $('#lessonSearchBox').val('');
+        $('#search-form-question .search-results').html('');
+        $('#search-form-question .search-box').val('');
       });
 
       /* trash item */
       $(document).on('click', '.exam-editor-timeline-item .dashicons-trash', function() {
-        console.log('trashican...')
-
         $(this).parent().remove();
         ExamEditor.sortingHandler();
-
       });
 
     },
