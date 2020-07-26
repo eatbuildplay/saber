@@ -1,43 +1,21 @@
-<?php
-
-/*
-print '<pre>';
-var_dump( $exam );
-print '</pre>';
-*/
-
-?>
-
 <div class="exam-editor-menu">
 
   <div class="exam-editor-menu-add">
-    <button id="ceLessonAddButton">Add Lesson</button><button id="ceExamAddButton">Add Exam</button>
+    <button id="question-add-button">Add Question</button>
   </div>
 
-  <div class="exam-editor-add-forms">
+  <div class="editor-add-forms">
 
-    <div class="exam-editor-lesson-search">
+    <div id="search-form-question">
       <input
         type="text"
-        placeholder="Lesson Title or ID"
-        id="lessonSearchBox"
-        name="lessonSearchBox"
-        class="ce-search-box"
+        placeholder="Question Title or ID"
+        id="lesson-search-box"
+        name="lesson-search-box"
+        class="search-box"
         />
-      <button class="ce-search-button" id="ceLessonSearchButton">Search</button>
-      <div id="ceLessonSearchResults"></div>
-    </div>
-
-    <div class="exam-editor-exam-search">
-      <input
-        type="text"
-        placeholder="Exam Title or ID"
-        id="exam-search-box"
-        name="exam-search-box"
-        class="ce-search-box"
-      />
-      <button class="ce-search-button" id="ceExamSearchButton">Search</button>
-      <div id="ceExamSearchResults"></div>
+      <button class="search-button" id="question-search-button">Search</button>
+      <div class="search-results">SERACH RESULTS</div>
     </div>
 
   </div>
@@ -49,6 +27,7 @@ print '</pre>';
   <div class="exam-editor-timeline-grid">
 
     <?php
+
       if( count($exam->timeline) > 0):
         foreach( $exam->timeline as $item ) :
 
@@ -56,7 +35,6 @@ print '</pre>';
             $type = 'lesson';
           }
 
-          // setup classes
           $classes = 'exam-editor-timeline-item exam-editor-timeline-item-' . $type;
 
     ?>
@@ -72,6 +50,6 @@ print '</pre>';
   </div>
 </div>
 
-<textarea id="examEditorData" name="examEditorData">
+<textarea id="exam-editor-data" name="exam-editor-data">
   <?php print $exam->data; ?>
 </textarea>

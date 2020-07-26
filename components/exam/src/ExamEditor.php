@@ -11,8 +11,40 @@ class ExamEditor {
     //add_action( 'save_post_course', [$this, 'metaboxSave'], 10, 2 );
 
     /* search ajax hook */
-    //add_action( 'wp_ajax_saber_course_editor_lesson_search', array( $this, 'jxLessonSearch'));
-    //add_action( 'wp_ajax_saber_course_editor_exam_search', array( $this, 'jxExamSearch'));
+    add_action( 'wp_ajax_saber_exam_editor_question_search', array( $this, 'jxQuestionSearch'));
+
+    add_action('admin_enqueue_scripts', array( $this, 'scripts' ));
+
+
+  }
+
+  public function jxQuestionSearch() {
+
+    $search = $_POST['search'];
+
+    // search for lessons
+    $args = [
+      's' => $search,
+      'post_type' => 'question'
+    ];
+    $posts = \get_posts( $args );
+
+    // form lesson array
+    $models = [];
+    foreach( $posts as $post ) {
+      $model = new \stdClass;
+      $model->id = $post->ID;
+      $model->title = $post->post_title;
+      $models[] = $model;
+    }
+
+    $response = [
+      'code'    => 200,
+      'items'   => $models,
+      'search'  => $search
+    ];
+    print json_encode( $response );
+    wp_die();
 
   }
 
@@ -44,6 +76,25 @@ class ExamEditor {
     $content .= $template->get();
 
     print $content;
+
+  }
+
+  public function scripts() {
+
+    wp_enqueue_script(
+      'exam-editor',
+      SABER_URL . 'components/exam/assets/exam-editor.js',
+      array( 'jquery' ),
+      '1.0.0',
+      true
+    );
+
+    wp_enqueue_style(
+      'exam-editor',
+      SABER_URL . 'components/exam/assets/exam-editor.css',
+      array(),
+      true
+    );
 
   }
 
