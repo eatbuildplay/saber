@@ -28,8 +28,8 @@
 
     <?php
 
-      if( count($exam->timeline) > 0):
-        foreach( $exam->timeline as $item ) :
+      if( !empty( $exam->timeline->items) ):
+        foreach( $exam->timeline->items as $item ) :
 
           if (is_a( $item, 'Saber\Question\Model\Question')) {
             $type = 'lesson';
@@ -51,7 +51,7 @@
 </div>
 
 <textarea id="exam-editor-data" name="exam-editor-data">
-  <?php print $exam->data; ?>
+  <?php print $exam->timeline->data; ?>
 </textarea>
 
 

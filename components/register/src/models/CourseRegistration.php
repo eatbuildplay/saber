@@ -106,10 +106,12 @@ class CourseRegistration {
     $obj->title = $post->post_title;
     $obj->registrationDate = get_the_date( 'Y-m-d', $post );
 
+    /*
     $fields = get_fields($post);
 
     $obj->student = \Saber\Student\Model\Student::load( $fields['student'] );
     $obj->course = \Saber\Course\Model\Course::load( $fields['course'] );
+    */
 
     return $obj;
 

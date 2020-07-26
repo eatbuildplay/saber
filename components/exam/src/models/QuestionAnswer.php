@@ -60,11 +60,6 @@ class QuestionAnswer {
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
 
-    $fields = get_fields($post);
-    $obj->user = $fields['user'];
-    $obj->question = $fields['question'];
-    $obj->questionOption = $fields['question_option'];
-
     return $obj;
 
   }

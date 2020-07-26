@@ -14,9 +14,6 @@ class QuestionOption {
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
 
-    $fields = get_fields($post);
-    $obj->label = $fields['label'];
-
     return $obj;
 
   }

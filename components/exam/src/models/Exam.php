@@ -30,6 +30,8 @@ class Exam {
     $obj->timeline->items = [];
     $obj->timeline->data = json_decode( $timelineData );
 
+    $obj->timeline->data = [];
+
     if(!empty( $obj->timeline->data )) {
       foreach( $obj->timeline->data as $item ) {
         if( $item->type == 'question' ) {

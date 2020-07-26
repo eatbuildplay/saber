@@ -48,8 +48,7 @@
           id: data.id
         };
         ExamEditor.data.timeline.push( timelineItem );
-        $('#exam-editor-data').val( JSON.stringify(ExamEditor.data));
-
+        $('#exam-editor-data').val( JSON.stringify(ExamEditor.data.timeline));
 
       });
 

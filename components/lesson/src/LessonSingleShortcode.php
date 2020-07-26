@@ -17,7 +17,7 @@ class LessonSingleShortcode {
   public function doShortcode( $atts ) {
 
     global $post;
-    $lessonFields = get_fields( $post->ID );
+    // $lessonFields = get_fields( $post->ID );
     $lesson = Model\Lesson::load( $post );
 
     // get next lesson

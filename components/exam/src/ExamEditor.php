@@ -8,7 +8,7 @@ class ExamEditor {
 
     /* metaboxes */
     add_action( 'admin_menu', [$this, 'metaboxes'] );
-    //add_action( 'save_post_course', [$this, 'metaboxSave'], 10, 2 );
+    add_action( 'save_post_exam', [$this, 'metaboxSave'], 10, 2 );
 
     /* search ajax hook */
     add_action( 'wp_ajax_saber_exam_editor_question_search', array( $this, 'jxQuestionSearch'));
@@ -76,6 +76,27 @@ class ExamEditor {
     $content .= $template->get();
 
     print $content;
+
+  }
+
+  /*
+   * Save metabox
+   */
+  public function metaboxSave( $postId, $post ) {
+
+    $postType = get_post_type_object( $post->post_type );
+
+    /* Check if the current user has permission to edit the post. */
+    if ( !current_user_can( $postType->cap->edit_post, $postId )) {
+      return $postId;
+    }
+
+    $newValue = $_POST['exam-editor-data'];
+
+    $key = 'saber_exam_timeline_data';
+    $value = get_post_meta( $postId, $key, true );
+
+    update_post_meta( $postId, $key, $newValue );
 
   }
 

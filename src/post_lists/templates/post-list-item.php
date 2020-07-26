@@ -4,7 +4,6 @@
       <h2>
         <?php print $post->post_title; ?>
       </h2>
-      <p><?php print get_field( 'intro', $post->ID ); ?></p>
     </div>
   </a>
 </div>

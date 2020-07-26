@@ -60,12 +60,6 @@ class ExamScore {
     $obj->title = $post->post_title;
     $obj->permalink = get_permalink( $post->ID );
 
-    $fields = get_fields($post->ID);
-    $obj->user = $fields['user'];
-    $obj->exam = Exam::load( $fields['exam'] );
-    $obj->start = $fields['start'];
-    $obj->questions = ExamScoreQuestionList::fetch( $obj->id );
-
     return $obj;
 
   }

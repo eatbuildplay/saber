@@ -136,7 +136,7 @@ class ExamSingleShortcode {
       $exam = Model\Exam::load( $post->ID );
     }
 
-    $examFields = get_fields( $exam->ID );
+    // $examFields = get_fields( $exam->ID );
 
     $template = new \Saber\Template();
     $template->path = 'components/exam/templates/';

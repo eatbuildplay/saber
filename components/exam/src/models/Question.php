@@ -22,12 +22,6 @@ class Question {
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
 
-    $fields = get_fields($post);
-    $obj->type = $fields['question_type'];
-
-    $obj->options = QuestionOptionList::load( $fields['options'] );
-    $obj->correct = QuestionOption::load( $fields['correct'] );
-
     return $obj;
 
   }

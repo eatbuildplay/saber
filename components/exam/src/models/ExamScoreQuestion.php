@@ -63,14 +63,6 @@ class ExamScoreQuestion {
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
 
-    $fields = get_fields($post);
-
-    $obj->user = $fields['user'];
-    $obj->examScore = $fields['exam_score'];
-    $obj->questionAnswer = $fields['question_answer'];
-    $obj->correct = $fields['correct'];
-    $obj->points = $fields['points'];
-
     return $obj;
 
   }
