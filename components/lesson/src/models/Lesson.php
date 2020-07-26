@@ -8,6 +8,7 @@ class Lesson {
   public $title;
   public $permalink;
   public $video;
+  public $overview;
 
   public function load( $post ) {
 
@@ -25,6 +26,8 @@ class Lesson {
       $obj->video = new \stdClass;
       $obj->video->url = wp_get_attachment_url( $videoAttachmentId );
     }
+
+    $obj->overview = get_post_meta( $obj->id, 'saber_lesson_overview', 1 );
 
     return $obj;
 

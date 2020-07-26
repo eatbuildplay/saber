@@ -43,11 +43,13 @@ class LessonComponent {
     }
 
     $newValue = $_POST['lessonVideo'];
-
     $key = 'saber_lesson_video';
     $value = get_post_meta( $postId, $key, true );
-
     update_post_meta( $postId, $key, $newValue );
+
+    $value = $_POST['lesson_overview'];
+    $key = 'saber_lesson_overview';
+    update_post_meta( $postId, $key, $value );
 
   }
 

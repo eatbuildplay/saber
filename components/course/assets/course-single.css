@@ -115,6 +115,29 @@
 #lesson-tabs {
   margin: 40px 0;
 }
+#lesson-tabs p {
+  font-size: 0.75em;
+  line-height: 2.0;
+}
+#lesson-tabs h4 {
+  font-size: 1.15em;
+  margin: 5px 0 15px 0;
+  color: #20759B;
+}
+#lesson-tabs h5 {
+  font-size: 0.95em;
+  color: #323232;
+}
+.lesson-overview,
+.lesson-author {
+  margin: 40px 0;
+}
+.lesson-author-box {
+  margin: 25px 0 0 0;
+}
+.lesson-author-box-right {
+  margin: 0 0 0 30px;
+}
 #lesson-tabs header {
   font-size: 0.90em;
   display: flex;
@@ -177,4 +200,12 @@
   border: 2px solid #C6C6C6;
   border-radius: 50%;
   z-index: 1;
+}
+
+/* Author box */
+.lesson-author-box {
+  display: flex;
+}
+.lesson-author-box-left img {
+  border-radius: 50%;
 }
