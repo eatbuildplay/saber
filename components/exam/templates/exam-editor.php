@@ -53,8 +53,3 @@
 <textarea id="exam-editor-data" name="exam-editor-data">
   <?php print $exam->timeline->data; ?>
 </textarea>
-
-
-<pre>
-<?php var_dump( $exam ); ?>
-</pre>

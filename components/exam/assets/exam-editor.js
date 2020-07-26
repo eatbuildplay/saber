@@ -138,12 +138,9 @@
       // clear existing timeline data
       ExamEditor.data.timeline = [];
 
-
       $('.exam-editor-timeline-item').each( function( index, item ) {
 
         var itemEl = $(item);
-
-        console.log(itemEl)
 
         // update the data
         var timelineItem = {
@@ -154,7 +151,7 @@
 
       });
 
-      $('#ceEditorData').val( JSON.stringify(ExamEditor.data));
+      $('#exam-editor-data').val( JSON.stringify(ExamEditor.data.timeline));
 
     },
 
