@@ -1,13 +1,3 @@
-<?php
-
-/*
-print '<pre>';
-var_dump( $course );
-print '</pre>';
-*/
-
-?>
-
 <div class="course-editor-menu">
 
   <div class="course-editor-menu-add">

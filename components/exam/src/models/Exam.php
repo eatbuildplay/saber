@@ -27,15 +27,14 @@ class Exam {
     $timelineData = get_post_meta( $post->ID, $key, true );
 
     $obj->timeline = new \stdClass;
+    $obj->timeline->data = $timelineData;
     $obj->timeline->items = [];
-    $obj->timeline->data = json_decode( $timelineData );
+    $timelineItems = json_decode( $obj->timeline->data );
 
-    $obj->timeline->data = [];
-
-    if(!empty( $obj->timeline->data )) {
-      foreach( $obj->timeline->data as $item ) {
+    if(!empty( $timelineItems )) {
+      foreach( $timelineItems as $item ) {
         if( $item->type == 'question' ) {
-          $obj->timeline->items[] = \Saber\Question\Model\Question::load( $item->id );
+          $obj->timeline->items[] = \Saber\Exam\Model\Question::load( $item->id );
         }
       }
     }
