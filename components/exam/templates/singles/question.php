@@ -14,4 +14,8 @@
   </ul>
 </div>
 
+<pre>
+<?php var_dump( $question ); ?>
+</pre>
+
 <?php get_footer(); ?>

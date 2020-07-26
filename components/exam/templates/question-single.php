@@ -6,3 +6,9 @@
     <ul class="selectable"></ul>
   </div>
 </template>
+
+TEST9789807
+
+<pre>
+<?php var_dump( $question ); ?>
+</pre>

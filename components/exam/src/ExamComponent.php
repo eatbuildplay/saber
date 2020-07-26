@@ -15,6 +15,9 @@ class ExamComponent {
     require_once( SABER_PATH . 'components/exam/src/ExamEditor.php' );
     new ExamEditor();
 
+    require_once( SABER_PATH . 'components/exam/src/QuestionEditor.php' );
+    new QuestionEditor();
+
     // load models
     require_once( SABER_PATH . 'components/exam/src/models/Exam.php' );
     require_once( SABER_PATH . 'components/exam/src/models/ExamList.php' );
