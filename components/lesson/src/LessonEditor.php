@@ -23,17 +23,20 @@ class LessonEditor {
       return $postId;
     }
 
-    $newValue = $_POST['lessonVideo'];
-    $key = 'saber_lesson_video';
-    $value = get_post_meta( $postId, $key, true );
-    update_post_meta( $postId, $key, $newValue );
-
-    $value = $_POST['lesson_overview'];
-    $key = 'saber_lesson_overview';
+    $key = 'lesson_video';
+    $value = sanitize_text_field( $_POST[ $key ] );
     update_post_meta( $postId, $key, $value );
 
-    $value = $_POST['lesson_duration'];
+    $key = 'lesson_overview';
+    $value = sanitize_text_field( $_POST[ $key ] );
+    update_post_meta( $postId, $key, $value );
+
     $key = 'lesson_duration';
+    $value = sanitize_text_field( $_POST[ $key ] );
+    update_post_meta( $postId, $key, $value );
+
+    $key = 'lesson_professor';
+    $value = sanitize_text_field( $_POST[ $key ] );
     update_post_meta( $postId, $key, $value );
 
   }
@@ -59,13 +62,30 @@ class LessonEditor {
 
     $content = '';
 
+    $professors = $this->loadProfessorsList();
+
     $template->name = 'lesson-editor';
     $template->data = [
-      'lesson' => $lesson
+      'lesson' => $lesson,
+      'professors' => $professors
     ];
     $content .= $template->get();
 
     print $content;
+
+  }
+
+  public function loadProfessorsList() {
+
+    $args = [
+      'role__in' => [
+        'administrator',
+        'editor',
+        'author'
+      ]
+    ];
+
+    return get_users( $args );
 
   }
 

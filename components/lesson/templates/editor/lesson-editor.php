@@ -2,29 +2,27 @@
 
 global $post;
 
-$videoId = get_post_meta( $post->ID, 'saber_lesson_video', 1 );
-
-if( $image = wp_get_attachment_image_src( $videoId ) ) {
-
-	echo '<a href="#" class="saber-uploader"><img src="' . $image[0] . '" /></a>
-	      <a href="#" class="saber-uploader-remove">Remove Video</a>
-	      <input type="hidden" id="lessonVideo" name="lessonVideo" value="' . $image_id . '">';
-
-} else {
-
-	echo '<a href="#" class="saber-uploader">Upload image</a>
-	      <a href="#" class="saber-uploader-remove" style="display:none">Remove Video</a>
-	      <input type="hidden" id="lessonVideo" name="lessonVideo" value="">';
-
-}
-
 ?>
 
 <div class="saber-field">
+	<?php
+
+		$videoId = get_post_meta( $post->ID, 'lesson_video', 1 );
+		$filename = basename ( get_attached_file( $videoId ) );
+
+	?>
+	<label for="lesson_video">Video Lesson</label>
+	<input type="hidden"
+		id="lesson_video"
+		name="lesson_video"
+		value="<?php print $videoId; ?>"
+		data-filename="<?php print $filename; ?>"
+		/>
+</div>
+
+<div class="saber-field">
 	<label for="lesson_overview">Lesson Overview</label>
-	<textarea id='lesson_overview' name="lesson_overview">
-		<?php print get_post_meta( $post->ID, 'saber_lesson_overview', 1 ); ?>
-	</textarea>
+	<textarea id='lesson_overview' name="lesson_overview"><?php print get_post_meta( $post->ID, 'saber_lesson_overview', 1 ); ?></textarea>
 </div>
 
 <div class="saber-field">
@@ -36,3 +34,22 @@ if( $image = wp_get_attachment_image_src( $videoId ) ) {
 		value="<?php print get_post_meta( $post->ID, 'lesson_duration', 1 ); ?>"
 		/>
 </div>
+
+<div class="saber-field">
+	<?php $professor = get_post_meta( $post->ID, 'lesson_professor', 1 ); ?>
+	<label>Professor</label>
+	<select id="lesson_professor" name="lesson_professor">
+		<?php foreach( $professors as $prof ): ?>
+			<option value='<?php print $prof->ID; ?>'><?php print $prof->display_name; ?></option>
+		<?php endforeach; ?>
+	</select>
+</div>
+
+<div class="saber-field">
+	<label>Resource Links</label>
+	<input id="lesson_resources" name="lesson_resources" type="hidden" />
+</div>
+
+<pre>
+<?php // var_dump($professors); ?>
+</pre>
