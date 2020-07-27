@@ -9,6 +9,7 @@ class Lesson {
   public $permalink;
   public $video;
   public $overview;
+  public $duration;
 
   public function load( $post ) {
 
@@ -28,6 +29,7 @@ class Lesson {
     }
 
     $obj->overview = get_post_meta( $obj->id, 'saber_lesson_overview', 1 );
+    $obj->duration = get_post_meta( $obj->id, 'lesson_duration', 1 );
 
     return $obj;
 

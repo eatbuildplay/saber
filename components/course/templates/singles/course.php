@@ -54,7 +54,7 @@
                   >
                   <div class="timeline-item-content">
                     <h3><?php print $timelineItem->title; ?></h3>
-                    <h5>5 minutes</h5>
+                    <h5><?php print $timelineItem->duration; ?> minutes</h5>
                   </div>
                 </li>
               <?php endforeach; ?>

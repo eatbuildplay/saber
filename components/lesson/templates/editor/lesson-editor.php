@@ -21,8 +21,18 @@ if( $image = wp_get_attachment_image_src( $videoId ) ) {
 ?>
 
 <div class="saber-field">
-	<label>Lesson Overview</label>
+	<label for="lesson_overview">Lesson Overview</label>
 	<textarea id='lesson_overview' name="lesson_overview">
 		<?php print get_post_meta( $post->ID, 'saber_lesson_overview', 1 ); ?>
 	</textarea>
+</div>
+
+<div class="saber-field">
+	<label for="lesson_duration">Duration</label>
+	<input
+		type="text"
+		id="lesson_duration"
+		name="lesson_duration"
+		value="<?php print get_post_meta( $post->ID, 'lesson_duration', 1 ); ?>"
+		/>
 </div>
