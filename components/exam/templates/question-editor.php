@@ -3,7 +3,8 @@
 <div id="question-editor">
 
   <div class="saber-field">
-    <label>Question Type</label> <?php print get_post_meta( $post->ID, 'question_type', 1 ); ?>
+    <?php $questionTypeCode = get_post_meta( $post->ID, 'question_type', 1 ); ?>
+    <label>Question Type</label>
     <select id="question_type" name="question_type">
       <option value='mc'>Multiple Choice</option>
       <option value="tf">True/False</option>
@@ -17,12 +18,8 @@
 
   <div class="saber-field">
     <label>Question Options</label>
-    <ul>
-      <li>A</li>
-      <li>B</li>
-      <li>C</li>
-    </ul>
-    <textarea id="question_options" name="question_options"></textarea>
+    <ul id="question_options_editor"></ul>
+    <textarea id="question_options" name="question_options"><?php print get_post_meta( $post->ID, 'question_options', 1 ); ?></textarea>
   </div>
 
   <hr />
@@ -42,3 +39,14 @@
 //var_dump( get_post_meta($post->ID) );
 
 ?>
+
+<!-- options list item template -->
+<template id="question-option-list-item">
+  <li>
+    <input type="text" />
+    <span class="list-item-value"></span>
+    <span class="dashicons dashicons-thumbs-up"></span>
+    <span class="dashicons dashicons-welcome-write-blog"></span>
+    <span class="dashicons dashicons-trash"></span>
+  </li>
+</template>

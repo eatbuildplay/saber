@@ -6,7 +6,7 @@ class Question {
 
   public $id;
   public $title;
-  public $text;
+  public $body;
   public $type;
   public $options;
   public $correct;
@@ -21,6 +21,9 @@ class Question {
     $obj = new Question;
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
+
+    $obj->type = get_post_meta( $obj->id, 'question_type', 1);
+    $obj->body = get_post_meta( $obj->id, 'question_body', 1);
 
     return $obj;
 

@@ -2,10 +2,88 @@
 
 }
 
-.saber-field {
+#question_options_editor li {
+  position: relative;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 5px 0;
+  background: #F2F2F2;
+  cursor: move;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.4em;
+}
+#question_options_editor .dashicons {
+  display: inline-block;
+  font-size: 25px;
+  padding: 5px 8px;
+  width: auto;
+  height: auto;
+  opacity: 0.3;
+  cursor: pointer;
+}
 
+/* delete option icon */
+#question_options_editor li .dashicons-trash {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+}
+#question_options_editor li .dashicons-trash:hover {
+  opacity: 0.8;
+}
+
+/* option input field */
+#question_options_editor li input {
+  display: none;
+  border-radius: 0;
+  padding: 4px 6px;
+  font-size: 1.15em;
+  background: #F6F6F6;
+  width: 320px;
+  text-align: center;
+}
+
+/* edit option icon */
+#question_options_editor li .dashicons-welcome-write-blog {
+  position: absolute;
+  top: 8px;
+  right: 50px;
+}
+#question_options_editor li .dashicons-welcome-write-blog:hover {
+  opacity: 0.8;
+}
+
+#question_options_editor li .dashicons-thumbs-up {
+  display: none;
+  font-size: 32px;
+  vertical-align: middle;
+}
+#question_options_editor li .dashicons-thumbs-up:hover {
+  opacity: 0.8;
+  color: #0DAC50;
+}
+
+.saber-field {
+  margin: 30px 0;
 }
 .saber-field label {
   display: block;
   margin: 0 0 5px 0;
+}
+
+.saber-field textarea {
+  width: 100%;
+  min-height: 150px;
+  background: #F2F2F2;
+  padding: 15px;
+  font-size: 1.2em;
+}
+
+.saber-field select {
+  padding: 5px 6px;
+  font-size: 1.2em;
+  min-width: 400px;
+  background-color: #F2F2F2;
 }

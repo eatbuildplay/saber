@@ -3,201 +3,90 @@
   var QuestionEditor = {
 
     data: {
-      timeline: []
-    }, // stores the question data
+      options: []
+    },
 
     init: function() {
 
-      /* init load */
-      var dataJson = $('#question-editor-data').val();
-      // QuestionEditor.data = JSON.parse( dataJson );
+      /* setup question options list */
+      $('#question_options_editor').sortable();
 
-      /* menu handlers */
-      QuestionEditor.menuClear();
-      QuestionEditor.questionSetup();
+      var template = $('#question-option-list-item');
 
-      $('.question-editor-menu button').on('click', function(e) {
-        e.preventDefault();
-      });
+      $( template.html() ).appendTo('#question_options_editor')
+        .find('.list-item-value').text('A')
+        .parent().find('input').val('A');
+      $( template.html() ).appendTo('#question_options_editor')
+        .find('.list-item-value').text('B')
+        .parent().find('input').val('B');
+      $( template.html() ).appendTo('#question_options_editor')
+        .find('.list-item-value').text('C')
+        .parent().find('input').val('C');
+        $( template.html() ).appendTo('#question_options_editor')
+          .find('.list-item-value').text('D')
+          .parent().find('input').val('D');
 
-      /* question search handler */
-      $('#question-search-button').on('click', function() {
-        QuestionEditor.searchQuestions();
-      });
+      // start edits
+      $(document).on('click', '#question_options_editor .dashicons-welcome-write-blog', function() {
 
-      /* Click on option returned from search */
-      $(document).on('click', '.clickable-option', function() {
+        var item = $(this).parent();
 
-        var data = {};
-        data.type = $(this).data('type');
-        data.id = $(this).data('id');
-        data.title = $(this).html();
+        item.find('.dashicons-welcome-write-blog').hide();
+        item.find('.dashicons-trash').hide();
+        item.find('.list-item-value').hide();
 
-        // check for duplicate in timeline
-        var isDuplicate = QuestionEditor.timelineDuplicateCheck( data );
-        if( isDuplicate ) {
-          return;
-        }
-
-        // move item (or clone item) into question timeline
-        QuestionEditor.insertTimeline( data );
-
-        // update the data
-        var timelineItem = {
-          type: data.type,
-          id: data.id
-        };
-        QuestionEditor.data.timeline.push( timelineItem );
-        $('#question-editor-data').val( JSON.stringify(QuestionEditor.data.timeline));
+        item.find('input').show();
+        item.find('.dashicons-thumbs-up').show();
 
       });
 
-      /* setup sorting */
-      $( '.question-editor-timeline-grid' ).sortable({
-        stop: function( event, ui ) {
-          QuestionEditor.sortingHandler();
-        }
+      // save edits
+      $(document).on('click', '#question_options_editor .dashicons-thumbs-up', function() {
+
+        var item = $(this).parent();
+        var value = item.find('input').val();
+
+        item.find('input').hide();
+        item.find('.dashicons-thumbs-up').hide();
+
+        item.find('.dashicons-welcome-write-blog').show();
+        item.find('.dashicons-trash').show();
+        item.find('.list-item-value').text(value).show();
+
+        QuestionEditor.updateData();
+
       });
 
-      /* search clear */
-      $(document).on('click', '.ce-search-clear', function(e) {
-        e.preventDefault();
-        $('#search-form-question .search-results').html('');
-        $('#search-form-question .search-box').val('');
-      });
+      // delete option
+      $(document).on('click', '#question_options_editor .dashicons-trash', function() {
 
-      /* trash item */
-      $(document).on('click', '.question-editor-timeline-item .dashicons-trash', function() {
         $(this).parent().remove();
-        QuestionEditor.sortingHandler();
-      });
 
-    },
-
-    emptySearchHandlerQuestions: function() {
-      var msg = '<div class="question-editor-empty-search">';
-      msg +=    'No results found, please try a different search term.';
-      msg +=    '</div>';
-      $('#ceLessonSearchResults').append( msg );
-    },
-
-    /* Duplicate check */
-    timelineDuplicateCheck: function( data ) {
-
-      var isDuplicate = 0;
-
-      QuestionEditor.data.timeline.forEach( function( item ) {
-
-        if( item.id == data.id ) {
-          isDuplicate = 1;
-        }
-
-      });
-
-      return isDuplicate;
-
-    },
-
-    menuClear: function() {
-
-
-
-    },
-
-    questionSetup: function() {
-
-      $('#question-add-button').on('click', function() {
-
-        QuestionEditor.menuClear();
-        $('#search-form-question').show();
-        $(this).addClass('active');
+        QuestionEditor.updateData();
 
       });
 
     },
 
-    /* Insert item to timeline */
-    insertTimeline: function( data ) {
+    updateData: function() {
 
-      if( data.type == 'question' ) {
-        var timelineItem = '<div class="question-editor-timeline-item question-editor-timeline-item-question" data-id="' + data.id + '" data-type="lesson">';
-      } else {
-        var timelineItem = '<div class="question-editor-timeline-item" data-id="' + data.id + '" data-type="lesson">';
-      }
-      timelineItem += data.title;
-      timelineItem += '<span class="dashicons dashicons-trash"></span>';
-      timelineItem += '</div>';
+      QuestionEditor.data.options = [];
 
-      var timelineGrid = $('.question-editor-timeline-grid');
-      timelineGrid.append( timelineItem );
-
-    },
-
-    sortingHandler: function() {
-
-      // clear existing timeline data
-      QuestionEditor.data.timeline = [];
-
-      $('.question-editor-timeline-item').each( function( index, item ) {
+      $('#question_options_editor li').each( function( index, item ) {
 
         var itemEl = $(item);
-
-        // update the data
-        var timelineItem = {
-          type: itemEl.data('type'),
-          id: itemEl.data('id')
+        var option = {
+          title: itemEl.find('.list-item-value').text(),
+          correct: 0
         };
-        QuestionEditor.data.timeline.push( timelineItem );
+        QuestionEditor.data.options.push( option );
 
       });
 
-      $('#question-editor-data').val( JSON.stringify(QuestionEditor.data.timeline));
+      var json = JSON.stringify( QuestionEditor.data.options );
+      $('#question_options').val( json );
 
-    },
-
-    searchQuestions: function() {
-
-      data = {
-        action: 'saber_question_editor_question_search',
-        search: $('#lesson-search-box').val(),
-      }
-      $.post(
-        ajaxurl,
-        data,
-        function( response ) {
-
-          console.log( response );
-          var searchResultsEl = $('#search-form-question .search-results');
-
-          searchResultsEl.html('');
-          response = JSON.parse(response);
-
-          if( response.items.length == 0 ) {
-            QuestionEditor.emptySearchHandlerQuestions();
-            return;
-          }
-
-          response.items.forEach( function( item ) {
-
-            console.log( item )
-
-            var clickableOption = '<div class="clickable-option" data-id="' + item.id + '" data-type="question">';
-            clickableOption += '<h4>' + item.title + '</h4>';
-            clickableOption += '</div>';
-
-            searchResultsEl.append( clickableOption );
-
-          });
-
-          var clearButton = '<button class="ce-search-clear">';
-          clearButton += 'Clear';
-          clearButton += '</button>';
-          $('#ceLessonSearchResults').append( clearButton );
-
-        }
-      );
-
-    },
+    }
 
   } // end QuestionEditor
 

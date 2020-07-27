@@ -75,6 +75,13 @@ class QuestionEditor {
       $value
     );
 
+    $value = $_POST['question_options'];
+    update_post_meta(
+      $postId,
+      'question_options',
+      $value
+    );
+
   }
 
   public function scripts() {
