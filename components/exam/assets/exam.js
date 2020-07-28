@@ -11,7 +11,6 @@ var Exam = {
   score: {
     id: 0
   },
-  questions: [],
   state: {
     started: false,
     currentQuestion: {
@@ -45,8 +44,8 @@ var Exam = {
     $(document).on('click', '.exam-control-restart', Exam.showStart);
   },
 
-  questionCount: function() {
-    return Exam.questions.length;
+  timelineItemCount: function() {
+    return Exam.exam.timeline.items.length;
   },
 
   end: function() {
@@ -64,7 +63,6 @@ var Exam = {
     $.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
       response = JSON.parse(response);
-      console.log( response );
 
     });
 
@@ -88,7 +86,7 @@ var Exam = {
     Exam.createExamScore();
 
     // show question
-    var $question = Exam.questions[ 0 ];
+    var $question = Exam.exam.timeline.items[ 0 ];
     var $questionNumber = 1;
     Exam.questionShow( $question, $questionNumber );
     Exam.state.currentQuestion.index = 0;
@@ -109,7 +107,6 @@ var Exam = {
     $.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
       response = JSON.parse(response);
-      console.log( response );
 
       Exam.score.id = response.examScoreId;
       Exam.score.permalink = response.examScorePermalink;
@@ -140,7 +137,7 @@ var Exam = {
     $(document).on('click', '.exam-next', function() {
 
       var $nextQuestionIndex = Exam.state.currentQuestion.index +1;
-      var $question = Exam.questions[ $nextQuestionIndex ];
+      var $question = Exam.exam.timeline.items[ $nextQuestionIndex ];
 
       // end is next
       if( Exam.questionCount() == $nextQuestionIndex +1 ) {
@@ -175,13 +172,14 @@ var Exam = {
 
       response = JSON.parse(response);
       Exam.exam = response.exam;
-      Exam.questions = response.exam.questions;
 
     });
 
   },
 
   questionShow: function( $question, $questionNumber ) {
+
+    console.log( $question );
 
     // populate templates
     var $template = $('#question-template').html();
@@ -208,17 +206,12 @@ var Exam = {
     ];
     var $optionsHtml = '';
     $question.options.forEach( function( option, index ) {
+
       var $template = $('#question-option-template').html();
-
-      console.log(option);
-
-      console.log( $template );
       $template = $template.replace(
         /\{questionOptionId\}/g,
         option.id
       );
-      console.log( $template );
-
 
       $template = $template.replace(
         '{questionOptionLabel}',
@@ -263,7 +256,6 @@ var Exam = {
     $.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
        response = JSON.parse(response);
-       console.log( response );
 
        // add focus on answered question
        var $questionEl = $('.question-' + response.question.id);
