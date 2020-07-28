@@ -6,7 +6,7 @@ class Exam {
 
   public $id;
   public $title;
-  public $questions;
+  public $permalink;
   public $timeline;
 
   public static function load( $post ) {
@@ -19,8 +19,7 @@ class Exam {
     $obj = new Exam;
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
-
-    // $obj->questions = QuestionList::load();
+    $obj->permalink = get_permalink( $post );
 
     // course editor data
     $key = 'saber_exam_timeline_data';
