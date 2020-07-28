@@ -215,7 +215,7 @@ var Exam = {
 
       $template = $template.replace(
         '{questionOptionLabel}',
-        lettering[index] + ') ' + option.label
+        lettering[index] + ') ' + option.title
       );
       $template = $template.replace(
         '{questionId}',

@@ -9,7 +9,7 @@ class Question {
   public $body;
   public $type;
   public $options;
-  public $correct;
+  public $correct; // index of the correct option
 
   public static function load( $post ) {
 
@@ -24,6 +24,9 @@ class Question {
 
     $obj->type = get_post_meta( $obj->id, 'question_type', 1);
     $obj->body = get_post_meta( $obj->id, 'question_body', 1);
+
+    $optionsJson = get_post_meta( $obj->id, 'question_options', 1);
+    $obj->options = json_decode( $optionsJson );
 
     return $obj;
 
