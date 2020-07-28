@@ -25,8 +25,12 @@ class Question {
     $obj->type = get_post_meta( $obj->id, 'question_type', 1);
     $obj->body = get_post_meta( $obj->id, 'question_body', 1);
 
-    $optionsJson = get_post_meta( $obj->id, 'question_options', 1);
-    $obj->options = json_decode( $optionsJson );
+    $optionsArray = get_post_meta( $obj->id, 'question_options', 1);
+    $options = [];
+    foreach( $optionsArray as $optionId ) {
+      $options[] = \Saber\Exam\Model\QuestionOption::load( $optionId );
+    }
+    $obj->options = $options;
 
     return $obj;
 
