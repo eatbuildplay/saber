@@ -7,6 +7,7 @@
 		init: function() {
 
 			LessonEditor.initVideoField();
+			LessonEditor.resourcesField.init();
 
 		},
 
@@ -68,6 +69,115 @@
 				$('.saber-uploader').text('Add Video');
 
 			});
+
+		},
+
+		resourcesField: {
+
+			dataEl: $('#lesson_resources'),
+
+			init: function() {
+
+				// make field wrapper
+				var wrapper = '<div id="resource_field_content"></div>';
+				$wrapper = $( wrapper ).insertAfter( LessonEditor.resourcesField.dataEl );
+
+				// make add button
+				var addButton = '<button id="resource_add_button">+ Add</button>';
+				$wrapper.append( addButton );
+
+				// make list
+				var itemHtml = $('#lesson_resources_item').html();
+				var $list = $('<ul></ul>').appendTo( $wrapper );
+
+				// make list sortable
+				$list.sortable();
+
+				// click handlers
+				LessonEditor.resourcesField.addClick();
+				LessonEditor.resourcesField.editClick();
+				LessonEditor.resourcesField.deleteClick();
+				LessonEditor.resourcesField.saveClick();
+
+			},
+
+			updateData: function() {
+
+				var data = [];
+				$('#resource_field_content > ul').find('li').each( function() {
+					var obj = {
+
+					}
+					obj.label = $(this).find('.resources-label-field input').val();
+					obj.url = $(this).find('.resources-url-field input').val();
+					data.push( obj );
+				});
+				LessonEditor.resourcesField.dataEl.val( JSON.stringify(data) );
+
+			},
+
+			addClick: function() {
+
+				$(document).on('click', '#resource_add_button', function(e) {
+
+					e.preventDefault();
+
+					var itemHtml = $('#lesson_resources_item').html();
+					var list = $('#resource_field_content').find('ul');
+					var item = $( itemHtml ).appendTo( list );
+					item.find('.resources-display').hide();
+
+					LessonEditor.resourcesField.updateData();
+
+				});
+
+			},
+
+			editClick: function() {
+
+				$(document).on('click', '.resource-edit-button', function() {
+
+					var item = $(this).closest('li');
+					item.find('.resources-edit').show();
+					item.find('.resources-display').hide();
+
+					LessonEditor.resourcesField.updateData();
+
+				});
+
+			},
+
+			saveClick: function() {
+
+				$(document).on('click', '.resource-save-button', function() {
+
+					var item = $(this).closest('li');
+
+					var label = item.find('.resources-label-field input').val();
+					var url = item.find('.resources-url-field input').val();
+
+					item.find('a').prop('href', url);
+					item.find('a').text(label);
+
+					item.find('.resources-edit').hide();
+					item.find('.resources-display').show();
+
+					LessonEditor.resourcesField.updateData();
+
+				});
+
+			},
+
+			deleteClick: function() {
+
+				$(document).on('click', '.resource-remove-button', function() {
+
+					$(this).closest('li').remove();
+					LessonEditor.resourcesField.updateData();
+
+				});
+
+			},
 
 		}
 
