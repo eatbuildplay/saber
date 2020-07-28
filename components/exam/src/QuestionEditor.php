@@ -75,11 +75,31 @@ class QuestionEditor {
       $value
     );
 
-    $value = $_POST['question_options'];
+    $optionsPassed = $_POST['question_options'];
+    $optionsStripSlashed = stripslashes( $optionsPassed );
+    $optionsRaw = json_decode( $optionsStripSlashed );
+
+    if( empty( $optionsRaw )) {
+
+      $optionIds = [];
+
+    } else {
+
+      $optionIds = [];
+      foreach( $optionsRaw as $opt ) {
+        $optionModel = new \Saber\Exam\Model\QuestionOption;
+        $optionModel->title = $opt->title;
+        $optionModel->label = $opt->title;
+        $optionModel->save();
+        $optionIds[] = $optionModel->id;
+      }
+
+    }
+
     update_post_meta(
       $postId,
       'question_options',
-      $value
+      $optionIds
     );
 
   }

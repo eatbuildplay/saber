@@ -27,9 +27,11 @@ class ExamScore {
 
     $this->permalink = get_permalink( $this->id );
 
+    /*
     update_field( 'user', $this->user, $this->id );
     update_field( 'exam', $this->exam, $this->id );
     update_field( 'start', date('Y-m-d H:i:s'), $this->id );
+    */
 
   }
 
