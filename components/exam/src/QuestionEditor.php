@@ -93,11 +93,18 @@ class QuestionEditor {
 
       $optionIds = [];
       foreach( $optionsRaw as $opt ) {
-        $optionModel = new \Saber\Exam\Model\QuestionOption;
+
+        if( $opt->id == 0 ) {
+          $optionModel = new \Saber\Exam\Model\QuestionOption;
+        } else {
+          $optionModel = \Saber\Exam\Model\QuestionOption::load( $opt->id );
+        }
+
         $optionModel->title = $opt->title;
         $optionModel->label = $opt->title;
         $optionModel->save();
         $optionIds[] = $optionModel->id;
+
       }
 
     }

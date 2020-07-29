@@ -19,7 +19,7 @@
   <div class="saber-field">
     <label>Question Options</label>
     <ul id="question_options_editor"></ul>
-    <textarea id="question_options" name="question_options"></textarea>
+    <input type="hidden" id="question_options" name="question_options" />
   </div>
 
   <hr />
