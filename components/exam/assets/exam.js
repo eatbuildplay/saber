@@ -140,7 +140,7 @@ var Exam = {
       var $question = Exam.exam.timeline.items[ $nextQuestionIndex ];
 
       // end is next
-      if( Exam.questionCount() == $nextQuestionIndex +1 ) {
+      if( Exam.timelineItemCount() == $nextQuestionIndex +1 ) {
         Exam.showLastQuestion();
       }
 
