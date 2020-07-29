@@ -19,7 +19,7 @@
   <div class="saber-field">
     <label>Question Options</label>
     <ul id="question_options_editor"></ul>
-    <textarea id="question_options" name="question_options"><?php print get_post_meta( $post->ID, 'question_options', 1 ); ?></textarea>
+    <textarea id="question_options" name="question_options"></textarea>
   </div>
 
   <hr />
@@ -43,7 +43,8 @@
 <!-- options list item template -->
 <template id="question-option-list-item">
   <li>
-    <input type="text" />
+    <input class="option-id" type="hidden" />
+    <input class="option-title" type="text" />
     <span class="list-item-value"></span>
     <span class="dashicons dashicons-thumbs-up"></span>
     <span class="dashicons dashicons-welcome-write-blog"></span>

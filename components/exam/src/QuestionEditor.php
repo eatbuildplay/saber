@@ -33,7 +33,7 @@ class QuestionEditor {
 
   public function metaboxCb( $post ) {
 
-    $question = \Saber\Exam\Model\Exam::Load( $post );
+    $question = \Saber\Exam\Model\Question::Load( $post );
     $template = new \Saber\Template();
     $template->path = 'components/exam/templates/';
 
@@ -44,6 +44,12 @@ class QuestionEditor {
       'question' => $question
     ];
     $content .= $template->get();
+
+    wp_localize_script(
+      'question-editor',
+      'questionEditor',
+      [ 'question' => $question ]
+    );
 
     print $content;
 

@@ -51,7 +51,7 @@ class QuestionOption {
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
 
-    $obj->title = get_post_meta($obj->id, 'question_option_label', 1);
+    $obj->label = get_post_meta($obj->id, 'question_option_label', 1);
 
     return $obj;
 
