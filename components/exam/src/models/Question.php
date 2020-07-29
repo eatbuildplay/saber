@@ -6,6 +6,7 @@ class Question {
 
   public $id;
   public $title;
+  public $type = 'question';
   public $body;
   public $type;
   public $options;

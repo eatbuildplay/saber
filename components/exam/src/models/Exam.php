@@ -7,6 +7,7 @@ class Exam {
   public $id;
   public $title;
   public $permalink;
+  public $type = 'exam';
   public $timeline;
 
   public static function load( $post ) {

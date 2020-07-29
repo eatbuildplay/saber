@@ -7,6 +7,7 @@ class Lesson {
   public $id;
   public $title;
   public $permalink;
+  public $type = 'lesson';
   public $video;
   public $overview;
   public $duration;

@@ -90,12 +90,15 @@
 
     updateLesson: function( id ) {
 
-      console.log( saberCourse );
+      console.log(id);
+      console.log(saberCourse.course.timeline);
+
+      var timelineItem = CourseSingle.getTimelineItem( id );
+
+      console.log(timelineItem);
 
       var lesson = saberCourse.course.timeline[0];
       var overview = lesson.overview;
-
-      console.log( overview );
 
       // do replacement
       var lessonTabsHtml = $('#lesson-tabs').html();
@@ -110,6 +113,16 @@
       });
       */
 
+    },
+
+    getTimelineItem: function( id ) {
+      var matchedItem = false;
+      saberCourse.course.timeline.forEach( function( item ) {
+        if( item.id == id ) {
+          matchedItem = item;
+        }
+      });
+      return matchedItem;
     }
 
   }
