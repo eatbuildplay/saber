@@ -1,11 +1,9 @@
-(function($) {
-
 var Exam = {
 
-  id: $('#exam-canvas').data('exam-id'),
+  id: jQuery('#exam-canvas').data('exam-id'),
   canvas: {
-    body: $('#exam-body-canvas'),
-    controls: $('#exam-controls-canvas'),
+    body: jQuery('#exam-body-canvas'),
+    controls: jQuery('#exam-controls-canvas'),
   },
   exam: [],
   score: {
@@ -35,13 +33,13 @@ var Exam = {
   },
 
   viewScore: function() {
-    $(document).on( 'click', '.exam-control-view-score', function() {
+    jQuery(document).on( 'click', '.exam-control-view-score', function() {
       window.location.href = Exam.score.permalink;
     });
   },
 
   restartClickHandler: function() {
-    $(document).on('click', '.exam-control-restart', Exam.showStart);
+    jQuery(document).on('click', '.exam-control-restart', Exam.showStart);
   },
 
   timelineItemCount: function() {
@@ -52,7 +50,7 @@ var Exam = {
 
     Exam.hideControls();
 
-    var $template = $('#exam-single-end').html();
+    var $template = jQuery('#exam-single-end').html();
     Exam.canvas.body.html( $template );
 
     // send end call
@@ -60,7 +58,7 @@ var Exam = {
       action: 'saber_exam_end',
       examId: Exam.id
     }
-    $.post( saber_post_list_load.ajaxurl, data, function( response ) {
+    jQuery.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
       response = JSON.parse(response);
 
@@ -71,13 +69,13 @@ var Exam = {
 
   showStart: function() {
 
-    var $template = $('#exam-single-start').html();
+    var $template = jQuery('#exam-single-start').html();
     Exam.canvas.body.html( $template );
 
   },
 
   startClickHandler: function() {
-    $(document).on('click', '.exam-control-start', Exam.start);
+    jQuery(document).on('click', '.exam-control-start', Exam.start);
   },
 
   start: function() {
@@ -104,7 +102,7 @@ var Exam = {
       action: 'saber_exam_create_exam_score',
       examId: Exam.id
     }
-    $.post( saber_post_list_load.ajaxurl, data, function( response ) {
+    jQuery.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
       response = JSON.parse(response);
 
@@ -116,7 +114,7 @@ var Exam = {
   },
 
   loadControls: function() {
-    var $template = $('#exam-controls').html();
+    var $template = jQuery('#exam-controls').html();
     Exam.canvas.controls.html( $template );
   },
 
@@ -129,12 +127,12 @@ var Exam = {
   },
 
   showLastQuestion: function() {
-    $('button.exam-next').html('Finish Exam');
+    jQuery('button.exam-next').html('Finish Exam');
   },
 
   next: function() {
 
-    $(document).on('click', '.exam-next', function() {
+    jQuery(document).on('click', '.exam-next', function() {
 
       var $nextQuestionIndex = Exam.state.currentQuestion.index +1;
       var $question = Exam.exam.timeline.items[ $nextQuestionIndex ];
@@ -168,7 +166,7 @@ var Exam = {
       action: 'saber_exam_exam_load',
       examId: Exam.id
     }
-    $.post( saber_post_list_load.ajaxurl, data, function( response ) {
+    jQuery.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
       response = JSON.parse(response);
       Exam.exam = response.exam;
@@ -182,7 +180,7 @@ var Exam = {
     console.log( $question );
 
     // populate templates
-    var $template = $('#question-template').html();
+    var $template = jQuery('#question-template').html();
     $template = $template.replace(
       '{questionId}',
       $question.id
@@ -199,7 +197,7 @@ var Exam = {
     Exam.canvas.body.html( $template );
 
     // get the question as an element so we can make changes
-    var $questionEl = $('.question');
+    var $questionEl = jQuery('.question');
 
     var lettering = [
       'a', 'b', 'c', 'd', 'e', 'f'
@@ -207,7 +205,7 @@ var Exam = {
     var $optionsHtml = '';
     $question.options.forEach( function( option, index ) {
 
-      var $template = $('#question-option-template').html();
+      var $template = jQuery('#question-option-template').html();
       $template = $template.replace(
         /\{questionOptionId\}/g,
         option.id
@@ -230,15 +228,15 @@ var Exam = {
 
   selectQuestionOption: function() {
 
-    $( document ).on( 'click', '.question ul.selectable li', function() {
+    jQuery( document ).on( 'click', '.question ul.selectable li', function() {
 
       // handle ux changes
-      $(this).addClass('selected');
-      $(this).parent('ul').removeClass('selectable');
+      jQuery(this).addClass('selected');
+      jQuery(this).parent('ul').removeClass('selectable');
 
       // record the answer
-      var $questionId = $(this).data('question-id');
-      var $questionOptionId = $(this).data('question-option-id');
+      var $questionId = jQuery(this).data('question-id');
+      var $questionOptionId = jQuery(this).data('question-option-id');
       Exam.recordAnswer( $questionId, $questionOptionId );
 
     })
@@ -253,12 +251,12 @@ var Exam = {
       questionId: $questionId,
       questionOptionId: $questionOptionId
     }
-    $.post( saber_post_list_load.ajaxurl, data, function( response ) {
+    jQuery.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
        response = JSON.parse(response);
 
        // add focus on answered question
-       var $questionEl = $('.question-' + response.question.id);
+       var $questionEl = jQuery('.question-' + response.question.id);
        $questionEl.addClass('focus');
 
        var $selectedOption = $questionEl.find('li.selected');
@@ -276,5 +274,3 @@ var Exam = {
 }
 
 Exam.init();
-
-})( jQuery );

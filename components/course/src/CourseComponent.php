@@ -257,7 +257,7 @@ class CourseComponent {
     wp_enqueue_script(
       'saber-course-single',
       SABER_URL . 'components/course/assets/course-single.js',
-      array( 'jquery', 'saber-videojs' ),
+      array( 'jquery', 'saber-videojs', 'exam-js' ),
       '1.0.0',
       true
     );

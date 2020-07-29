@@ -1,133 +1,168 @@
-(function($) {
+var CourseSingle = {
 
-  var CourseSingle = {
+  player: false,
 
-    player: videojs('videoPlayer', {
-      controls: 1,
-      autoplay: 0,
-      preload: 'auto',
-      fluid: 1
-    }),
+  init: function() {
 
-    init: function() {
+    /* header menu items */
+    jQuery('.course-header-menu a').on('click', function(e) {
+      e.preventDefault();
 
-      /* header menu items */
-      $('.course-header-menu a').on('click', function(e) {
-        e.preventDefault();
+      if( jQuery(this).hasClass('course-study-guide-download') ) {
+        window.open('https://eatbuildplay.com/wp-content/uploads/2020/07/Saber-LMS-Docs.pdf');
+      }
 
-        if( $(this).hasClass('course-study-guide-download') ) {
-          window.open('https://eatbuildplay.com/wp-content/uploads/2020/07/Saber-LMS-Docs.pdf');
-        }
+    });
 
-      });
+    /* section header */
+    jQuery('.course-menu-section-header').on('click', function() {
+      if( jQuery(this).hasClass('open') ) {
+        jQuery('.course-menu-section-list').hide();
+        jQuery(this).removeClass('open');
+        jQuery(this).find('i').removeClass('fa-chevron-down');
+        jQuery(this).find('i').addClass('fa-chevron-right');
+      } else {
+        jQuery('.course-menu-section-list').show();
+        jQuery(this).addClass('open');
+        jQuery(this).find('i').removeClass('fa-chevron-right');
+        jQuery(this).find('i').addClass('fa-chevron-down');
+      }
+    });
 
-      /* section header */
-      $('.course-menu-section-header').on('click', function() {
-        if( $(this).hasClass('open') ) {
-          $('.course-menu-section-list').hide();
-          $(this).removeClass('open');
-          $(this).find('i').removeClass('fa-chevron-down');
-          $(this).find('i').addClass('fa-chevron-right');
-        } else {
-          $('.course-menu-section-list').show();
-          $(this).addClass('open');
-          $(this).find('i').removeClass('fa-chevron-right');
-          $(this).find('i').addClass('fa-chevron-down');
-        }
-      });
+    // open by default
+    jQuery('.course-menu-section-list').show();
+    jQuery('.course-menu-section-header').addClass('open');
+    jQuery('.course-menu-section-header').find('i').removeClass('fa-chevron-right');
+    jQuery('.course-menu-section-header').find('i').addClass('fa-chevron-down');
 
-      // open by default
-      $('.course-menu-section-list').show();
-      $('.course-menu-section-header').addClass('open');
-      $('.course-menu-section-header').find('i').removeClass('fa-chevron-right');
-      $('.course-menu-section-header').find('i').addClass('fa-chevron-down');
+    jQuery('.course-menu-section-list li').on('click', function() {
 
-      $('.course-menu-section-list li').on('click', function() {
+      var item = jQuery(this);
+      var id = item.data('id');
 
-        var item = $(this);
-        var id = item.data('id');
+      CourseSingle.updateLesson( id );
 
-        CourseSingle.updateLesson( id );
+    })
 
-      })
+    // course menu controls
+    jQuery(document).on('click', '.course-menu-collapse', function(e) {
+      e.preventDefault();
+      jQuery(this).removeClass('course-menu-collapse').addClass('course-menu-expand');
+      jQuery(this).find('i').removeClass('fa-angle-double-left').addClass('fa-angle-double-right');
+      jQuery('.course-menu-list').hide();
+    });
 
-      // course menu controls
-      $(document).on('click', '.course-menu-collapse', function(e) {
-        e.preventDefault();
-        $(this).removeClass('course-menu-collapse').addClass('course-menu-expand');
-        $(this).find('i').removeClass('fa-angle-double-left').addClass('fa-angle-double-right');
-        $('.course-menu-list').hide();
-      });
+    jQuery(document).on('click', '.course-menu-expand', function(e) {
+      e.preventDefault();
+      jQuery(this).removeClass('course-menu-expand').addClass('course-menu-collapse');
+      jQuery(this).find('i').removeClass('fa-angle-double-right').addClass('fa-angle-double-left');
+      jQuery('.course-menu-list').show();
+    });
 
-      $(document).on('click', '.course-menu-expand', function(e) {
-        e.preventDefault();
-        $(this).removeClass('course-menu-expand').addClass('course-menu-collapse');
-        $(this).find('i').removeClass('fa-angle-double-right').addClass('fa-angle-double-left');
-        $('.course-menu-list').show();
-      });
+    // init tabs
+    CourseSingle.initTabs();
 
-      // init tabs
-      CourseSingle.initTabs();
+  },
 
-    },
+  initTabs: function() {
 
-    initTabs: function() {
+    jQuery( '#lesson-tabs header a' ).on('click', function(e) {
+      e.preventDefault();
+      jQuery( '#lesson-tabs li.lesson-tabs-tab' ).hide();
+      jQuery( '#lesson-tabs header a' ).removeClass('active')
+      jQuery(this).addClass('active');
 
-      $( '#lesson-tabs header a' ).on('click', function(e) {
-        e.preventDefault();
-        $( '#lesson-tabs li.lesson-tabs-tab' ).hide();
-        $( '#lesson-tabs header a' ).removeClass('active')
-        $(this).addClass('active');
-
-        var target = $(this).data('target');
-        $('#' + target).show();
-      });
+      var target = jQuery(this).data('target');
+      jQuery('#' + target).show();
+    });
 
 
-      $( '#lesson-tabs header a' ).first().click();
+    jQuery( '#lesson-tabs header a' ).first().click();
 
-    },
+  },
 
-    updateLesson: function( id ) {
+  updateLesson: function( id ) {
 
-      console.log(id);
-      console.log(saberCourse.course.timeline);
+    // get timeline item by id
+    var timelineItem = CourseSingle.getTimelineItem( id );
 
-      var timelineItem = CourseSingle.getTimelineItem( id );
+    if( timelineItem.type == 'lesson' ) {
 
-      console.log(timelineItem);
-
-      var lesson = saberCourse.course.timeline[0];
+      var lesson = timelineItem;
       var overview = lesson.overview;
 
-      // do replacement
-      var lessonTabsHtml = $('#lesson-tabs').html();
+      // prepare template
+      var lessonTemplate = jQuery('#lesson-template').html();
+      var $lessonTemplate = jQuery( lessonTemplate );
+      var lessonTabsHtml = $lessonTemplate.find('#lesson-tabs').html();
+
       var updatedHtml = lessonTabsHtml.replace( '{{lesson_overview}}', lesson.overview);
-      $('#lesson-tabs').html( updatedHtml );
+      $lessonTemplate.find('#lesson-tabs').html( updatedHtml );
 
-      /*
-      var videoUrl = saberCourse.course.timeline[0].video.url;
-      CourseSingle.player.src({
-        type: 'video/mp4',
-        src: videoUrl
-      });
-      */
+      jQuery('.course-body-right').html( $lessonTemplate );
 
-    },
+      // setup video
+      if( lesson.video ) {
 
-    getTimelineItem: function( id ) {
-      var matchedItem = false;
-      saberCourse.course.timeline.forEach( function( item ) {
-        if( item.id == id ) {
-          matchedItem = item;
+        if( CourseSingle.player ) {
+          CourseSingle.player.dispose();
         }
-      });
-      return matchedItem;
+
+        CourseSingle.player = videojs('videoPlayer', {
+          controls: 1,
+          autoplay: 0,
+          preload: 'auto',
+          fluid: 1
+        });
+
+        CourseSingle.player.src({
+          type: 'video/mp4',
+          src: lesson.video.url
+        });
+
+      }
+
     }
 
+    if( timelineItem.type == 'exam' ) {
+
+      var exam = timelineItem;
+
+      var examCanvasHtml = jQuery('#exam-template').html();
+
+      var $examCanvasEl = jQuery( examCanvasHtml );
+
+      console.log($examCanvasEl)
+
+      jQuery('.course-body-right').html('');
+      $examCanvasEl.appendTo( '.course-body-right' );
+
+      var startHtml = jQuery('#exam-single-start').html();
+      var startEl = jQuery( startHtml );
+      startEl.appendTo( $examCanvasEl );
+
+      console.log(exam.id);
+      console.log( $examCanvasEl )
+
+      $examCanvasEl.attr('data-exam-id', exam.id );
+
+      Exam.id = exam.id;
+      Exam.init();
+
+    }
+
+  },
+
+  getTimelineItem: function( id ) {
+    var matchedItem = false;
+    saberCourse.course.timeline.forEach( function( item ) {
+      if( item.id == id ) {
+        matchedItem = item;
+      }
+    });
+    return matchedItem;
   }
 
-  CourseSingle.init();
+}
 
-
-})( jQuery );
+CourseSingle.init();

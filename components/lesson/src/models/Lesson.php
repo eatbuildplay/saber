@@ -23,13 +23,14 @@ class Lesson {
     $obj->title = $post->post_title;
     $obj->permalink = get_permalink( $post->ID );
 
-    $videoAttachmentId = get_post_meta( $obj->id, 'saber_lesson_video', 1 );
+    $videoAttachmentId = get_post_meta( $obj->id, 'lesson_video', 1 );
+
     if( $videoAttachmentId ) {
       $obj->video = new \stdClass;
       $obj->video->url = wp_get_attachment_url( $videoAttachmentId );
     }
 
-    $obj->overview = get_post_meta( $obj->id, 'saber_lesson_overview', 1 );
+    $obj->overview = get_post_meta( $obj->id, 'lesson_overview', 1 );
     $obj->duration = get_post_meta( $obj->id, 'lesson_duration', 1 );
 
     return $obj;

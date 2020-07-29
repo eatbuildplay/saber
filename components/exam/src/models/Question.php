@@ -7,8 +7,8 @@ class Question {
   public $id;
   public $title;
   public $type = 'question';
+  public $questionType;
   public $body;
-  public $type;
   public $options;
   public $correct; // index of the correct option
 
@@ -23,7 +23,7 @@ class Question {
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
 
-    $obj->type = get_post_meta( $obj->id, 'question_type', 1);
+    $obj->questionType = get_post_meta( $obj->id, 'question_type', 1);
     $obj->body = get_post_meta( $obj->id, 'question_body', 1);
 
     $optionsArray = get_post_meta( $obj->id, 'question_options', 1);

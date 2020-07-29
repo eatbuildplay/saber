@@ -29,6 +29,7 @@ class Course {
     // form timeline objects
     $obj->timeline = [];
     $data = json_decode( $obj->data );
+
     foreach( $data->timeline as $item ) {
       if( $item->type == 'lesson' ) {
         $obj->timeline[] = \Saber\Lesson\Model\Lesson::load( $item->id );
