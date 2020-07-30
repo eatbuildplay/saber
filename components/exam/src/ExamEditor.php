@@ -13,8 +13,8 @@ class ExamEditor {
     /* search ajax hook */
     add_action( 'wp_ajax_saber_exam_editor_question_search', array( $this, 'jxQuestionSearch'));
 
-    add_action('admin_enqueue_scripts', array( $this, 'scripts' ));
-
+    add_action( 'admin_print_scripts-post-new.php', [$this, 'editorScript'] );
+    add_action( 'admin_print_scripts-post.php', [$this, 'editorScript'] );
 
   }
 
@@ -100,22 +100,28 @@ class ExamEditor {
 
   }
 
-  public function scripts() {
+  public function editorScripts() {
 
-    wp_enqueue_script(
-      'exam-editor',
-      SABER_URL . 'components/exam/assets/exam-editor.js',
-      array( 'jquery' ),
-      '1.0.0',
-      true
-    );
+    global $post_type;
 
-    wp_enqueue_style(
-      'exam-editor',
-      SABER_URL . 'components/exam/assets/exam-editor.css',
-      array(),
-      true
-    );
+    if( 'exam' == $post_type ) {
+
+      wp_enqueue_script(
+        'exam-editor',
+        SABER_URL . 'components/exam/assets/exam-editor.js',
+        array( 'jquery' ),
+        '1.0.0',
+        true
+      );
+
+      wp_enqueue_style(
+        'exam-editor',
+        SABER_URL . 'components/exam/assets/exam-editor.css',
+        array(),
+        true
+      );
+
+    }
 
   }
 
