@@ -69,3 +69,20 @@
 <textarea id="ceEditorData" name="ceEditorData">
   <?php print $course->data; ?>
 </textarea>
+
+<!-- Study Guide File -->
+<div class="saber-field">
+	<?php
+
+		$attachId = get_post_meta( $post->ID, 'course_study_guide', 1 );
+		$filename = basename ( get_attached_file( $attachId ) );
+
+	?>
+	<label for="course_study_guide">Study Guide</label>
+	<input type="hidden"
+		id="course_study_guide"
+		name="course_study_guide"
+		value="<?php print $attachId; ?>"
+		data-filename="<?php print $filename; ?>"
+		/>
+</div>

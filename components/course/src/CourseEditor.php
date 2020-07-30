@@ -31,12 +31,15 @@ class CourseEditor {
       return $postId;
     }
 
-    $newValue = $_POST['ceEditorData'];
-
+    // course timeline data
     $key = 'saber_course_timeline_data';
-    $value = get_post_meta( $postId, $key, true );
+    $value = $_POST['ceEditorData'];
+    update_post_meta( $postId, $key, $value );
 
-    update_post_meta( $postId, $key, $newValue );
+    // study guide
+    $key = 'course_study_guide';
+    $value = sanitize_text_field( $_POST[ $key ] );
+    update_post_meta( $postId, $key, $value );
 
   }
 
@@ -118,7 +121,7 @@ class CourseEditor {
 
     $course = \Saber\Course\Model\Course::Load( $post );
     $template = new \Saber\Template();
-    $template->path = 'components/course/templates/';
+    $template->path = 'components/course/templates/editor/';
 
     $content = '';
 
