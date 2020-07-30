@@ -6,9 +6,10 @@ class Course {
 
   public $id;
   public $title;
+  public $permalink;
   public $data; // json loading data
   public $timeline; // timeline objects
-  public $permalink;
+  public $studyGuide;
 
   public static function load( $post ) {
 
@@ -37,6 +38,17 @@ class Course {
       if( $item->type == 'exam' ) {
         $obj->timeline[] = \Saber\Exam\Model\Exam::load( $item->id );
       }
+    }
+
+    // study guide
+    $attachmentId = get_post_meta( $post->ID, 'course_study_guide', 1 );
+    if( $attachmentId ) {
+      $obj->studyGuide = new \stdClass;
+      $obj->studyGuide->id = $attachmentId;
+      $obj->studyGuide->url = wp_get_attachment_url( $attachmentId );
+      $obj->studyGuide->filename = basename ( get_attached_file( $attachmentId ) );
+    } else {
+      $obj->studyGuide = false;
     }
 
     return $obj;

@@ -5,14 +5,25 @@ var CourseSingle = {
   init: function() {
 
     /* header menu items */
-    jQuery('.course-header-menu a').on('click', function(e) {
-      e.preventDefault();
 
-      if( jQuery(this).hasClass('course-study-guide-download') ) {
-        window.open('https://eatbuildplay.com/wp-content/uploads/2020/07/Saber-LMS-Docs.pdf');
-      }
+    if( saberCourse.course.studyGuide ) {
 
-    });
+      jQuery('.course-header-menu a').on('click', function(e) {
+        e.preventDefault();
+
+        if( jQuery(this).hasClass('course-study-guide-download') ) {
+          window.open( saberCourse.course.studyGuide.url );
+        }
+
+      });
+
+    } else {
+
+      // no study guide
+      jQuery('.course-study-guide-download').hide();
+
+    }
+
 
     /* section header */
     jQuery('.course-menu-section-header').on('click', function() {
@@ -29,20 +40,16 @@ var CourseSingle = {
       }
     });
 
+    CourseSingle.menuClickHandler();
+
     // open by default
     jQuery('.course-menu-section-list').show();
     jQuery('.course-menu-section-header').addClass('open');
     jQuery('.course-menu-section-header').find('i').removeClass('fa-chevron-right');
     jQuery('.course-menu-section-header').find('i').addClass('fa-chevron-down');
+    jQuery('.course-menu-section-list li').first().click();
 
-    jQuery('.course-menu-section-list li').on('click', function() {
 
-      var item = jQuery(this);
-      var id = item.data('id');
-
-      CourseSingle.updateLesson( id );
-
-    })
 
     // course menu controls
     jQuery(document).on('click', '.course-menu-collapse', function(e) {
@@ -61,6 +68,20 @@ var CourseSingle = {
 
     // init tabs
     CourseSingle.initTabs();
+
+  },
+
+  menuClickHandler: function() {
+
+    jQuery('.course-menu-section-list li').on('click', function() {
+
+      var item = jQuery(this);
+      var id = item.data('id');
+
+      console.log('open by default?? - ' + id);
+      CourseSingle.updateLesson( id );
+
+    });
 
   },
 
