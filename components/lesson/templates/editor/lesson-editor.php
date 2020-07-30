@@ -22,7 +22,7 @@ global $post;
 
 <div class="saber-field">
 	<label for="lesson_overview">Lesson Overview</label>
-	<textarea id='lesson_overview' name="lesson_overview"><?php print get_post_meta( $post->ID, 'saber_lesson_overview', 1 ); ?></textarea>
+	<textarea id='lesson_overview' name="lesson_overview"><?php print get_post_meta( $post->ID, 'lesson_overview', 1 ); ?></textarea>
 </div>
 
 <div class="saber-field">

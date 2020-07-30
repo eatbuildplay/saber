@@ -159,11 +159,11 @@ print $content;
             <h4>Lesson professor</h4>
             <div class="lesson-author-box">
               <div class="lesson-author-box-left">
-                <img src="https://picsum.photos/150/150" />
+                <img class="lesson-author-profile" src="" />
               </div>
               <div class="lesson-author-box-right">
-                <h5>Author Name</h5>
-                <p>Adriti is currently an Inbound Professor for HubSpot Academy, focusing on Service Hub. Prior to HubSpot, Adriti worked at a non-profit educational program focusing on getting high school students into colleges and universities. She is passionate about ensuring education is accessible for all. Outside of work, Adriti can be found at your local Chinese restaurant, or at a spin class, trying to work off said Chinese food.</p>
+                <h5 class="lesson-author-name"></h5>
+                <div class="lesson-author-bio"></div>
               </div>
             </div>
           </div>

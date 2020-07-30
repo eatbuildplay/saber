@@ -67,7 +67,7 @@ var CourseSingle = {
     });
 
     // init tabs
-    CourseSingle.initTabs();
+    CourseSingle.initLessonTabs();
 
   },
 
@@ -78,16 +78,15 @@ var CourseSingle = {
       var item = jQuery(this);
       var id = item.data('id');
 
-      console.log('open by default?? - ' + id);
       CourseSingle.updateLesson( id );
 
     });
 
   },
 
-  initTabs: function() {
+  initLessonTabs: function() {
 
-    jQuery( '#lesson-tabs header a' ).on('click', function(e) {
+    jQuery( document ).on('click', '#lesson-tabs header a', function(e) {
       e.preventDefault();
       jQuery( '#lesson-tabs li.lesson-tabs-tab' ).hide();
       jQuery( '#lesson-tabs header a' ).removeClass('active')
@@ -108,41 +107,7 @@ var CourseSingle = {
     var timelineItem = CourseSingle.getTimelineItem( id );
 
     if( timelineItem.type == 'lesson' ) {
-
-      var lesson = timelineItem;
-      var overview = lesson.overview;
-
-      // prepare template
-      var lessonTemplate = jQuery('#lesson-template').html();
-      var $lessonTemplate = jQuery( lessonTemplate );
-      var lessonTabsHtml = $lessonTemplate.find('#lesson-tabs').html();
-
-      var updatedHtml = lessonTabsHtml.replace( '{{lesson_overview}}', lesson.overview);
-      $lessonTemplate.find('#lesson-tabs').html( updatedHtml );
-
-      jQuery('.course-body-right').html( $lessonTemplate );
-
-      // setup video
-      if( lesson.video ) {
-
-        if( CourseSingle.player ) {
-          CourseSingle.player.dispose();
-        }
-
-        CourseSingle.player = videojs('videoPlayer', {
-          controls: 1,
-          autoplay: 0,
-          preload: 'auto',
-          fluid: 1
-        });
-
-        CourseSingle.player.src({
-          type: 'video/mp4',
-          src: lesson.video.url
-        });
-
-      }
-
+      CourseSingle.lessonLoad( timelineItem );
     }
 
     if( timelineItem.type == 'exam' ) {
@@ -150,10 +115,7 @@ var CourseSingle = {
       var exam = timelineItem;
 
       var examCanvasHtml = jQuery('#exam-template').html();
-
       var $examCanvasEl = jQuery( examCanvasHtml );
-
-      console.log($examCanvasEl)
 
       jQuery('.course-body-right').html('');
       $examCanvasEl.appendTo( '.course-body-right' );
@@ -162,13 +124,50 @@ var CourseSingle = {
       var startEl = jQuery( startHtml );
       startEl.appendTo( $examCanvasEl );
 
-      console.log(exam.id);
-      console.log( $examCanvasEl )
-
       $examCanvasEl.attr('data-exam-id', exam.id );
 
       Exam.id = exam.id;
       Exam.init();
+
+    }
+
+  },
+
+  lessonLoad: function( lesson ) {
+
+    // prepare template
+    var lessonTemplate = jQuery('#lesson-template').html();
+    var $lessonTemplate = jQuery( lessonTemplate );
+    var lessonTabsHtml = $lessonTemplate.find('#lesson-tabs').html();
+
+    // parse lesson overview
+    if( lesson.overview == '' ) {
+      jQuery('.lesson-overview').hide();
+    } else {
+      var updatedHtml = lessonTabsHtml.replace( '{{lesson_overview}}', lesson.overview);
+    }
+
+    $lessonTemplate.find('#lesson-tabs').html( updatedHtml );
+    jQuery('.course-body-right').html( $lessonTemplate );
+
+    // setup video
+    if( lesson.video ) {
+
+      if( CourseSingle.player ) {
+        CourseSingle.player.dispose();
+      }
+
+      CourseSingle.player = videojs('videoPlayer', {
+        controls: 1,
+        autoplay: 0,
+        preload: 'auto',
+        fluid: 1
+      });
+
+      CourseSingle.player.src({
+        type: 'video/mp4',
+        src: lesson.video.url
+      });
 
     }
 
