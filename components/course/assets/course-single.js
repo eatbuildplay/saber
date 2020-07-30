@@ -4,43 +4,12 @@ var CourseSingle = {
 
   init: function() {
 
-    /* header menu items */
+    CourseSingle.initStudyGuide();
 
-    if( saberCourse.course.studyGuide ) {
-
-      jQuery('.course-header-menu a').on('click', function(e) {
-        e.preventDefault();
-
-        if( jQuery(this).hasClass('course-study-guide-download') ) {
-          window.open( saberCourse.course.studyGuide.url );
-        }
-
-      });
-
-    } else {
-
-      // no study guide
-      jQuery('.course-study-guide-download').hide();
-
-    }
-
-
-    /* section header */
-    jQuery('.course-menu-section-header').on('click', function() {
-      if( jQuery(this).hasClass('open') ) {
-        jQuery('.course-menu-section-list').hide();
-        jQuery(this).removeClass('open');
-        jQuery(this).find('i').removeClass('fa-chevron-down');
-        jQuery(this).find('i').addClass('fa-chevron-right');
-      } else {
-        jQuery('.course-menu-section-list').show();
-        jQuery(this).addClass('open');
-        jQuery(this).find('i').removeClass('fa-chevron-right');
-        jQuery(this).find('i').addClass('fa-chevron-down');
-      }
-    });
-
+    /* menu click handlers */
+    CourseSingle.menuSectionClickHandler();
     CourseSingle.menuClickHandler();
+    CourseSingle.menuCollapseExpandClickHandler();
 
     // open by default
     jQuery('.course-menu-section-list').show();
@@ -48,23 +17,6 @@ var CourseSingle = {
     jQuery('.course-menu-section-header').find('i').removeClass('fa-chevron-right');
     jQuery('.course-menu-section-header').find('i').addClass('fa-chevron-down');
     jQuery('.course-menu-section-list li').first().click();
-
-
-
-    // course menu controls
-    jQuery(document).on('click', '.course-menu-collapse', function(e) {
-      e.preventDefault();
-      jQuery(this).removeClass('course-menu-collapse').addClass('course-menu-expand');
-      jQuery(this).find('i').removeClass('fa-angle-double-left').addClass('fa-angle-double-right');
-      jQuery('.course-menu-list').hide();
-    });
-
-    jQuery(document).on('click', '.course-menu-expand', function(e) {
-      e.preventDefault();
-      jQuery(this).removeClass('course-menu-expand').addClass('course-menu-collapse');
-      jQuery(this).find('i').removeClass('fa-angle-double-right').addClass('fa-angle-double-left');
-      jQuery('.course-menu-list').show();
-    });
 
     // init tabs
     CourseSingle.initLessonTabs();
@@ -82,6 +34,42 @@ var CourseSingle = {
 
     });
 
+  },
+
+  menuSectionClickHandler: function() {
+
+    jQuery('.course-menu-section-header').on('click', function() {
+      if( jQuery(this).hasClass('open') ) {
+        jQuery('.course-menu-section-list').hide();
+        jQuery(this).removeClass('open');
+        jQuery(this).find('i').removeClass('fa-chevron-down');
+        jQuery(this).find('i').addClass('fa-chevron-right');
+      } else {
+        jQuery('.course-menu-section-list').show();
+        jQuery(this).addClass('open');
+        jQuery(this).find('i').removeClass('fa-chevron-right');
+        jQuery(this).find('i').addClass('fa-chevron-down');
+      }
+    });
+
+  },
+
+  menuCollapseExpandClickHandler: function() {
+
+    jQuery(document).on('click', '.course-menu-collapse', function(e) {
+      e.preventDefault();
+      jQuery(this).removeClass('course-menu-collapse').addClass('course-menu-expand');
+      jQuery(this).find('i').removeClass('fa-angle-double-left').addClass('fa-angle-double-right');
+      jQuery('.course-menu-list').hide();
+    });
+
+    jQuery(document).on('click', '.course-menu-expand', function(e) {
+      e.preventDefault();
+      jQuery(this).removeClass('course-menu-expand').addClass('course-menu-collapse');
+      jQuery(this).find('i').removeClass('fa-angle-double-right').addClass('fa-angle-double-left');
+      jQuery('.course-menu-list').show();
+    });
+    
   },
 
   initLessonTabs: function() {
@@ -135,20 +123,27 @@ var CourseSingle = {
 
   lessonLoad: function( lesson ) {
 
-    // prepare template
     var lessonTemplate = jQuery('#lesson-template').html();
     var $lessonTemplate = jQuery( lessonTemplate );
-    var lessonTabsHtml = $lessonTemplate.find('#lesson-tabs').html();
+
+    // lesson tabs
+    var $lessonTabs = $lessonTemplate.find('#lesson-tabs');
 
     // parse lesson overview
     if( lesson.overview == '' ) {
       jQuery('.lesson-overview').hide();
     } else {
-      var updatedHtml = lessonTabsHtml.replace( '{{lesson_overview}}', lesson.overview);
+      lessonTabsHtml = $lessonTabs.html().replace( '{{lesson_overview}}', lesson.overview );
+      $lessonTabs.html( lessonTabsHtml );
     }
 
-    $lessonTemplate.find('#lesson-tabs').html( updatedHtml );
+    var firstTab = $lessonTabs.find('header a').first();
+    var firstTabTarget = firstTab.data('target');
+    firstTab.addClass('active');
+    $lessonTemplate.find('#lesson-tabs').html( $lessonTabs.html() );
+
     jQuery('.course-body-right').html( $lessonTemplate );
+    jQuery('#' + firstTabTarget).show();
 
     // setup video
     if( lesson.video ) {
@@ -174,13 +169,38 @@ var CourseSingle = {
   },
 
   getTimelineItem: function( id ) {
+
     var matchedItem = false;
     saberCourse.course.timeline.forEach( function( item ) {
       if( item.id == id ) {
         matchedItem = item;
       }
     });
+
     return matchedItem;
+
+  },
+
+  initStudyGuide: function() {
+
+    if( saberCourse.course.studyGuide ) {
+
+      jQuery('.course-header-menu a').on('click', function(e) {
+        e.preventDefault();
+
+        if( jQuery(this).hasClass('course-study-guide-download') ) {
+          window.open( saberCourse.course.studyGuide.url );
+        }
+
+      });
+
+    } else {
+
+      // no study guide
+      jQuery('.course-study-guide-download').hide();
+
+    }
+
   }
 
 }
