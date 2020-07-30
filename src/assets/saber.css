@@ -1,0 +1,25 @@
+/*
+ * Editor Forms
+ */
+.saber-field {
+  margin: 30px 0;
+}
+.saber-field label {
+  display: block;
+  margin: 0 0 5px 0;
+}
+
+.saber-field textarea {
+  width: 100%;
+  min-height: 150px;
+  background: #F2F2F2;
+  padding: 15px;
+  font-size: 1.2em;
+}
+
+.saber-field select {
+  padding: 5px 6px;
+  font-size: 1.2em;
+  min-width: 400px;
+  background-color: #F2F2F2;
+}

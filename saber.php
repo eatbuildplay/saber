@@ -73,6 +73,7 @@ class Plugin {
 
     /* script calls */
     add_action('wp_enqueue_scripts', [$this, 'scripts']);
+    add_action('admin_enqueue_scripts', [$this, 'adminScripts']);
 
   }
 
@@ -237,6 +238,17 @@ class Plugin {
       SABER_URL . 'src/assets/saber.js',
       array( 'jquery' ),
       '1.0.0',
+      true
+    );
+
+  }
+
+  public function adminScripts() {
+
+    wp_enqueue_style(
+      'saber',
+      SABER_URL . 'src/assets/saber.css',
+      array(),
       true
     );
 
