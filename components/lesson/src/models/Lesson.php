@@ -33,6 +33,15 @@ class Lesson {
     $obj->overview = get_post_meta( $obj->id, 'lesson_overview', 1 );
     $obj->duration = get_post_meta( $obj->id, 'lesson_duration', 1 );
 
+    $professorId = get_post_meta( $obj->id, 'lesson_professor', 1 );
+    if( $professorId ) {
+      $obj->professor = get_userdata( $professorId );
+      $obj->professor->bio = get_user_meta( $professorId, 'description', 1 );
+      $obj->professor->avatar = get_avatar_url( $professorId );
+    } else {
+      $obj->professor = 0;
+    }
+
     return $obj;
 
   }

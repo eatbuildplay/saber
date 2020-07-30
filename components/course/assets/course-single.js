@@ -69,7 +69,7 @@ var CourseSingle = {
       jQuery(this).find('i').removeClass('fa-angle-double-right').addClass('fa-angle-double-left');
       jQuery('.course-menu-list').show();
     });
-    
+
   },
 
   initLessonTabs: function() {
@@ -144,6 +144,17 @@ var CourseSingle = {
 
     jQuery('.course-body-right').html( $lessonTemplate );
     jQuery('#' + firstTabTarget).show();
+
+    console.log(lesson.professor);
+
+    if( lesson.professor ) {
+
+      jQuery('.lesson-author-name').text( lesson.professor.data.display_name );
+      jQuery('.lesson-author-bio').html( lesson.professor.data.bio );
+      jQuery('.lesson-author-profile').attr( 'src', lesson.professor.data.avatar );
+
+
+    }
 
     // setup video
     if( lesson.video ) {
