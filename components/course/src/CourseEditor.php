@@ -136,9 +136,14 @@ class CourseEditor {
   }
 
   public function editorScript() {
+
     global $post_type;
 
     if( 'course' == $post_type ) {
+
+      if ( !did_action( 'wp_enqueue_media' )) {
+        wp_enqueue_media();
+      }
 
       wp_enqueue_style(
         'saber-course-editor-css',

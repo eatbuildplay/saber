@@ -10,7 +10,8 @@ class LessonEditor {
     add_action( 'admin_menu', [$this, 'metaboxes'] );
     add_action( 'save_post_lesson', [$this, 'metaboxSave'], 10, 2 );
 
-    add_action('admin_enqueue_scripts', [$this, 'adminScripts']);
+    add_action( 'admin_print_scripts-post-new.php', [$this, 'editorScript'] );
+    add_action( 'admin_print_scripts-post.php', [$this, 'editorScript'] );
 
   }
 
@@ -89,19 +90,25 @@ class LessonEditor {
 
   }
 
-  public function adminScripts() {
+  public function editorScripts() {
 
-    if ( !did_action( 'wp_enqueue_media' )) {
-      wp_enqueue_media();
+    global $post_type;
+
+    if( 'lesson' == $post_type ) {
+
+      if ( !did_action( 'wp_enqueue_media' )) {
+        wp_enqueue_media();
+      }
+
+      wp_enqueue_script(
+        'saber-lesson-editor',
+        SABER_URL . 'components/lesson/assets/lesson-editor.js',
+        array( 'jquery' ),
+        '1.0.0',
+        true
+      );
+
     }
-
-    wp_enqueue_script(
-      'saber-lesson-editor',
-      SABER_URL . 'components/lesson/assets/lesson-editor.js',
-      array( 'jquery' ),
-      '1.0.0',
-      true
-    );
 
   }
 
