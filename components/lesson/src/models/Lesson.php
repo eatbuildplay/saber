@@ -42,6 +42,8 @@ class Lesson {
       $obj->professor = 0;
     }
 
+    $obj->lessonResources = get_post_meta( $obj->id, 'lesson_resources', 1 );
+
     return $obj;
 
   }

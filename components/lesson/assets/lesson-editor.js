@@ -1,10 +1,12 @@
 (function($) {
 
-
-
 	var LessonEditor = {
 
+		lesson: lessonData.lesson,
+
 		init: function() {
+
+			console.log( LessonEditor.lesson );
 
 			LessonEditor.initVideoField();
 			LessonEditor.resourcesField.init();
@@ -86,11 +88,30 @@
 				var addButton = '<button id="resource_add_button">+ Add</button>';
 				$wrapper.append( addButton );
 
-				console.log( $wrapper )
-
 				// make list
 				var itemHtml = $('#lesson_resources_item').html();
 				var $list = $('<ul></ul>').appendTo( $wrapper );
+
+				// add existing items if they exist
+				console.log( LessonEditor.lesson.lessonResources )
+
+				var resources = JSON.parse( LessonEditor.lesson.lessonResources );
+
+
+				console.log( resources );
+				resources.forEach( function( resource ) {
+
+					var itemHtml = $('#lesson_resources_item').html();
+					var list = $('#resource_field_content').find('ul');
+					var item = $( itemHtml ).appendTo( list );
+					item.find('.resources-edit').hide();
+					item.find('.resources-label-field input').val( resource.label )
+					item.find('.resources-url-field input').val( resource.url )
+					item.find('a').prop('href', resource.url);
+					item.find('a').text(resource.label);
+
+				});
+				LessonEditor.resourcesField.updateData();
 
 				// make list sortable
 				$list.sortable();

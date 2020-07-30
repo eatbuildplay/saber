@@ -40,6 +40,10 @@ class LessonEditor {
     $value = sanitize_text_field( $_POST[ $key ] );
     update_post_meta( $postId, $key, $value );
 
+    $key = 'lesson_resources';
+    $value = $_POST[ $key ];
+    update_post_meta( $postId, $key, $value );
+
   }
 
   public function metaboxes() {
@@ -74,6 +78,12 @@ class LessonEditor {
 
     print $content;
 
+    wp_localize_script(
+      'lesson-editor',
+      'lessonData',
+      [ 'lesson' => $lesson ]
+    );
+
   }
 
   public function loadProfessorsList() {
@@ -101,7 +111,7 @@ class LessonEditor {
       }
 
       wp_enqueue_script(
-        'saber-lesson-editor',
+        'lesson-editor',
         SABER_URL . 'components/lesson/assets/lesson-editor.js',
         array( 'jquery' ),
         '1.0.0',

@@ -47,25 +47,16 @@ global $post;
 
 <div class="saber-field">
 	<label>Resource Links</label>
-
-	<!--
 	<input id="lesson_resources" name="lesson_resources" type="hidden" />
--->
-
-	<textarea id="lesson_resources"></textarea>
-
 	<template id="lesson_resources_item">
-
 		<li>
 			<div class="resources-display">
 				<span class="resource-display-link">
 					<a href=""></a>
 				</span>
-
 				<span class="resource-edit-button dashicons dashicons-edit-large"></span>
 				<span class="resource-remove-button dashicons dashicons-trash"></span>
 			</div>
-
 			<div class="resources-edit">
 				<div class="resources-label-field">
 					<label>Label</label>
@@ -75,11 +66,8 @@ global $post;
 					<label>Url</label>
 					<input type="text" />
 				</div>
-
 				<span class="resource-save-button dashicons dashicons-yes"></span>
-
 			</div>
-
 		</li>
 
 	</template>
