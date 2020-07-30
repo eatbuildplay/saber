@@ -5,7 +5,7 @@
  * Plugin Name: Saber
  * Plugin URI: https://eatbuildplay.com/plugins/saber
  * Description: Saber is a WordPress plugin that provides a saberwork for building apps.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Casey Milne, Eat/Build/Play
  * Author URI: https://eatbuildplay.com/
  * License: GPL3
@@ -17,7 +17,7 @@ namespace Saber;
 
 define( 'SABER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SABER_URL', plugin_dir_url( __FILE__ ) );
-define( 'SABER_VERSION', '1.0.0' );
+define( 'SABER_VERSION', '1.1.0' );
 
 class Plugin {
 
