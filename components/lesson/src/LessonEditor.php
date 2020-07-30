@@ -10,8 +10,8 @@ class LessonEditor {
     add_action( 'admin_menu', [$this, 'metaboxes'] );
     add_action( 'save_post_lesson', [$this, 'metaboxSave'], 10, 2 );
 
-    add_action( 'admin_print_scripts-post-new.php', [$this, 'editorScript'] );
-    add_action( 'admin_print_scripts-post.php', [$this, 'editorScript'] );
+    add_action( 'admin_print_scripts-post-new.php', [$this, 'editorScripts'] );
+    add_action( 'admin_print_scripts-post.php', [$this, 'editorScripts'] );
 
   }
 

@@ -86,6 +86,8 @@
 				var addButton = '<button id="resource_add_button">+ Add</button>';
 				$wrapper.append( addButton );
 
+				console.log( $wrapper )
+
 				// make list
 				var itemHtml = $('#lesson_resources_item').html();
 				var $list = $('<ul></ul>').appendTo( $wrapper );
