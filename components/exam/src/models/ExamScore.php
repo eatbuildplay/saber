@@ -10,7 +10,6 @@ class ExamScore {
   public $exam;
   public $user;
   public $start;
-  public $questions = [];
 
   public function save() {
 
@@ -62,7 +61,7 @@ class ExamScore {
 
     $obj->user = get_post_meta( $obj->id, 'exam_score_user', 1);
     $obj->exam = get_post_meta( $obj->id, 'exam_score_exam', 1);
-    $obj->exam = get_post_meta( $obj->id, 'exam_score_start', 1);
+    $obj->start = get_post_meta( $obj->id, 'exam_score_start', 1);
 
     return $obj;
 

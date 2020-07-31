@@ -33,12 +33,12 @@ class ExamSingleShortcode {
 
   public function jxRecordAnswer() {
 
-    $examScoreId = $_POST['examScoreId'];
+    $examScoreId = sanitize_text_field( $_POST['examScoreId'] );
 
     // add QuestionAnswer
     $questionAnswer = new Model\QuestionAnswer();
-    $questionAnswer->question = $_POST['questionId'];
-    $questionAnswer->questionOption = $_POST['questionOptionId'];
+    $questionAnswer->question = sanitize_text_field( $_POST['questionId'] );
+    $questionAnswer->questionOption = sanitize_text_field( $_POST['questionOptionId'] );
     $questionAnswer->save();
 
     // add related ExamQuestionScore
