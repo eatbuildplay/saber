@@ -51,8 +51,16 @@ class ExamComponent {
       $GLOBALS['examScore'] = Model\ExamScore::load( $post );
     }
 
+    if ( is_object($post) && $post->post_type == 'exam_score_question' ) {
+      $GLOBALS['examScoreQuestion'] = Model\ExamScoreQuestion::load( $post );
+    }
+
     if ( is_object($post) && $post->post_type == 'question' ) {
       $GLOBALS['question'] = Model\Question::load( $post );
+    }
+
+    if ( is_object($post) && $post->post_type == 'question_answer' ) {
+      $GLOBALS['questionAnswer'] = Model\QuestionAnswer::load( $post );
     }
 
   }
@@ -69,8 +77,16 @@ class ExamComponent {
       return SABER_PATH . 'components/exam/templates/singles/exam_score.php';
     }
 
+    if ( $post->post_type == 'exam_score_question' ) {
+      return SABER_PATH . 'components/exam/templates/singles/exam_score_question.php';
+    }
+
     if ( $post->post_type == 'question' ) {
       return SABER_PATH . 'components/exam/templates/singles/question.php';
+    }
+
+    if ( $post->post_type == 'question_answer' ) {
+      return SABER_PATH . 'components/exam/templates/singles/question_answer.php';
     }
 
     return $single;

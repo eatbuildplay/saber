@@ -23,8 +23,8 @@ class CourseRegistration {
       return false;
     }
 
-    update_field( 'student', $this->student->user->ID, $this->id );
-    update_field( 'course', $this->course->id, $this->id );
+    // update_field( 'student', $this->student->user->ID, $this->id );
+    // update_field( 'course', $this->course->id, $this->id );
 
     return $result;
 
