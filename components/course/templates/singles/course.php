@@ -171,7 +171,9 @@ print $content;
         </li>
 
         <li id="tab2" class="lesson-tabs-tab">
-          <h4>Lesson resources</h4>
+          <div id="lesson-resources">
+            <h4>Lesson resources</h4>
+          </div>
         </li>
 
       </ul>

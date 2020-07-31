@@ -6,8 +6,6 @@
 
 		init: function() {
 
-			console.log( LessonEditor.lesson );
-
 			LessonEditor.initVideoField();
 			LessonEditor.resourcesField.init();
 
@@ -93,25 +91,25 @@
 				var $list = $('<ul></ul>').appendTo( $wrapper );
 
 				// add existing items if they exist
-				console.log( LessonEditor.lesson.lessonResources )
+				if( LessonEditor.lesson.resources != '' ) {
 
-				var resources = JSON.parse( LessonEditor.lesson.lessonResources );
+					var resources = JSON.parse( LessonEditor.lesson.resources );
 
+					resources.forEach( function( resource ) {
 
-				console.log( resources );
-				resources.forEach( function( resource ) {
+						var itemHtml = $('#lesson_resources_item').html();
+						var list = $('#resource_field_content').find('ul');
+						var item = $( itemHtml ).appendTo( list );
+						item.find('.resources-edit').hide();
+						item.find('.resources-label-field input').val( resource.label )
+						item.find('.resources-url-field input').val( resource.url )
+						item.find('a').prop('href', resource.url);
+						item.find('a').text(resource.label);
 
-					var itemHtml = $('#lesson_resources_item').html();
-					var list = $('#resource_field_content').find('ul');
-					var item = $( itemHtml ).appendTo( list );
-					item.find('.resources-edit').hide();
-					item.find('.resources-label-field input').val( resource.label )
-					item.find('.resources-url-field input').val( resource.url )
-					item.find('a').prop('href', resource.url);
-					item.find('a').text(resource.label);
+					});
+					LessonEditor.resourcesField.updateData();
 
-				});
-				LessonEditor.resourcesField.updateData();
+				}
 
 				// make list sortable
 				$list.sortable();

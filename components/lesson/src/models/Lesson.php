@@ -11,6 +11,7 @@ class Lesson {
   public $video;
   public $overview;
   public $duration;
+  public $resources;
 
   public function load( $post ) {
 
@@ -42,7 +43,7 @@ class Lesson {
       $obj->professor = 0;
     }
 
-    $obj->lessonResources = get_post_meta( $obj->id, 'lesson_resources', 1 );
+    $obj->resources = get_post_meta( $obj->id, 'lesson_resources', 1 );
 
     return $obj;
 

@@ -145,15 +145,29 @@ var CourseSingle = {
     jQuery('.course-body-right').html( $lessonTemplate );
     jQuery('#' + firstTabTarget).show();
 
-    console.log(lesson.professor);
-
     if( lesson.professor ) {
 
       jQuery('.lesson-author-name').text( lesson.professor.data.display_name );
       jQuery('.lesson-author-bio').html( lesson.professor.data.bio );
       jQuery('.lesson-author-profile').attr( 'src', lesson.professor.data.avatar );
 
+    }
 
+    console.log( lesson )
+
+    // lesson resources
+    if( lesson.resources.length >= 1 ) {
+      var resources = JSON.parse( lesson.resources );
+      var $lessonResources = jQuery('#lesson-resources');
+      $lessonResources.append('<ul></ul>');
+      resources.forEach( function( resource ) {
+        var item = '<li>';
+        item += '<a href="' + resource.url + '">';
+        item += resource.label;
+        item += '</a>';
+        item += '</li>';
+        $lessonResources.append(item);
+      });
     }
 
     // setup video
