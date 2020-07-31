@@ -1,5 +1,9 @@
 <?php
 
+print '<pre>';
+var_dump( $examScore );
+print '</pre>';
+
 $correct = 0;
 $points = 0;
 foreach( $examScore->questions as $qs ) {

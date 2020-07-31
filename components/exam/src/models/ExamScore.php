@@ -27,11 +27,9 @@ class ExamScore {
 
     $this->permalink = get_permalink( $this->id );
 
-    /*
-    update_field( 'user', $this->user, $this->id );
-    update_field( 'exam', $this->exam, $this->id );
-    update_field( 'start', date('Y-m-d H:i:s'), $this->id );
-    */
+    update_post_meta( $this->id, 'exam_score_user', $this->user );
+    update_post_meta( $this->id, 'exam_score_exam', $this->exam );
+    update_post_meta( $this->id, 'exam_score_start', date('Y-m-d H:i:s') );
 
   }
 
@@ -61,6 +59,10 @@ class ExamScore {
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
     $obj->permalink = get_permalink( $post->ID );
+
+    $obj->user = get_post_meta( $obj->id, 'exam_score_user', 1);
+    $obj->exam = get_post_meta( $obj->id, 'exam_score_exam', 1);
+    $obj->exam = get_post_meta( $obj->id, 'exam_score_start', 1);
 
     return $obj;
 
