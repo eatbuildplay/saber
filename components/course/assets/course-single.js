@@ -108,11 +108,19 @@ var CourseSingle = {
       jQuery('.course-body-right').html('');
       $examCanvasEl.appendTo( '.course-body-right' );
 
+/*
       var startHtml = jQuery('#exam-single-start').html();
       var startEl = jQuery( startHtml );
       startEl.appendTo( $examCanvasEl );
 
+      */
+
       $examCanvasEl.attr('data-exam-id', exam.id );
+
+      Exam.canvas = {
+        body: jQuery('#exam-body-canvas'),
+        controls: jQuery('#exam-controls-canvas'),
+      };
 
       Exam.id = exam.id;
       Exam.init();

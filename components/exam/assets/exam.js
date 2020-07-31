@@ -19,6 +19,10 @@ var Exam = {
 
   init: function() {
 
+    if( !Exam.id ) {
+      return;
+    }
+
     Exam.selectQuestionOption();
     Exam.examLoad();
     Exam.next();
@@ -75,10 +79,15 @@ var Exam = {
   },
 
   startClickHandler: function() {
+
+    console.log('attach startClickHandler');
+
     jQuery(document).on('click', '.exam-control-start', Exam.start);
   },
 
   start: function() {
+
+    console.log('exam starting...')
 
     // make ExamScore
     Exam.createExamScore();
@@ -136,6 +145,8 @@ var Exam = {
 
       var $nextQuestionIndex = Exam.state.currentQuestion.index +1;
       var $question = Exam.exam.timeline.items[ $nextQuestionIndex ];
+
+      console.log( Exam.state );
 
       // end is next
       if( Exam.timelineItemCount() == $nextQuestionIndex +1 ) {
