@@ -1,5 +1,5 @@
 <pre>
 <?php
-  var_dump( $questionAnswers );
+  var_dump( $questionAnswer );
 ?>
 </pre>

@@ -23,18 +23,18 @@ class QuestionAnswer {
       }
     }
 
-    update_field( 'user', $this->user, $this->id );
+    update_post_meta( $this->id, 'question_answer_user', $this->user );
 
     if( is_object( $this->question )) {
-      update_field( 'question', $this->question->id, $this->id );
+      update_post_meta( $this->id, 'question_answer_question', $this->question->id );
     } else {
-      update_field( 'question', $this->question, $this->id );
+      update_post_meta( $this->id, 'question_answer_question', $this->question );
     }
 
-    if( is_object( $this->question )) {
-      update_field( 'question_option', $this->questionOption->id, $this->id );
+    if( is_object( $this->questionOption )) {
+      update_post_meta( $this->id, 'question_answer_question_option', $this->questionOption->id );
     } else {
-      update_field( 'question_option', $this->questionOption, $this->id );
+      update_post_meta( $this->id, 'question_answer_question_option', $this->questionOption );
     }
 
   }
@@ -59,6 +59,10 @@ class QuestionAnswer {
     $obj = new QuestionAnswer;
     $obj->id = $post->ID;
     $obj->title = $post->post_title;
+
+    $obj->user = get_post_meta( $obj->id, 'question_answer_user', 1 );
+    $obj->question = get_post_meta( $obj->id, 'question_answer_question', 1 );
+    $obj->questionOption = get_post_meta( $obj->id, 'question_answer_question_option', 1 );
 
     return $obj;
 
