@@ -51,7 +51,7 @@ class ExamSingleShortcode {
     $isCorrect = 0;
     $questionPost = get_post( $questionAnswer->question );
     $question = Model\Question::load( $questionPost );
-    if( $questionAnswer->questionOption == $question->correct->id ) {
+    if( $questionAnswer->questionOption == $question->correct[0] ) {
       $isCorrect = 1;
     }
     $scoreQuestion->correct = $isCorrect;

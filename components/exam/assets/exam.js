@@ -1,3 +1,13 @@
+/*
+ * Exam Controller
+ * Path: components\exam\assets
+ * Filename: exam.js
+ *
+ * Method Count: 18
+ *
+ * Version 1.0
+ */
+
 var Exam = {
 
   id: jQuery('#exam-canvas').data('exam-id'),
@@ -79,15 +89,10 @@ var Exam = {
   },
 
   startClickHandler: function() {
-
-    console.log('attach startClickHandler');
-
     jQuery(document).on('click', '.exam-control-start', Exam.start);
   },
 
   start: function() {
-
-    console.log('exam starting...')
 
     // make ExamScore
     Exam.createExamScore();
@@ -146,8 +151,6 @@ var Exam = {
       var $nextQuestionIndex = Exam.state.currentQuestion.index +1;
       var $question = Exam.exam.timeline.items[ $nextQuestionIndex ];
 
-      console.log( Exam.state );
-
       // end is next
       if( Exam.timelineItemCount() == $nextQuestionIndex +1 ) {
         Exam.showLastQuestion();
@@ -187,8 +190,6 @@ var Exam = {
   },
 
   questionShow: function( $question, $questionNumber ) {
-
-    console.log( $question );
 
     // populate templates
     var $template = jQuery('#question-template').html();
@@ -256,6 +257,10 @@ var Exam = {
 
   recordAnswer: function( $questionId, $questionOptionId ) {
 
+    console.log('recordAnswer')
+    console.log( $questionId )
+    console.log( $questionOptionId )
+
     data = {
       action: 'saber_exam_record_answer',
       examScoreId: Exam.score.id,
@@ -265,6 +270,8 @@ var Exam = {
     jQuery.post( saber_post_list_load.ajaxurl, data, function( response ) {
 
        response = JSON.parse(response);
+
+       console.log( response )
 
        // add focus on answered question
        var $questionEl = jQuery('.question-' + response.question.id);
