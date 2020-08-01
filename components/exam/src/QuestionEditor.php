@@ -88,6 +88,8 @@ class QuestionEditor {
     $optionsStripSlashed = stripslashes( $optionsPassed );
     $optionsRaw = json_decode( $optionsStripSlashed );
 
+    $correct = [];
+
     if( empty( $optionsRaw )) {
 
       $optionIds = [];
@@ -105,8 +107,13 @@ class QuestionEditor {
 
         $optionModel->title = $opt->title;
         $optionModel->label = $opt->title;
+        $optionModel->correct = $opt->correct;
         $optionModel->save();
         $optionIds[] = $optionModel->id;
+
+        if( $opt->correct ) {
+          $correct[] = $optionModel->id;
+        }
 
       }
 
@@ -117,6 +124,8 @@ class QuestionEditor {
       'question_options',
       $optionIds
     );
+
+    update_post_meta($postId, 'question_correct', $correct);
 
   }
 

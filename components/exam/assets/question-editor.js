@@ -11,10 +11,6 @@
     init: function() {
 
       // setup selects
-
-      console.log( $('#question_type') )
-      console.log( QuestionEditor.question.questionType )
-
       $('#question_type').val( QuestionEditor.question.questionType );
 
       /* setup question options list */
@@ -57,11 +53,17 @@
 
         // existing options
         QuestionEditor.data.options.forEach( function( option ) {
-          $( template.html() ).appendTo('#question_options_editor')
+          var item = $( template.html() )
+          item.appendTo('#question_options_editor')
             .find('.list-item-value').text( option.label )
             .closest('li').find('input.option-id').val( option.id )
             .closest('li').find('input.option-title').val( option.label )
             .closest('li').find('input.option-correct').val( option.correct );
+          if( option.correct == 1 ) {
+            console.log( item )
+            item.find('.dashicons-dismiss').hide();
+            item.find('.dashicons-yes-alt').show();
+          }
         });
 
         QuestionEditor.updateData();

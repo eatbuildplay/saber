@@ -7,6 +7,7 @@ class QuestionOption {
   public $id;
   public $title;
   public $label;
+  public $correct;
 
   public function save() {
 
@@ -20,6 +21,7 @@ class QuestionOption {
     }
 
     update_post_meta( $this->id, 'question_option_label', $this->title );
+    update_post_meta( $this->id, 'question_option_correct', $this->correct );
 
   }
 
@@ -52,6 +54,7 @@ class QuestionOption {
     $obj->title = $post->post_title;
 
     $obj->label = get_post_meta($obj->id, 'question_option_label', 1);
+    $obj->correct = get_post_meta($obj->id, 'question_option_correct', 1);
 
     return $obj;
 

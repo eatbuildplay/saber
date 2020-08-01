@@ -10,7 +10,7 @@ class Question {
   public $questionType;
   public $body;
   public $options;
-  public $correct; // index of the correct option
+  public $correct; // array of options flagged as correct
 
   public static function load( $post ) {
 
@@ -32,6 +32,8 @@ class Question {
       $options[] = \Saber\Exam\Model\QuestionOption::load( $optionId );
     }
     $obj->options = $options;
+
+    $obj->correct = get_post_meta( $obj->id, 'question_correct', 1);
 
     return $obj;
 
