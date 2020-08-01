@@ -13,7 +13,7 @@ class ExamScoreQuestionList {
       'numberposts'	=> -1,
       'meta_query'  => [
         [
-          'key'   => 'exam_score',
+          'key'   => 'exam_score_question_exam_score',
           'value' => $examScoreId
         ]
       ]

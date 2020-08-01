@@ -17,7 +17,7 @@ if( $points ) {
   $scorePercent = 0;
 }
 
-get_header();
+//get_header();
 
 ?>
 
@@ -55,4 +55,4 @@ get_header();
   </div>
 </div>
 
-<?php get_footer(); ?>
+<?php //get_footer(); ?>

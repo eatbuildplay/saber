@@ -47,9 +47,10 @@ var Exam = {
   },
 
   viewScore: function() {
-    jQuery(document).on( 'click', '.exam-control-view-score', function() {
-      window.location.href = Exam.score.permalink;
-    });
+
+    
+
+
   },
 
   restartClickHandler: function() {

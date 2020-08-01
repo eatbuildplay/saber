@@ -10,6 +10,7 @@ class ExamScore {
   public $exam;
   public $user;
   public $start;
+  public $examScoreQuestions;
 
   public function save() {
 
@@ -60,8 +61,12 @@ class ExamScore {
     $obj->permalink = get_permalink( $post->ID );
 
     $obj->user = get_post_meta( $obj->id, 'exam_score_user', 1);
-    $obj->exam = get_post_meta( $obj->id, 'exam_score_exam', 1);
+    $examId = get_post_meta( $obj->id, 'exam_score_exam', 1);
+    $obj->exam = Exam::load( $examId );
+
     $obj->start = get_post_meta( $obj->id, 'exam_score_start', 1);
+
+    $obj->examScoreQuestions = ExamScoreQuestionList::fetch( $obj->id );
 
     return $obj;
 
