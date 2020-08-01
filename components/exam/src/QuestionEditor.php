@@ -22,7 +22,7 @@ class QuestionEditor {
 
     add_meta_box(
   		'question_editor', // metabox ID
-  		'Exam Editor', // title
+  		'Question Editor', // title
   		[$this, 'metaboxCb'], // callback
   		'question',
   		'normal', // position
@@ -35,7 +35,7 @@ class QuestionEditor {
 
     $question = \Saber\Exam\Model\Question::Load( $post );
     $template = new \Saber\Template();
-    $template->path = 'components/exam/templates/';
+    $template->path = 'components/exam/templates/question-editor/';
 
     $content = '';
 
@@ -45,9 +45,12 @@ class QuestionEditor {
     ];
     $content .= $template->get();
 
+    $template->name = 'options-list';
+    $content .= $template->get();
+
     wp_localize_script(
       'question-editor',
-      'questionEditor',
+      'saberData',
       [ 'question' => $question ]
     );
 

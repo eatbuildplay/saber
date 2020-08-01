@@ -35,8 +35,7 @@
 }
 
 /* option input field */
-#question_options_editor li input {
-  display: none;
+#question_options_editor li input.option-title {
   border-radius: 0;
   padding: 4px 6px;
   font-size: 1.15em;
@@ -56,11 +55,28 @@
 }
 
 #question_options_editor li .dashicons-thumbs-up {
-  display: none;
   font-size: 32px;
   vertical-align: middle;
 }
 #question_options_editor li .dashicons-thumbs-up:hover {
   opacity: 0.8;
   color: #0DAC50;
+}
+
+#question_options_editor li .dashicons-yes-alt {
+  display: none;
+  opacity: 0.2;
+}
+#question_options_editor li .dashicons-yes-alt:hover {
+  opacity: 0.5;
+}
+#question_options_editor li .dashicons-dismiss {
+  opacity: 0.2;
+}
+#question_options_editor li .dashicons-dismiss:hover {
+  opacity: 0.5;
+}
+
+.editor-mode-edit {
+  display: none;
 }

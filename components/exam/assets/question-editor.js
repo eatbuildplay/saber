@@ -2,13 +2,20 @@
 
   var QuestionEditor = {
 
-    question: questionEditor.question,
+    question: saberData.question,
 
     data: {
-      options: questionEditor.question.options
+      options: saberData.question.options
     },
 
     init: function() {
+
+      // setup selects
+
+      console.log( $('#question_type') )
+      console.log( QuestionEditor.question.questionType )
+
+      $('#question_type').val( QuestionEditor.question.questionType );
 
       /* setup question options list */
       $('#question_options_editor').sortable({
@@ -24,23 +31,27 @@
         // add default options
         $( template.html() ).appendTo('#question_options_editor')
           .find('.list-item-value').text('A')
-          .parent().find('input.option-id').val('0')
-          .parent().find('input.option-title').val('A');
+          .closest('li').find('input.option-id').val('0')
+          .closest('li').find('input.option-title').val('A')
+          .closest('li').find('input.option-correct').val( 0 );
 
         $( template.html() ).appendTo('#question_options_editor')
           .find('.list-item-value').text('B')
-          .parent().find('input.option-id').val('0')
-          .parent().find('input.option-title').val('B');
+          .closest('li').find('input.option-id').val('0')
+          .closest('li').find('input.option-title').val('B')
+          .closest('li').find('input.option-correct').val( 0 );
 
         $( template.html() ).appendTo('#question_options_editor')
           .find('.list-item-value').text('C')
-          .parent().find('input.option-id').val('0')
-          .parent().find('input.option-title').val('C');
+          .closest('li').find('input.option-id').val('0')
+          .closest('li').find('input.option-title').val('C')
+          .closest('li').find('input.option-correct').val( 0 );
 
           $( template.html() ).appendTo('#question_options_editor')
             .find('.list-item-value').text('D')
-            .parent().find('input.option-id').val('0')
-            .parent().find('input.option-title').val('D');
+            .closest('li').find('input.option-id').val('0')
+            .closest('li').find('input.option-title').val('D')
+            .closest('li').find('input.option-correct').val( 0 );
 
       } else {
 
@@ -48,52 +59,67 @@
         QuestionEditor.data.options.forEach( function( option ) {
           $( template.html() ).appendTo('#question_options_editor')
             .find('.list-item-value').text( option.label )
-            .parent().find('input.option-id').val( option.id )
-            .parent().find('input.option-title').val( option.label );
+            .closest('li').find('input.option-id').val( option.id )
+            .closest('li').find('input.option-title').val( option.label )
+            .closest('li').find('input.option-correct').val( option.correct );
         });
 
-        $('#question_options').val( JSON.stringify(QuestionEditor.question.options));
+        QuestionEditor.updateData();
 
       }
+
+      // add new option
+      $('#question_option_add').on('click', function(e) {
+        e.preventDefault();
+        $( template.html() ).appendTo('#question_options_editor')
+          .find('.list-item-value').text( 'New Option' )
+          .closest('li').find('input.option-id').val( 0 )
+          .closest('li').find('input.option-title').val( 'New Option' );
+      });
 
       // start edits
       $(document).on('click', '#question_options_editor .dashicons-welcome-write-blog', function() {
 
-        var item = $(this).parent();
+        var item = $(this).closest('li');
 
-        item.find('.dashicons-welcome-write-blog').hide();
-        item.find('.dashicons-trash').hide();
-        item.find('.list-item-value').hide();
-
-        item.find('input.option-title').show();
-        item.find('.dashicons-thumbs-up').show();
+        item.find('.editor-mode-display').hide();
+        item.find('.editor-mode-edit').show();
 
       });
 
       // save edits
       $(document).on('click', '#question_options_editor .dashicons-thumbs-up', function() {
 
-        var item = $(this).parent();
+        var item = $(this).closest('li');
         var value = item.find('input.option-title').val();
-
-        item.find('input').hide();
-        item.find('.dashicons-thumbs-up').hide();
-
-        item.find('.dashicons-welcome-write-blog').show();
-        item.find('.dashicons-trash').show();
-        item.find('.list-item-value').text(value).show();
-
+        item.find('.list-item-value').text(value);
+        item.find('.editor-mode-display').show();
+        item.find('.editor-mode-edit').hide();
         QuestionEditor.updateData();
 
       });
 
       // delete option
       $(document).on('click', '#question_options_editor .dashicons-trash', function() {
-
-        $(this).parent().remove();
-
+        $(this).closest('li').remove();
         QuestionEditor.updateData();
+      });
 
+      // handle correct settings
+      $(document).on('click', '.dashicons-dismiss', function() {
+        $(this).hide();
+        var item = $(this).closest('li');
+        item.find('.dashicons-yes-alt').show();
+        item.find('.option-correct').val(1);
+        QuestionEditor.updateData();
+      });
+
+      $(document).on('click', '.dashicons-yes-alt', function() {
+        $(this).hide();
+        var item = $(this).closest('li');
+        item.find('.dashicons-dismiss').show();
+        item.find('.option-correct').val(0);
+        QuestionEditor.updateData();
       });
 
     },
@@ -109,6 +135,7 @@
           id: itemEl.find('input.option-id').val(),
           title: itemEl.find('input.option-title').val(),
           label: itemEl.find('input.option-title').val(),
+          correct: itemEl.find('input.option-correct').val(),
         };
         QuestionEditor.data.options.push( option );
 
