@@ -48,7 +48,7 @@ var Exam = {
 
   viewScore: function() {
 
-    
+
 
 
   },
@@ -65,8 +65,13 @@ var Exam = {
 
     Exam.hideControls();
 
+    // exam single end template
     var $template = jQuery('#exam-single-end').html();
     Exam.canvas.body.html( $template );
+
+    // exam score results
+    var $template = jQuery('#exam-score-results').html();
+    Exam.canvas.body.append( $template );
 
     // send end call
     data = {

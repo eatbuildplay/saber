@@ -121,6 +121,13 @@ $content .= $template->get();
 $template->name = 'exam-single-end';
 $template->data = array();
 $content .= $template->get();
+
+// exam score results
+$template->path = 'components/exam/templates/parts/';
+$template->name = 'exam-score-results';
+$template->data = array();
+$content .= $template->get();
+
 print $content;
 
 ?>

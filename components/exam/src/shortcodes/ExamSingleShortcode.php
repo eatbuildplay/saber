@@ -172,6 +172,12 @@ class ExamSingleShortcode {
     $template->data = array();
     $content .= $template->get();
 
+    // exam score results
+    $template->path = 'components/exam/templates/parts/';
+    $template->name = 'exam-score-results';
+    $template->data = array();
+    $content .= $template->get();
+
     return $content;
 
   }
