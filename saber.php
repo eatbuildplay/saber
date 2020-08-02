@@ -244,6 +244,14 @@ class Plugin {
 
   public function adminScripts() {
 
+    wp_enqueue_script(
+      'chartjs',
+      SABER_URL . 'vendor/chartjs/chartjs.min.v2.9.3.js',
+      array('jquery'),
+      '2.9.3',
+      true
+    );
+
     wp_enqueue_style(
       'saber',
       SABER_URL . 'src/assets/saber.css',
