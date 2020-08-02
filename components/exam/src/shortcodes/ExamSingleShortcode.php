@@ -62,9 +62,13 @@ class ExamSingleShortcode {
     }
     $scoreQuestion->save();
 
+    // load updated ExamScore model
+    $examScore = \Saber\Exam\Model\ExamScore::load( $examScoreId );
+
     $response = array(
       'isCorrect' => $isCorrect,
       'question' => $question,
+      'examScore' => $examScore,
       'message' => 'Your answer was marked.'
     );
     print json_encode( $response );
@@ -83,8 +87,7 @@ class ExamSingleShortcode {
     $examScore->save();
 
     $response = array(
-      'examScoreId' => $examScore->id,
-      'examScorePermalink' => $examScore->permalink,
+      'examScore' => $examScore,
     );
     print json_encode( $response );
 

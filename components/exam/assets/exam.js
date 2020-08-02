@@ -16,9 +16,7 @@ var Exam = {
     controls: jQuery('#exam-controls-canvas'),
   },
   exam: [],
-  score: {
-    id: 0
-  },
+  score: {},
   state: {
     started: false,
     currentQuestion: {
@@ -73,6 +71,12 @@ var Exam = {
     var $template = jQuery('#exam-score-results').html();
     Exam.canvas.body.append( $template );
 
+    Exam.canvas.body.find('.exam-score-main-result')
+      .html( '<h2>' + Exam.score.pointsAwardedPercent + '%</h2>' );
+
+    Exam.canvas.body.find('.exam-score-question-count')
+      .html( 'Question Count: ' + Exam.score.questionCount );
+
     // send end call
     data = {
       action: 'saber_exam_end',
@@ -126,8 +130,9 @@ var Exam = {
 
       response = JSON.parse(response);
 
-      Exam.score.id = response.examScoreId;
-      Exam.score.permalink = response.examScorePermalink;
+      console.log(response.examScore)
+
+      Exam.score = response.examScore;
 
     });
 
@@ -263,10 +268,6 @@ var Exam = {
 
   recordAnswer: function( $questionId, $questionOptionId ) {
 
-    console.log('recordAnswer')
-    console.log( $questionId )
-    console.log( $questionOptionId )
-
     data = {
       action: 'saber_exam_record_answer',
       examScoreId: Exam.score.id,
@@ -277,7 +278,8 @@ var Exam = {
 
        response = JSON.parse(response);
 
-       console.log( response )
+       // update exam score
+       Exam.score = response.examScore;
 
        // add focus on answered question
        var $questionEl = jQuery('.question-' + response.question.id);
