@@ -55,6 +55,9 @@ class Plugin {
     require_once( SABER_PATH . 'components/access/src/Access.php' );
     new \Saber\Access\Access();
 
+    require_once( SABER_PATH . 'components/reports/src/ReportsComponent.php' );
+    new \Saber\Reports\ReportsComponent();
+
     foreach( $this->componentList() as $componentDef ) {
       $key = $componentDef['key'];
       require_once( SABER_PATH . 'components/' . $key . '/src/' . ucfirst($key) . 'Component.php' );
@@ -188,7 +191,7 @@ class Plugin {
       'Reports',
       'edit_posts',
       'saber-reports',
-      [$this, 'pageReports']
+      ['\Saber\Reports\ReportsComponent', 'pageCallback']
     );
 
     \add_submenu_page(
@@ -204,10 +207,6 @@ class Plugin {
 
   public static function pageDashboard() {
     print 'this is the Saber dashboard page';
-  }
-
-  public static function pageReports() {
-    print 'this is the Saber reports page';
   }
 
   public static function pageSettings() {

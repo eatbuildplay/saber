@@ -13,8 +13,8 @@ class ExamEditor {
     /* search ajax hook */
     add_action( 'wp_ajax_saber_exam_editor_question_search', array( $this, 'jxQuestionSearch'));
 
-    add_action( 'admin_print_scripts-post-new.php', [$this, 'editorScript'] );
-    add_action( 'admin_print_scripts-post.php', [$this, 'editorScript'] );
+    add_action( 'admin_print_scripts-post-new.php', [$this, 'editorScripts'] );
+    add_action( 'admin_print_scripts-post.php', [$this, 'editorScripts'] );
 
   }
 
