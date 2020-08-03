@@ -4,20 +4,37 @@ namespace Saber\Dashboard;
 
 class DashboardComponent {
 
-
   public function __construct() {
 
     require_once(SABER_PATH.'components/dashboard/src/DashboardShortcode.php');
     new DashboardShortcode();
 
-    add_action('wp_enqueue_scripts', array( $this, 'scripts' ));
+    add_action('admin_enqueue_scripts', array( $this, 'adminScripts' ));
 
   }
 
-  public function scripts() {
+  public function pageCallback() {
+
+    $template = new \Saber\Template;
+    $template->path = 'components/dashboard/templates/';
+    $content = '';
+
+    $template->name = 'header';
+    $template->data = [
+      'userCount' => $userCount,
+      'cts'       => $cts
+    ];
+    $content .= $template->get();
+
+
+    print $content;
+
+  }
+
+  public function adminScripts() {
 
     wp_enqueue_script(
-      'dashboard-js',
+      'saber-dashboard',
       SABER_URL . 'components/dashboard/assets/dashboard.js',
       array( 'jquery' ),
       '1.0.0',
@@ -25,7 +42,7 @@ class DashboardComponent {
     );
 
     wp_enqueue_style(
-      'dashboard-css',
+      'saber-dashboard',
       SABER_URL . 'components/dashboard/assets/dashboard.css',
       array(),
       true

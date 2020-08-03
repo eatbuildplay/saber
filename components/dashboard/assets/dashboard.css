@@ -1,3 +1,46 @@
+/*
+ * Dashboard Header
+ */
+#saber-dashboard-header {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  background: #FFF;
+  margin: 0 0 0 -20px;
+  padding: 0;
+  border-bottom: solid 1px #DDD;
+}
+#saber-dashboard-header #saber-logo {
+  border-right: solid 1px #DDD;
+  padding: 15px 20px;
+}
+#saber-dashboard-header #saber-logo img {
+  max-width: 200px;
+}
+#dashboard-header-main {
+  padding: 40px 25px 25px 10px;
+}
+#dashboard-header-main h1 {
+  color: #C9C2BF;
+  margin: 0;
+  font-weight: 400;
+  font-size: 2.0em;
+}
+
+#breadcrumbs {
+  margin: 10px 0;
+}
+#breadcrumbs .breadcrumb-element {
+  margin: 0 5px;
+}
+.breadcrumb-current {
+  font-weight: 600;
+}
+
+#dashboard-course-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 /* Dashboard widgets */
 .dashboard-widget {
   max-width: 320px;

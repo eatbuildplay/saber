@@ -58,6 +58,9 @@ class Plugin {
     require_once( SABER_PATH . 'components/reports/src/ReportsComponent.php' );
     new \Saber\Reports\ReportsComponent();
 
+    require_once( SABER_PATH . 'components/dashboard/src/DashboardComponent.php' );
+    new \Saber\Dashboard\DashboardComponent();
+
     foreach( $this->componentList() as $componentDef ) {
       $key = $componentDef['key'];
       require_once( SABER_PATH . 'components/' . $key . '/src/' . ucfirst($key) . 'Component.php' );
@@ -123,7 +126,7 @@ class Plugin {
       'Saber LMS',
       'edit_posts',
       'saber-dashboard',
-      [$this, 'pageDashboard'],
+      ['\Saber\Dashboard\DashboardComponent', 'pageCallback'],
       'dashicons-welcome-learn-more',
       2
     );
@@ -203,10 +206,6 @@ class Plugin {
       [$this, 'pageSettings']
     );
 
-  }
-
-  public static function pageDashboard() {
-    print 'this is the Saber dashboard page';
   }
 
   public static function pageSettings() {
