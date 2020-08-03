@@ -55,11 +55,14 @@ class Plugin {
     require_once( SABER_PATH . 'components/access/src/Access.php' );
     new \Saber\Access\Access();
 
+    require_once( SABER_PATH . 'components/dashboard/src/DashboardComponent.php' );
+    new \Saber\Dashboard\DashboardComponent();
+
     require_once( SABER_PATH . 'components/reports/src/ReportsComponent.php' );
     new \Saber\Reports\ReportsComponent();
 
-    require_once( SABER_PATH . 'components/dashboard/src/DashboardComponent.php' );
-    new \Saber\Dashboard\DashboardComponent();
+    require_once( SABER_PATH . 'components/settings/src/SettingsComponent.php' );
+    new \Saber\Settings\SettingsComponent();
 
     foreach( $this->componentList() as $componentDef ) {
       $key = $componentDef['key'];
@@ -203,13 +206,9 @@ class Plugin {
       'Settings',
       'edit_posts',
       'saber-settings',
-      [$this, 'pageSettings']
+      ['\Saber\Settings\SettingsComponent', 'pageCallback']
     );
 
-  }
-
-  public static function pageSettings() {
-    print 'this is the Saber settings page';
   }
 
   function menuSeparators( $parent_file ) {
