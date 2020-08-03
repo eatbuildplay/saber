@@ -22,6 +22,7 @@ class ReportModel {
       $c++;
     }
 
+    $dates = array_reverse( $dates );
     return $dates;
 
   }

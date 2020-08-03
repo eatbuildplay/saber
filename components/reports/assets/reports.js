@@ -63,10 +63,10 @@ var ctx = document.getElementById('studentRegistrationReport').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['February', 'April', 'May', 'June', 'July', 'August'],
+        labels: saberReportsData.totalStudentsReport.labels,
         datasets: [{
             label: 'Total Registered Students',
-            data: [58, 69, 82, 124, 167, 223],
+            data: saberReportsData.totalStudentsReport.data,
             backgroundColor: '#0066AA',
             borderColor: [
                 '#333333',
