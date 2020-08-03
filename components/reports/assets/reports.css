@@ -1,0 +1,24 @@
+#reports-wrap {
+  margin: 30px 0;
+  padding: 0 30px 0 0px;
+}
+.stat-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+.report-stat {
+  min-width: 120px;
+  background: #00BCD5;
+  color: #FFF;
+  text-align: center;
+  cursor: pointer;
+}
+.report-stat h2 {
+  font-size: 4.0em;
+  font-weight: 400;
+}
+.report-stat h4 {
+  font-size: 2.0em;
+  font-weight: 400;
+}
