@@ -6,6 +6,9 @@ class ReportsComponent {
 
   public function __construct() {
 
+    require_once(SABER_PATH . 'components/reports/src/reports/ReportModel.php');
+    require_once(SABER_PATH . 'components/reports/src/reports/TotalStudentsReport.php');
+
     add_action('admin_enqueue_scripts', [$this, 'adminScripts']);
 
   }
@@ -15,6 +18,9 @@ class ReportsComponent {
     $template = new \Saber\Template;
     $template->path = 'components/reports/templates/';
     $content = '';
+
+    // init reports
+    $tsr = new TotalStudentsReport();
 
     $userCount = count_users();
 

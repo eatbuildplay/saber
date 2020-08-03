@@ -22,3 +22,8 @@
   font-size: 2.0em;
   font-weight: 400;
 }
+
+#reports-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

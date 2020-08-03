@@ -4,7 +4,6 @@
     <h1>Saber LMS Reports</h1>
   </header>
 
-
   <!-- Stats Grid -->
   <div class="stat-grid-3">
 
@@ -46,39 +45,51 @@
   </div>
   <!-- / Stats Grid -->
 
-  <div id="student-registration-report">
+  <div id="reports-grid">
 
-    <h2>Total Students Report</h2>
-    <div class="chart-wrap" style="max-width: 400px;">
-      <canvas id="studentRegistrationReport" width="400" height="300"></canvas>
+    <div class="report-grid-item">
+      <h2>Total Students Report</h2>
+      <div class="chart-wrap" style="max-width: 400px;">
+        <canvas id="studentRegistrationReport" width="400" height="300"></canvas>
+      </div>
     </div>
 
-    <h2>New Students Report</h2>
-    <div class="chart-wrap" style="max-width: 400px;">
-      <canvas id="studentsNewReport" width="400" height="300"></canvas>
+    <div class="report-grid-item">
+      <h2>New Students Report</h2>
+      <div class="chart-wrap" style="max-width: 400px;">
+        <canvas id="studentsNewReport" width="400" height="300"></canvas>
+      </div>
     </div>
 
-    <h2>Student Status Report</h2>
-    <div class="chart-wrap" style="max-width: 400px;">
-      <canvas id="studentStatusReport" width="400" height="300"></canvas>
+    <div class="report-grid-item">
+      <h2>Student Status Report</h2>
+      <div class="chart-wrap" style="max-width: 400px;">
+        <canvas id="studentStatusReport" width="400" height="300"></canvas>
+      </div>
     </div>
 
-    <h2>Course Registration Report</h2>
-    <div class="chart-wrap" style="max-width: 400px;">
-      <canvas id="courseRegistrationReport" width="400" height="300"></canvas>
+    <div class="report-grid-item">
+      <h2>Course Registration Report</h2>
+      <div class="chart-wrap" style="max-width: 400px;">
+        <canvas id="courseRegistrationReport" width="400" height="300"></canvas>
+      </div>
     </div>
 
-    <h2>Course Start Report</h2>
-    <div class="chart-wrap" style="max-width: 400px;">
-      <canvas id="courseStartReport" width="400" height="300"></canvas>
+    <div class="report-grid-item">
+      <h2>Course Start Report</h2>
+      <div class="chart-wrap" style="max-width: 400px;">
+        <canvas id="courseStartReport" width="400" height="300"></canvas>
+      </div>
     </div>
 
-    <h2>Course Line Report</h2>
-    <div class="chart-wrap" style="max-width: 400px;">
-      <canvas id="courseLineReport" width="400" height="300"></canvas>
+    <div class="report-grid-item">
+      <h2>Course Line Report</h2>
+      <div class="chart-wrap" style="max-width: 400px;">
+        <canvas id="courseLineReport" width="400" height="300"></canvas>
+      </div>
     </div>
 
-  </div><!-- / #student-registration-report -->
+  </div><!-- / #reports-grid -->
 
 
 
