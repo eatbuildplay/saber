@@ -23,25 +23,31 @@
   <div id="dashboard-course-content">
 
     <div class="dashboard-course-content-link">
-      <a href="<?php admin_url('edit.php?post_type=course'); ?>">
+      <a href="<?php print admin_url('edit.php?post_type=course'); ?>">
         <h2>Manage Courses</h2>
       </a>
     </div>
 
     <div class="dashboard-course-content-link">
-      <a href="<?php admin_url('edit.php?post_type=lesson'); ?>">
+      <a href="<?php print admin_url('edit.php?post_type=lesson'); ?>">
         <h2>Manage Lessons</h2>
       </a>
     </div>
 
     <div class="dashboard-course-content-link">
-      <a href="<?php admin_url('edit.php?post_type=exam'); ?>">
+
+      <a href="<?php print admin_url('edit.php?post_type=exam_score'); ?>">
+        <h2>View Exam Scores</h2>
+      </a>
+
+      <a href="<?php print admin_url('edit.php?post_type=exam'); ?>">
         <h2>Manage Exams</h2>
       </a>
+
     </div>
 
     <div class="dashboard-course-content-link">
-      <a href="<?php admin_url('edit.php?post_type=question'); ?>">
+      <a href="<?php print admin_url('edit.php?post_type=question'); ?>">
         <h2>Manage Questions</h2>
       </a>
     </div>
@@ -68,7 +74,7 @@
 
   </div>
 
-  <!-- Reports Section -->
+  <!-- Support Section -->
   <div id="dashboard-support-section">
 
     <header>

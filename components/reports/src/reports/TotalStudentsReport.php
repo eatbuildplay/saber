@@ -6,35 +6,32 @@ class TotalStudentsReport extends ReportModel {
 
   public function __construct() {
 
-    $dateSeries = $this->makeDateSeries();
-    $labels = $this->makeLabels( $dateSeries );
-    $data = $this->fetchData( $dateSeries );
+    $this->dateSeries = $this->makeDateSeries();
+    $this->labels = $this->makeLabels();
+    $this->data = $this->fetchData();
+
+  }
+
+  public function localizeReportData( $scriptKey ) {
 
     wp_localize_script(
-      'saber-reports',
+      $scriptKey,
       'saberReportsData',
       [
         'totalStudentsReport' => [
-          'labels' => $labels,
-          'data'   => $data
+          'labels' => $this->labels,
+          'data'   => $this->data
         ]
       ]
     );
 
-    /*
-    print '<pre>';
-    var_dump( $data );
-    var_dump( $dateSeriesJson );
-    print '</pre>';
-    */
-
   }
 
-  public function fetchData( $dateSeries ) {
+  public function fetchData() {
 
     $data = [];
 
-    foreach( $dateSeries as $date ) {
+    foreach( $this->dateSeries as $date ) {
       $args = [
         'number' => -1,
         'date_query' => [
@@ -52,10 +49,10 @@ class TotalStudentsReport extends ReportModel {
 
   }
 
-  public function makeLabels( $dateSeries ) {
+  public function makeLabels() {
 
     $labels = [];
-    foreach( $dateSeries as $date ) {
+    foreach( $this->dateSeries as $date ) {
       $labels[] = $date->format('m');
     }
     return $labels;

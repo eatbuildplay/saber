@@ -15,6 +15,12 @@ class DashboardComponent {
 
   public function pageCallback() {
 
+    /* Report setup */
+    $report = new \Saber\Reports\TotalStudentsReport();
+    $report->localizeReportData( 'saber-dashboard' );
+
+    /* Template loading */
+
     $template = new \Saber\Template;
     $template->path = 'components/dashboard/templates/';
     $content = '';
@@ -26,7 +32,6 @@ class DashboardComponent {
     ];
     $content .= $template->get();
 
-
     print $content;
 
   }
@@ -36,7 +41,7 @@ class DashboardComponent {
     wp_enqueue_script(
       'saber-dashboard',
       SABER_URL . 'components/dashboard/assets/dashboard.js',
-      array( 'jquery' ),
+      array( 'jquery', 'chartjs' ),
       '1.0.0',
       true
     );

@@ -29,8 +29,8 @@
 #breadcrumbs {
   margin: 10px 0;
 }
-#breadcrumbs .breadcrumb-element {
-  margin: 0 5px;
+#breadcrumbs span {
+  margin: 0 8px 0 0;
 }
 .breadcrumb-current {
   font-weight: 600;
@@ -39,6 +39,8 @@
 #dashboard-course-content {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+  margin-right: 20px;
 }
 
 /* Dashboard widgets */
@@ -123,4 +125,10 @@
 
 .membership-status-notice a:hover {
 
+}
+
+.dashboard-course-content-link {
+  background: #00BCD5;
+  color: #FFF;
+  padding: 20px;
 }
