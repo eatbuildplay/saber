@@ -191,7 +191,7 @@ class Plugin {
       'separator3',
     );
 
-    \add_submenu_page(
+    $hookSuffix = \add_submenu_page(
       'saber-dashboard',
       'Reports',
       'Reports',

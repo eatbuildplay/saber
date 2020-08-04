@@ -9,7 +9,7 @@ class ReportsComponent {
     require_once(SABER_PATH . 'components/reports/src/reports/ReportModel.php');
     require_once(SABER_PATH . 'components/reports/src/reports/TotalStudentsReport.php');
 
-    add_action('admin_enqueue_scripts', [$this, 'adminScripts']);
+    add_action('admin_print_scripts-saber-lms_page_saber-reports', [$this, 'adminScripts']);
 
   }
 

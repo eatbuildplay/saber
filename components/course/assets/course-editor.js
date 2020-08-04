@@ -13,19 +13,16 @@
 
       /* init load */
       var dataJson = $('#ceEditorData').val();
-      courseEditor.data = JSON.parse( dataJson );
+      try {
+        courseEditor.data = JSON.parse( dataJson );
+      } catch (e) {
+        // leave defaults
+      }
 
       /* menu handlers */
       courseEditor.menuClear();
       courseEditor.lessonSetup();
       courseEditor.examSetup();
-
-      /*
-      courseEditor.data.timeline.forEach( function( data ) {
-        courseEditor.insertTimeline( data );
-      });
-        // replaced by PHP output
-      */
 
       $('.course-editor-menu button').on('click', function(e) {
         e.preventDefault();
