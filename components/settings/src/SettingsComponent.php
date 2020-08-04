@@ -20,6 +20,10 @@ class SettingsComponent {
     $template->data = [];
     $content .= $template->get();
 
+    $template->name = 'tabs';
+    $template->data = [];
+    $content .= $template->get();
+
     print $content;
 
   }
@@ -28,15 +32,15 @@ class SettingsComponent {
 
     wp_enqueue_style(
       'saber-settings',
-      SABER_URL . 'components/reports/assets/settings.css',
+      SABER_URL . 'components/settings/assets/settings.css',
       array(),
       true
     );
 
     wp_enqueue_script(
       'saber-settings',
-      SABER_URL . 'components/reports/assets/settings.js',
-      array('jquery', 'chartjs'),
+      SABER_URL . 'components/settings/assets/settings.js',
+      array('jquery', 'chartjs', 'jquery-ui-tabs'),
       SABER_VERSION,
       true
     );
