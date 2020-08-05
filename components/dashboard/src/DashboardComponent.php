@@ -26,10 +26,18 @@ class DashboardComponent {
     $content = '';
 
     $template->name = 'header';
+    $template->data = [];
+    $content .= $template->get();
+
+    $template->name = 'body';
     $template->data = [
       'userCount' => $userCount,
       'cts'       => $cts
     ];
+    $content .= $template->get();
+
+    $template->name = 'footer';
+    $template->data = [];
     $content .= $template->get();
 
     print $content;

@@ -40,7 +40,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 15px;
-  margin-right: 20px;
+  margin: 30px 20px 30px 0;
 }
 
 /* Dashboard widgets */
@@ -129,6 +129,38 @@
 
 .dashboard-course-content-link {
   background: #00BCD5;
+  color: #FFF;
+  padding: 20px;
+}
+.dashboard-course-content-link h2 {
+  color: #FFF;
+  font-size: 1.6em;
+}
+.dashboard-course-content-link a {
+  color: #FFF;
+  text-decoration: none;
+}
+.dashboard-course-content-link a h2 {
+  color: #F2F2F2;
+  font-size: 1.1em;
+}
+
+/* Reports section */
+#dashboard-reports-section {
+
+}
+#dashboard-reports-section header {
+  background: #D7D7D7;
+  color: #FFF;
+  padding: 20px;
+}
+
+/* Support section */
+#dashboard-support-section {
+  margin: 30px 0 20px 0;
+}
+#dashboard-support-section header {
+  background: #D7D7D7;
   color: #FFF;
   padding: 20px;
 }
