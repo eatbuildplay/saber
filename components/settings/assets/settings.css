@@ -1,0 +1,31 @@
+#saber-settings-tabs {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-gap: 20px;
+}
+
+#saber-settings-tabs .ui-tabs-nav {
+
+}
+
+#saber-settings-tabs .ui-tabs-nav a {
+  font-size: 1.15em;
+  color: #686868;
+  background: #FFF;
+  display: block;
+  text-decoration: none;
+  padding: 12px 20px;
+}
+#saber-settings-tabs .ui-tabs-nav a:hover {
+  border-left: solid 3px #00BCD5;
+}
+
+#saber-settings-tabs .ui-tabs-active a {
+  background: #00BCD5;
+}
+
+#saber-settings-tabs .ui-tabs-nav > li {
+  border-bottom: solid 1px #DDD;
+  margin: 0;
+  padding: 0;
+}

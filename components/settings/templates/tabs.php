@@ -1,4 +1,4 @@
-<div id="tabs">
+<div id="saber-settings-tabs">
 
   <ul>
    	<li><a href="#tabs-general">General Settings</a></li>

@@ -24,6 +24,10 @@ class SettingsComponent {
     $template->data = [];
     $content .= $template->get();
 
+    $template->name = 'footer';
+    $template->data = [];
+    $content .= $template->get();
+
     print $content;
 
   }
