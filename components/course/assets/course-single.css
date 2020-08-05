@@ -36,7 +36,7 @@
 
 /* Course Menu */
 .course-menu {
-  background: #DCDCDC;
+  background: #EAF0F6;
 }
 .course-menu-section {
   border-bottom: solid 1px #F2F2F2;
@@ -77,6 +77,9 @@
 }
 
 /* menu collapse */
+.course-menu-collapse {
+  border-bottom: solid 1px #DDD;
+}
 .course-menu-collapse,
 .course-menu-expand {
   text-align: right;
@@ -173,30 +176,50 @@
    padding: 0 25px 0 60px;
  }
  .timeline-item {
-   padding: 15px 0;
+   padding: 25px 0 0 0;
+   position: relative;
  }
-.timeline-item::before {
+ .timeline-item:first-child {
+   padding-top: 0;
+ }
+ .timeline-item:last-child {
+   margin-bottom: 25px;
+ }
+
+ /* Current timeline items */
+.timeline-item-current {
+
+}
+.timeline-item.timeline-item-view-path:not(:first-child):before {
+  background: #FF271C;
+}
+.timeline-item.timeline-item-current .timeline-item-content:before {
+  background: #FF271C;
+  border-color: #FF271C;
+}
+
+.timeline-item:not(:first-child):before {
   content: '';
   position: absolute;
   width: 2px;
-  background-color: white;
-  top: 0;
-  bottom: 0;
-  left: 40px;
+  background-color: #FFF;
+  top: -30px;
+  left: -21px;
+  height: 60px;
   margin: 0 0 0 0;
 }
 .timeline-item-content {
   padding: 0px 0px;
   position: relative;
 }
-.timeline-item-content::before {
+.timeline-item-content:before {
   content: '';
   position: absolute;
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   top: -3px;
   left: -30px;
-  background-color: white;
+  background-color: #FFF;
   border: 2px solid #C6C6C6;
   border-radius: 50%;
   z-index: 1;

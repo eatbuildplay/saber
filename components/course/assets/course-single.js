@@ -8,7 +8,7 @@ var CourseSingle = {
 
     /* menu click handlers */
     CourseSingle.menuSectionClickHandler();
-    CourseSingle.menuClickHandler();
+    CourseSingle.menuItemClickHandler();
     CourseSingle.menuCollapseExpandClickHandler();
 
     // open by default
@@ -23,9 +23,16 @@ var CourseSingle = {
 
   },
 
-  menuClickHandler: function() {
+  menuItemClickHandler: function() {
 
-    jQuery('.course-menu-section-list li').on('click', function() {
+    jQuery('.course-menu-section-list li.timeline-item').on('click', function() {
+
+      jQuery('.timeline-item').removeClass('timeline-item-current');
+      jQuery('.timeline-item').removeClass('timeline-item-view-path');
+
+      jQuery(this).addClass('timeline-item-current');
+      jQuery(this).addClass('timeline-item-view-path');
+      jQuery(this).prevAll('.timeline-item').addClass('timeline-item-view-path');
 
       var item = jQuery(this);
       var id = item.data('id');
