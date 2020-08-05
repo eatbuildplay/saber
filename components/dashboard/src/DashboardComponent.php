@@ -9,7 +9,7 @@ class DashboardComponent {
     require_once(SABER_PATH.'components/dashboard/src/DashboardShortcode.php');
     new DashboardShortcode();
 
-    add_action('admin_enqueue_scripts', array( $this, 'adminScripts' ));
+    add_action('admin_print_scripts-toplevel_page_saber-dashboard', array( $this, 'adminScripts' ));
 
   }
 
