@@ -20,7 +20,8 @@ class ReportsComponent {
     $content = '';
 
     // init reports
-    $tsr = new TotalStudentsReport();
+    $report = new TotalStudentsReport();
+    $report->localizeReportData( 'saber-reports' );
 
     $userCount = count_users();
 
